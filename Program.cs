@@ -1,2 +1,7 @@
-﻿// Your Program Code Here
-Console.WriteLine("Welcome to Virtual Pet!");
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+
