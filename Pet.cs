@@ -10,9 +10,7 @@ namespace template_csharp_virtual_pet
     {
         private string name;
         private string species;
-
         private int health;
-
         private int hunger;
         private int boredom;
 
@@ -70,9 +68,8 @@ namespace template_csharp_virtual_pet
             Hunger += 5;
         }
 
-
-
     }
 
 
 }
+// Test Change -------------------------------------------------------------
