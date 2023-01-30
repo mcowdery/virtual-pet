@@ -10,12 +10,15 @@ namespace template_csharp_virtual_pet
     {
         private string name;
         private string species;
+
         private int health;
+
         private int hunger;
         private int boredom;
 
         public string Name { get; set; }
         public string Species { get; set; }
+
         public int Health { get; set; }
         public int Hunger { get; set; }
         public int Boredom { get; set; }
@@ -41,6 +44,7 @@ namespace template_csharp_virtual_pet
             string petname1 = Console.ReadLine();
         }
 
+
         public void PlayWithPet()
         {
             Console.WriteLine("Would you like to play?");
@@ -65,11 +69,6 @@ namespace template_csharp_virtual_pet
             Boredom += 5;
             Hunger += 5;
         }
-
-
-
-
-
 
 
 
