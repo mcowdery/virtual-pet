@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using template_csharp_virtual_pet;
 
 Pet usersPet = new Pet("", "", 60, 60, 60);
 

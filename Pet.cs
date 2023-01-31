@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-namespace menuOption;
+
 
 
 public class Pet
@@ -32,6 +32,7 @@ public class Pet
 
     public void PickLionSpecies(Pet usersPet)
     {
+        usersPet.Tick();
 
         bool menuUp = true;
         while (menuUp)
@@ -83,7 +84,7 @@ public class Pet
 
     public void PickTigerSpecies(Pet usersPet)
     {
-
+        usersPet.Tick();
 
         bool menuUp = true;
         while (menuUp)
@@ -134,6 +135,7 @@ public class Pet
 
     public void PickPantherSpecies(Pet usersPet)
     {
+        usersPet.Tick();
 
         bool menuUp = true;
         while (menuUp)
@@ -224,11 +226,48 @@ public class Pet
 
     public void Tick()
     {
-        Boredom += 10;
-        Hunger += 10;
-        Health -= 10;
+
+        System.Timers.Timer tick = new(5000);//instatiates new timer called tick
+        tick.Start();
+        tick.Elapsed += Tick_Elapsed; // says once timer is elapsed go to tick_Elapsed function
+        Console.ReadLine();     //keeping console running
+        void Tick_Elapsed(object? sender, System.Timers.ElapsedEventArgs e)
+        {
+            Boredom += 10;
+            Hunger += 10;
+            bool starved = false;
+            bool crazyBored = false;
+
+            if (Hunger >= 60)
+            {
+                Hunger = 60;
+                starved = true;
+            }
+
+            if (Boredom >= 60)
+            {
+                Boredom = 60;
+                crazyBored = true;
+            }
+
+            if (starved && crazyBored)
+            {
+                Health -= 5;
+            }
+
+            if (Health <= 0)
+            {
+                tick.Stop();
+                tick.Dispose();
+                Console.Clear();
+                Console.WriteLine("OOH NOOOO...." + Name + " The " + Species + " Died!!\nYou have to pay attention and move quicker next time.\nGAME OVER");
+            }
+        }
+
     }
 
+
 }
+
 
 
