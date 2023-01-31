@@ -20,6 +20,7 @@ namespace template_csharp_virtual_pet
         public int Hunger { get; set; }
         public int Boredom { get; set; }
 
+
         public Pet(string name,string species,int health, int hunger,int boredom)
         {
             Name = name;
@@ -28,6 +29,8 @@ namespace template_csharp_virtual_pet
             Hunger = hunger;
             Boredom = boredom;
         }
+
+
         public Pet()
         {
             Name = "";
@@ -37,21 +40,26 @@ namespace template_csharp_virtual_pet
             Health = 60;
         }
 
+
         public void Feed()
         {
             Hunger -= 10;
         }
+
 
         public void NamePet()
         {
             Console.WriteLine("What would you like to name your pet?");
             string petname1 = Console.ReadLine();
         }
+
+
         public void UpdateSpecies(string speciesName)
         {
             Console.WriteLine("What would you like to name your pet?");
             Species = speciesName;
         }
+
 
         public void Play()
         {
@@ -60,11 +68,13 @@ namespace template_csharp_virtual_pet
             Hunger += 2;
         }
 
+
         public void SeeDoctor()
         {
             Console.WriteLine("Take your pet to the doctor");
             Health += 10;
         }
+
 
         public void DisplayStatus()
         {
@@ -73,72 +83,13 @@ namespace template_csharp_virtual_pet
             Console.ReadKey();
         }
 
+
         public void Tick()
         {
             Boredom += 5;
             Hunger += 5;
         }
+
     }
 
-    //public class Lion : Pet
-    //{
-    //    public Lion(string name, string species, int health, int hunger, int boredom) : base(name, species, health, hunger, boredom)
-    //    {
-    //        Name = name;
-    //        Species = species;
-    //        Health = health;
-    //        Hunger = hunger;
-    //        Boredom = boredom;
-    //    }
-    //    public Lion() : base()
-    //    {
-    //        Console.WriteLine("Please name you Jaguar: ");
-    //        Name = Console.ReadLine();
-    //        Species = "";
-    //        Hunger = 60;
-    //        Boredom = 60;
-    //        Health = 60;
-    //    }
-    //}
-    //public class Jaguar : Pet 
-    //{
-    //    public Jaguar(string name, string species, int health, int hunger, int boredom) : base(name, species, health, hunger, boredom)
-    //    {
-    //        Name = name;
-    //        Species = species;
-    //        Health = health;
-    //        Hunger = hunger;
-    //        Boredom = boredom;
-    //    }
-    //    public Jaguar() : base()
-    //    {
-    //        Console.WriteLine("Please name you Jaguar: ");
-    //        Name = Console.ReadLine();
-    //        Species = "";
-    //        Hunger = 60;
-    //        Boredom = 60;
-    //        Health = 60;
-    //    }
-    //}
-    //public class Tiger  : Pet
-    //{
-    //    public Tiger (string name, string species, int health, int hunger, int boredom) : base(name, species, health, hunger, boredom)
-    //    {
-    //        Name = name;
-    //        Species = species;
-    //        Health = health;
-    //        Hunger = hunger;
-    //        Boredom = boredom;
-    //    }
-    //    public Tiger() : base()
-    //    {
-    //        Console.WriteLine("Please name you Jaguar: ");
-    //        Name = Console.ReadLine();
-    //        Species = "";
-    //        Hunger = 60;
-    //        Boredom = 60;
-    //        Health = 60;
-    //    }
-    //}
 }
-// Test Change -------------------------------------------------------------
