@@ -163,7 +163,7 @@ namespace template_csharp_virtual_pet
                         Shelter.RemovePetFromShelter(usersPet);
                         Console.WriteLine("{0} has been removed from the Shelter", usersPet.Name);
                         Console.WriteLine("Press any key to continue...");
-                        Console.ReadKey();
+                        //Console.ReadKey();
                         break;
                     case "2":
                         Console.Clear();
