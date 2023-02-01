@@ -30,6 +30,8 @@ public class Pet
         Boredom = boredom;
     }
 
+
+
     public void PickLionSpecies(Pet usersPet)
     {
         usersPet.Tick();
