@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -56,7 +57,7 @@ namespace template_csharp_virtual_pet
 
                 //Shelter.FeedPetInShelter(usersPet);
                 //string bill = String.Format("|{0,5}|{1,5}|{2,5}|{3,5}|{4,5}|", usersPet.Name, usersPet.Name, usersPet.Name, usersPet.Name, usersPet.Name);
-                Console.WriteLine(String.Format("|  {0,5}  |  {1,5}  |  {2,5}  |  {3,5}  |  {4,5}  |", usersPet.Name, usersPet.Name, usersPet.Name, usersPet.Name, usersPet.Name));
+                //Console.WriteLine(String.Format("|  {0,5}  |  {1,5}  |  {2,5}  |  {3,5}  |  {4,5}  |", usersPet.Name, usersPet.Name, usersPet.Name, usersPet.Name, usersPet.Name));
 
                 Console.WriteLine("1. Rename your " + usersPet.Species);
                 Console.WriteLine("2. Feed your " + usersPet.Species);
@@ -153,6 +154,7 @@ namespace template_csharp_virtual_pet
                         Console.Clear();
                         Shelter.AddPetToShelter(usersPet);
                         Console.WriteLine("{0} has been added to the Shelter", usersPet.Name);
+                        Shelter.DisplayShelter();
                         Console.WriteLine("Press any key to continue...");
                         Console.ReadKey();
 
@@ -163,7 +165,7 @@ namespace template_csharp_virtual_pet
                         Shelter.RemovePetFromShelter(usersPet);
                         Console.WriteLine("{0} has been removed from the Shelter", usersPet.Name);
                         Console.WriteLine("Press any key to continue...");
-                        //Console.ReadKey();
+                        Console.ReadKey();
                         break;
                     case "2":
                         Console.Clear();
