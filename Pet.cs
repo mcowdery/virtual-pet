@@ -29,17 +29,32 @@ namespace template_csharp_virtual_pet
             Hunger = hunger;
             Boredom = boredom;
         }
+        public string GetName(){ return Name; }
+        public string GetSpecies() { return Species; }
+        public int GetHealth(){ return Health; }
+        public int GetHunger(){ return Hunger; }
+        public int GetBoredom(){ return Boredom; }
+
+        public string PaddedName()
+        {
+            string PaddedName = Name;
+            int namePadAmount = Name.Length + (14 - Name.Length);
+            PaddedName = PaddedName.PadLeft(namePadAmount);
+            return PaddedName;
+        }
+        public string PaddedSpecies()
+        {
+            string PaddedSpecies = Species;
+            int namePadAmount = Species.Length + (11 - Species.Length);
+            PaddedSpecies = PaddedSpecies.PadLeft(namePadAmount);
+            return PaddedSpecies;
+        }
         public void Feed()
         {
             //Feed animation
             Hunger -= 10;
             //purr sound
         }
-        public string GetName(){ return Name; }
-        public string GetSpecies() { return Species; }
-        public int GetHealth(){ return Health; }
-        public int GetHunger(){ return Hunger; }
-        public int GetBoredom(){ return Boredom; }
         public void Play()
         {
             Boredom -= 20;
@@ -57,14 +72,11 @@ namespace template_csharp_virtual_pet
             Console.WriteLine(Name + " The " + Species + ":");
             Console.WriteLine("Health - " + Health + "\n" + "Hunger - " + Hunger + "\n" + "Boredom - " + Boredom + "\n");
         }
-
         public void Tick()
         {
-
             System.Timers.Timer tick = new(5000);//instatiates new timer called tick
             tick.Start();
             tick.Elapsed += Tick_Elapsed; // says once timer is elapsed go to tick_Elapsed function
-            Console.ReadLine();     //keeping console running
             void Tick_Elapsed(object? sender, System.Timers.ElapsedEventArgs e)
             {
                 Boredom += 10;
@@ -97,10 +109,7 @@ namespace template_csharp_virtual_pet
                     Console.WriteLine("OOH NOOOO...." + Name + " The " + Species + " Died!!\nYou have to pay attention and move quicker next time.\nGAME OVER");
                 }
             }
-
         }
-
-
     }
 }
 

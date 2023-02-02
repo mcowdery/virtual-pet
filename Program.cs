@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
-Pet usersPet = new Pet();
+using template_csharp_virtual_pet;
 
 bool menuUp = true;
 while (menuUp)
 {
     Menus.IntroMenu();
-    Menus.ChooseYourSpeciesMenu(usersPet);
-    Menus.NameMenu(usersPet);
-    Menus.Main(usersPet);
+    string species = Menus.ChooseYourSpeciesMenu();
+    string name = Menus.NameMenu();
+    Shelter.AddPet(name, species);
+    Menus.Main((Pet)Shelter.GetPet(1));
 }
 

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.Design;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
@@ -18,68 +19,122 @@ namespace template_csharp_virtual_pet
                 "You will have to move fast as well to keep your new" +
                 " friend alive and happy.\n");
         }
-        public static void ChooseYourSpeciesMenu(Pet usersPet)
+        public static string ChooseYourSpeciesMenu()
         {
             Console.WriteLine("What Species would you like to start with?\n");
             Console.WriteLine("1. Lion");
             Console.WriteLine("2. Tiger");
             Console.WriteLine("3. Panther");
-
-            string userChoice = Console.ReadLine();
-            switch (userChoice)
+            string selection="";
+            bool menuUp = true;
+            while (menuUp)
             {
-                case "1":
-                    usersPet.Species = "Lion";
-                    break;
-                case "2":
-                    usersPet.Species = "Tiger";
-                    break;
-                case "3":
-                    usersPet.Species = "Panther";
-                    break;
-                default:
-                    Console.WriteLine("Invalid Input");
-                    break;
+                string userChoice = Console.ReadLine();
+                switch (userChoice)
+                {
+                    case "1":
+                        selection = "Lion";
+                        menuUp = false;
+                        break;
+                    case "2":
+                        selection = "Tiger";
+                        menuUp = false;
+                        break;
+                    case "3":
+                        selection = "Panther";
+                        menuUp = false;
+                        break;
+                    default:
+                        Console.WriteLine("Invalid Input");
+                        break;
+                }
             }
+            return selection;
+        }
+        public static void NameMenu(Pet usersPet)
+        {
+            Console.Clear();
+            Console.WriteLine("What would you like to name your " + usersPet.Species + "?");
+            usersPet.Name = Console.ReadLine();
+        }
+        public static string NameMenu()
+        {
+            Console.Clear();
+            Console.WriteLine("What would you like to name your " + "?");
+            string name = Console.ReadLine();
+            return name;
         }
         public static void Main(Pet usersPet)
         {
             bool menuUp = true;
             while (menuUp)
             {
-
                 Console.Clear();
                 //Panther roar sound
                 //panther image
+                Console.WriteLine("\n");
+                Shelter.DisplayShelter();
+                Console.WriteLine("\n");
 
-                Console.WriteLine("THE {0} IS A MIGHTY ANIMAL\n", usersPet.Species.ToUpper());
-                usersPet.DisplayStatus();
-
-                //Shelter.FeedPetInShelter(usersPet);
-                //string bill = String.Format("|{0,5}|{1,5}|{2,5}|{3,5}|{4,5}|", usersPet.Name, usersPet.Name, usersPet.Name, usersPet.Name, usersPet.Name);
-                //Console.WriteLine(String.Format("|  {0,5}  |  {1,5}  |  {2,5}  |  {3,5}  |  {4,5}  |", usersPet.Name, usersPet.Name, usersPet.Name, usersPet.Name, usersPet.Name));
-
-                Console.WriteLine("1. Rename your " + usersPet.Species);
-                Console.WriteLine("2. Feed your " + usersPet.Species);
-                Console.WriteLine("3. Play with your " + usersPet.Species);
-                Console.WriteLine("4. Go to shelter");
+                Console.WriteLine("1. Rename a pet");
+                Console.WriteLine("2. Interact with your pets");
+                Console.WriteLine("3. Adopt a pet");
+                Console.WriteLine("4. Remove a pet");
                 Console.WriteLine("5. Earn some money");
-                Console.WriteLine("6. exit");
+                Console.WriteLine("6. Exit");
 
                 string userChoice = Console.ReadLine();
                 switch (userChoice)
                 {
-                    case "1":
-                        Menus.NameMenu(usersPet);
+                    case "1": //Rename a pet
+                        if (Shelter.GetShelterSize() > 1)
+                        {
+                            Console.Clear();
+                            Console.WriteLine("What pet do you want to rename? ");
+                            int choice = Shelter.SelectPetMenu();
+                            Menus.NameMenu((Pet)Shelter.GetPet(choice));
+                        }
+                        else
+                        {
+                            Menus.NameMenu((Pet)Shelter.GetPet(1));
+                        }
                         break;
                     case "2":
-                        Menus.FeedMenu(usersPet);
+                        Menus.EarnMoneyMenu();
                         break;
-                    case "3":
-                        Menus.PlayMenu(usersPet);
+                    case "3":  //Adopt a pet
+                        if (Shelter.GetShelterSize() <= 4)
+                        {
+                            Console.Clear();
+                            string species = Menus.ChooseYourSpeciesMenu();
+                            string name = Menus.NameMenu();
+                            Shelter.AddPet(name, species);
+                            Menus.Main(usersPet);
+                            break;
+                        }
+                        else
+                        {
+                            Console.Clear();
+                            Console.WriteLine("Shelter capacity reached. Please remove a pet before adding anymore.");
+                            Console.WriteLine("\nPress any key to go back to the main menu...");
+                            Console.ReadKey();
+                        }
                         break;
-                    case "4":
-                        Menus.ShelterMenu(usersPet);
+                    case "4": //remove a pet
+                        if (Shelter.GetShelterSize() > 1)
+                        {
+                            Console.Clear();
+                            Console.WriteLine("Which Pet do you wish to remove?");
+                            int selection = Shelter.SelectPetMenu();
+                            Shelter.RemovePetFromShelter((Pet)Shelter.GetPet(selection));
+                        }
+                        else 
+                        { 
+                            Console.Clear();
+                            Console.WriteLine("Cannot remove. You must have at least one pet in the shelter.");
+                            Console.WriteLine("\nPress any key to go back to the main menu...");
+                            Console.ReadKey();
+                        }
                         break;
                     case "5":
                         Menus.EarnMoneyMenu();
@@ -93,17 +148,11 @@ namespace template_csharp_virtual_pet
                 }
             }
         }
-        public static void NameMenu(Pet usersPet)
-        {
-            if (usersPet.Name != "") { Console.WriteLine("Current name is " + usersPet.Name); }
-            Console.Clear();
-            Console.WriteLine("What would you like to name your " + usersPet.Species + "?");
-            usersPet.Name = Console.ReadLine();
-        }
         public static void FeedMenu(Pet usersPet)
         {
             Console.Clear();
-            Console.WriteLine("You played with {0}!", usersPet.Name);
+            
+            Console.WriteLine("{0} has eaten!", usersPet.Name);
             Console.WriteLine("Boredom Level has decreased by 10!");
             int prevHungerLevel = usersPet.Hunger;
             usersPet.Feed();
@@ -114,7 +163,7 @@ namespace template_csharp_virtual_pet
         public static void PlayMenu(Pet usersPet)
         {
             Console.Clear();
-            Console.WriteLine("{0} has eaten!", usersPet.Name);
+            Console.WriteLine("You played with {0}!", usersPet.Name);
             Console.WriteLine("Hunger Level has decreased by 10!");
             int prevBoredomLevel = usersPet.Boredom;
             usersPet.Play();
@@ -122,7 +171,6 @@ namespace template_csharp_virtual_pet
             Console.WriteLine("Press any key to continue...");
             Console.ReadKey();
         }
-
         public static void EarnMoneyMenu()
         {
             Console.Clear();
@@ -134,53 +182,6 @@ namespace template_csharp_virtual_pet
             //Console.WriteLine(prevHungerLevel + "  >>>  " + usersPet.Hunger);
             Console.WriteLine("Press any key to continue...");
             Console.ReadKey();
-        }
-        public static void ShelterMenu(Pet usersPet)
-        {
-            bool menuUp = true;
-            while (menuUp)
-            {
-                Console.Clear();
-                Console.WriteLine("1. Exchange {0} for another pet", usersPet.Name);
-                Console.WriteLine("2. Show all your pets in shelter");
-                Console.WriteLine("3. Go back");
-
-                string userChoice = Console.ReadLine();
-                switch (userChoice)
-                {
-                    case "1":
-
-                        //add to shelter
-                        Console.Clear();
-                        Shelter.AddPetToShelter(usersPet);
-                        Console.WriteLine("{0} has been added to the Shelter", usersPet.Name);
-                        Shelter.DisplayShelter();
-                        Console.WriteLine("Press any key to continue...");
-                        Console.ReadKey();
-
-                        //exchange for new pet
-                        Console.Clear();
-                        Console.WriteLine("Which pet do you wish to remove from the shelter?");
-                        Shelter.SelectPetSubMenu();
-                        Shelter.RemovePetFromShelter(usersPet);
-                        Console.WriteLine("{0} has been removed from the Shelter", usersPet.Name);
-                        Console.WriteLine("Press any key to continue...");
-                        Console.ReadKey();
-                        break;
-                    case "2":
-                        Console.Clear();
-                        Shelter.ListPetShelter();
-                        Console.WriteLine("Press any key to continue...");
-                        Console.ReadKey();
-                        break;
-                    case "3":
-                        menuUp = false;
-                        break;
-                    default:
-                        Console.WriteLine("Invalid Input");
-                        break;
-                }
-            }
         }
     }
 }
