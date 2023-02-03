@@ -74,7 +74,7 @@ namespace template_csharp_virtual_pet
                 //panther image
                 Console.WriteLine("\n");
                 Shelter.DisplayShelter();
-                Console.WriteLine("\n");
+                Console.WriteLine("\n\n");
 
                 Console.WriteLine("1. Rename a pet");
                 Console.WriteLine("2. Interact with your pets");
@@ -82,6 +82,21 @@ namespace template_csharp_virtual_pet
                 Console.WriteLine("4. Remove a pet");
                 Console.WriteLine("5. Earn some money");
                 Console.WriteLine("6. Exit");
+                Console.SetCursorPosition(0, 8);
+
+                System.Timers.Timer activeDisplay = new(6000);
+                activeDisplay.Start();
+                activeDisplay.Elapsed += ActiveDisplay_Elapsed; 
+                void ActiveDisplay_Elapsed(object? sender, System.Timers.ElapsedEventArgs e)
+                {
+                    Console.SetCursorPosition(0, 0);
+                    Console.WriteLine("\n");
+                    Shelter.DisplayShelter();
+                    Console.WriteLine("\n\n");
+                    Console.SetCursorPosition(0, 8);
+                       
+                }
+
 
                 string userChoice = Console.ReadLine();
                 switch (userChoice)

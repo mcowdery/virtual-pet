@@ -12,8 +12,8 @@ namespace template_csharp_virtual_pet
         private string name = "";
         private string species = "";
         private int health = 60;
-        private int hunger = 60;
-        private int boredom = 60;
+        private int hunger = 0;
+        private int boredom = 0;
 
         public string Name { get; set; }
         public string Species { get; set; }
