@@ -9,7 +9,7 @@ bool menuUp = true;
 while (menuUp)
 {
     Menus.IntroMenu();
-    string species = Menus.ChooseYourSpeciesMenu();
+    string species = Menus.InitialChooseYourSpeciesMenu();
     string name = Menus.NameMenu();
     Shelter.AddPet(name, species);
     Menus.Main((Pet)Shelter.GetPet(1));
