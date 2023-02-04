@@ -18,7 +18,7 @@ namespace template_csharp_virtual_pet
         public static int GetShelterSize() { return petShelter.Count; }
         public static int SelectPetMenu()
         {
-            Console.WriteLine("\n");
+            Console.WriteLine("\n\n");
             if (Shelter.GetShelterSize() > 1)
             {
                 int selection = 0;
@@ -28,13 +28,16 @@ namespace template_csharp_virtual_pet
                     foreach (var pet in petShelter)
                     {
                         Console.WriteLine(count + ". " + pet.Name);
-                        count++;
+                        count++;   
                     }
+                    Console.SetCursorPosition(0, 8);
                     selection = Convert.ToInt32(Console.ReadLine());
+                    
                     if (selection >= 0 && selection <= count - 1)
                     { return selection; }
                     else
                     { Console.WriteLine("Invalid input"); }
+                    Console.SetCursorPosition(0, 8);
                 }
             }
             else
