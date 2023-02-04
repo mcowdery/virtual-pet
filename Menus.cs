@@ -264,6 +264,9 @@ namespace template_csharp_virtual_pet
         public static void EarnMoneyMenu()
         {
             Console.Clear();
+            Console.WriteLine("\n");
+            Shelter.DisplayShelter();//Active display
+            Console.WriteLine("\n\n");
             Console.WriteLine("This function is still a WIP. \n");
             //Console.WriteLine("{0} has eaten!", usersPet.Name);
             //Console.WriteLine("You earned $0!");
@@ -271,6 +274,7 @@ namespace template_csharp_virtual_pet
             //usersPet.Feed();
             //Console.WriteLine(prevHungerLevel + "  >>>  " + usersPet.Hunger);
             Console.WriteLine("Press any key to continue...");
+            Console.SetCursorPosition(0, 8); //Active displayy
             Console.ReadKey();
         }
     }
