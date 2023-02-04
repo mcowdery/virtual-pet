@@ -71,20 +71,7 @@ namespace template_csharp_virtual_pet
             Console.WriteLine("1. Lion");
             Console.WriteLine("2. Tiger");
             Console.WriteLine("3. Panther");
-            Console.SetCursorPosition(0, 8); //Active displayy
-
-            System.Timers.Timer activeDisplay = new(10000);
-            activeDisplay.Start();
-            activeDisplay.Elapsed += ActiveDisplay_Elapsed;
-            void ActiveDisplay_Elapsed(object? sender, System.Timers.ElapsedEventArgs e)
-            {
-                Console.SetCursorPosition(0, 0);
-                Console.WriteLine("\n");
-                Shelter.DisplayShelter();
-                Console.WriteLine("\n\n");
-                Console.SetCursorPosition(0, 8);
-
-            } // end active display
+            Console.SetCursorPosition(0, 8); //Active display
 
             string selection = "";
             bool menuUp = true;
@@ -122,19 +109,6 @@ namespace template_csharp_virtual_pet
             Console.WriteLine("What would you like to rename your " + usersPet.Species + "?");
             Console.SetCursorPosition(0, 8); //Active displayy
 
-            System.Timers.Timer activeDisplay = new(10000);
-            activeDisplay.Start();
-            activeDisplay.Elapsed += ActiveDisplay_Elapsed;
-            void ActiveDisplay_Elapsed(object? sender, System.Timers.ElapsedEventArgs e)
-            {
-                Console.SetCursorPosition(0, 0);
-                Console.WriteLine("\n");
-                Shelter.DisplayShelter();
-                Console.WriteLine("\n\n");
-                Console.SetCursorPosition(0, 8);
-
-            } // end active display
-
             usersPet.Name = Console.ReadLine();
         }
 
@@ -154,19 +128,6 @@ namespace template_csharp_virtual_pet
             Console.WriteLine("\n\n");
             Console.WriteLine("What would you like to name your pet" + "?");
             Console.SetCursorPosition(0, 8); //Active displayy
-
-            System.Timers.Timer activeDisplay = new(10000);
-            activeDisplay.Start();
-            activeDisplay.Elapsed += ActiveDisplay_Elapsed;
-            void ActiveDisplay_Elapsed(object? sender, System.Timers.ElapsedEventArgs e)
-            {
-                Console.SetCursorPosition(0, 0);
-                Console.WriteLine("\n");
-                Shelter.DisplayShelter();
-                Console.WriteLine("\n\n");
-                Console.SetCursorPosition(0, 8);
-
-            } // end active display
 
             string name = Console.ReadLine();
             return name;
@@ -253,21 +214,9 @@ namespace template_csharp_virtual_pet
                             Console.WriteLine("Which Pet do you wish to remove?");
                             Console.SetCursorPosition(0, 8);
 
-                            System.Timers.Timer activeDisplayAlt = new(10000);
-                            activeDisplayAlt.Start();
-                            activeDisplayAlt.Elapsed += ActiveDisplayAlt_Elapsed;
-                            void ActiveDisplayAlt_Elapsed(object? sender, System.Timers.ElapsedEventArgs e)
-                            {
-                                Console.SetCursorPosition(0, 0);
-                                Console.WriteLine("\n");
-                                Shelter.DisplayShelter();
-                                Console.WriteLine("\n\n");
-                                Console.SetCursorPosition(0, 8);
-
-                            } // end active display
-
                             int selection = Shelter.SelectPetMenu();
                             Shelter.RemovePetFromShelter((Pet)Shelter.GetPet(selection));
+                            
                         }
                         else 
                         { 
