@@ -18,6 +18,7 @@ namespace template_csharp_virtual_pet
         public static int GetShelterSize() { return petShelter.Count; }
         public static int SelectPetMenu()
         {
+            Console.WriteLine("\n");
             if (Shelter.GetShelterSize() > 1)
             {
                 int selection = 0;
@@ -40,6 +41,7 @@ namespace template_csharp_virtual_pet
             {
                 return 0;
             }
+            
         }
         public static void DisplayShelter()
         {

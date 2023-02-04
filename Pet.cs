@@ -74,7 +74,7 @@ namespace template_csharp_virtual_pet
         }
         public void Tick()
         {
-            System.Timers.Timer tick = new(5000);//instatiates new timer called tick
+            System.Timers.Timer tick = new(9000);//instatiates new timer called tick
             tick.Start();
             tick.Elapsed += Tick_Elapsed; // says once timer is elapsed go to tick_Elapsed function
             void Tick_Elapsed(object? sender, System.Timers.ElapsedEventArgs e)
