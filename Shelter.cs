@@ -278,11 +278,14 @@ namespace template_csharp_virtual_pet
         public static void interact()
         {
             Console.Clear();
+            Console.WriteLine("\n");
+            Shelter.DisplayShelter();//Active display
+            Console.WriteLine("\n\n");
             Console.WriteLine("How would you like to interact with all pets in the shelter?\n1. Feed\n2. Play\n3. See Doctor");
+            Console.SetCursorPosition(0, 8);
             var interactAll = Console.ReadLine().ToLower();
             for (int i = 0; i < petShelter.Count; i++)
             {
-
                 if (interactAll == "1")
                 {
                     petShelter[i].Feed();
@@ -308,37 +311,81 @@ namespace template_csharp_virtual_pet
             }
             else if (interactAll == "3")
             {
-                action = "took to the doctor,";
+                action = "took";
             }
             Console.Clear();
-            Console.WriteLine("\nYou " + action + " all the pets");
-
-
+            Console.WriteLine("\n");
+            Shelter.DisplayShelter();//Active display
+            Console.WriteLine("\n\n");
+            Console.WriteLine("\nYou " + action + " all the pets to the doctor");
+            Console.WriteLine("\nPress enter to return to the Main Menu");
+            Console.SetCursorPosition(0, 8);
+            Console.ReadLine();
+        }
+        public static void InteractWithOne()
+        {
             Console.Clear();
+            Console.WriteLine("\n");
+            Shelter.DisplayShelter();//Active display
+            Console.WriteLine("\n\n");
             Console.WriteLine("Name of the pet you want to interact with?");
+            Console.SetCursorPosition(0, 8);
             var interactName = Console.ReadLine();
             for (int i = 0; i < petShelter.Count; i++)
             {
                 if (petShelter[i].Name == interactName)
                 {
+                    Console.Clear();
+                    Console.WriteLine("\n");
+                    Shelter.DisplayShelter();//Active display
+                    Console.WriteLine("\n\n");
                     Console.WriteLine(petShelter[i].Name + " is in the shelter\n");
                     Console.WriteLine("How would you like to interact with this pet?\n1. Feed\n2. Play\n3. See Doctor");
+                    Console.SetCursorPosition(0, 8);
                     var interact = Console.ReadLine();
                     if (interact == "1")
                     {
+                        Console.Clear();
+                        Console.WriteLine("\n");
+                        Shelter.DisplayShelter();//Active display
+                        Console.WriteLine("\n\n");
                         petShelter[i].Feed();
                         Console.WriteLine(" You fed " + interactName + " Well done!");
+                        Console.WriteLine("\nPress enter to return to the Main Menu");
+                        Console.SetCursorPosition(0, 8);
+                        Console.ReadLine();
+                        
+                        
                     }
                     else if (interact == "2")
                     {
+                        Console.Clear();
+                        Console.WriteLine("\n");
+                        Shelter.DisplayShelter();//Active display
+                        Console.WriteLine("\n\n");
                         petShelter[i].Play();
                         Console.WriteLine("You played with " + interactName);
+                        Console.WriteLine("\nPress enter to return to the Main Menu");
+                        Console.SetCursorPosition(0, 8);
+                        Console.ReadLine();
+                        
+                        
                     }
                     else if (interact == "3")
                     {
+                        Console.Clear();
+                        Console.WriteLine("\n");
+                        Shelter.DisplayShelter();//Active display
+                        Console.WriteLine("\n\n");
                         petShelter[i].SeeDoctor();
                         Console.WriteLine(interactName + " is extra healthy after seeing the doc");
+                        Console.WriteLine("\nPress enter to return to the Main Menu");
+                        Console.SetCursorPosition(0, 8);
+                        Console.ReadLine();
+                        
+                        
                     }
+                    
 
 
                 }
