@@ -274,5 +274,75 @@ namespace template_csharp_virtual_pet
             petShelter[search].Hunger -= 10;
             //purr sound
         }
+
+        public static void interact()
+        {
+            Console.Clear();
+            Console.WriteLine("How would you like to interact with all pets in the shelter?\n1. Feed\n2. Play\n3. See Doctor");
+            var interactAll = Console.ReadLine().ToLower();
+            for (int i = 0; i < petShelter.Count; i++)
+            {
+
+                if (interactAll == "1")
+                {
+                    petShelter[i].Feed();
+                }
+                else if (interactAll == "2")
+                {
+                    petShelter[i].Play();
+                }
+                else if (interactAll == "3")
+                {
+                    petShelter[i].SeeDoctor();
+                }
+                petShelter[i].DisplayStatus();
+            }
+            var action = "";
+            if (interactAll == "1")
+            {
+                action = "fed";
+            }
+            else if (interactAll == "2")
+            {
+                action = "played with";
+            }
+            else if (interactAll == "3")
+            {
+                action = "took to the doctor,";
+            }
+            Console.Clear();
+            Console.WriteLine("\nYou " + action + " all the pets");
+
+
+            Console.Clear();
+            Console.WriteLine("Name of the pet you want to interact with?");
+            var interactName = Console.ReadLine();
+            for (int i = 0; i < petShelter.Count; i++)
+            {
+                if (petShelter[i].Name == interactName)
+                {
+                    Console.WriteLine(petShelter[i].Name + " is in the shelter\n");
+                    Console.WriteLine("How would you like to interact with this pet?\n1. Feed\n2. Play\n3. See Doctor");
+                    var interact = Console.ReadLine();
+                    if (interact == "1")
+                    {
+                        petShelter[i].Feed();
+                        Console.WriteLine(" You fed " + interactName + " Well done!");
+                    }
+                    else if (interact == "2")
+                    {
+                        petShelter[i].Play();
+                        Console.WriteLine("You played with " + interactName);
+                    }
+                    else if (interact == "3")
+                    {
+                        petShelter[i].SeeDoctor();
+                        Console.WriteLine(interactName + " is extra healthy after seeing the doc");
+                    }
+
+
+                }
+            }
+        }
     }
 }

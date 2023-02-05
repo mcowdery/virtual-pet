@@ -153,7 +153,7 @@ namespace template_csharp_virtual_pet
                 Console.WriteLine("6. Exit");
                 Console.SetCursorPosition(0, 8);
 
-                System.Timers.Timer activeDisplay = new(10000);
+                /*System.Timers.Timer activeDisplay = new(10000);
                 activeDisplay.Start();
                 activeDisplay.Elapsed += ActiveDisplay_Elapsed; 
                 void ActiveDisplay_Elapsed(object? sender, System.Timers.ElapsedEventArgs e)
@@ -164,7 +164,7 @@ namespace template_csharp_virtual_pet
                     Console.WriteLine("\n\n");
                     Console.SetCursorPosition(0, 8);
                        
-                }
+                }*/
 
 
                 string userChoice = Console.ReadLine();
@@ -184,7 +184,7 @@ namespace template_csharp_virtual_pet
                         }
                         break;
                     case "2":
-                        Menus.EarnMoneyMenu();
+                        Menus.InteractMenu();
                         break;
                     case "3":  //Adopt a pet
                         if (Shelter.GetShelterSize() <= 4)
@@ -276,6 +276,18 @@ namespace template_csharp_virtual_pet
             Console.WriteLine("Press any key to continue...");
             Console.SetCursorPosition(0, 8); //Active displayy
             Console.ReadKey();
+        }
+
+        public static void InteractMenu()
+        {
+            Console.Clear();
+            Console.WriteLine("\n");
+            Shelter.interact();
+            Console.WriteLine("\n\n");
+            Console.WriteLine("Press any key to continue...");
+            Console.SetCursorPosition(0, 8); //Active displayy
+            Console.ReadKey();
+
         }
     }
 }
