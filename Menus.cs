@@ -11,6 +11,8 @@ namespace template_csharp_virtual_pet
 {
     public static class Menus
     {
+
+
         public static void IntroMenu()
         {
             Console.Clear();
@@ -29,13 +31,13 @@ namespace template_csharp_virtual_pet
         }
         public static string InitialChooseYourSpeciesMenu()
         {
-            
+
             Console.WriteLine("What Species would you like to start with?\n");
             Console.WriteLine("1. Lion");
             Console.WriteLine("2. Tiger");
             Console.WriteLine("3. Panther");
 
-            string selection="";
+            string selection = "";
             bool menuUp = true;
             while (menuUp)
             {
@@ -63,6 +65,7 @@ namespace template_csharp_virtual_pet
         }
         public static string SecondaryChooseYourSpeciesMenu()
         {
+
             Console.Clear();
             Console.WriteLine("\n");
             Shelter.DisplayShelter();//Active display
@@ -135,9 +138,12 @@ namespace template_csharp_virtual_pet
 
         public static void Main(Pet usersPet)
         {
+
             bool menuUp = true;
             while (menuUp)
             {
+
+                int menuNumber = 1;
                 Console.Clear();
                 //Panther roar sound
                 //panther image
@@ -152,19 +158,9 @@ namespace template_csharp_virtual_pet
                 Console.WriteLine("5. Earn some money");
                 Console.WriteLine("6. Exit");
                 Console.SetCursorPosition(0, 8);
+                ActiveDisplay.DisplayStart();
 
-                /*System.Timers.Timer activeDisplay = new(10000);
-                activeDisplay.Start();
-                activeDisplay.Elapsed += ActiveDisplay_Elapsed; 
-                void ActiveDisplay_Elapsed(object? sender, System.Timers.ElapsedEventArgs e)
-                {
-                    Console.SetCursorPosition(0, 0);
-                    Console.WriteLine("\n");
-                    Shelter.DisplayShelter();
-                    Console.WriteLine("\n\n");
-                    Console.SetCursorPosition(0, 8);
-                       
-                }*/
+
 
 
                 string userChoice = Console.ReadLine();
@@ -174,9 +170,16 @@ namespace template_csharp_virtual_pet
                         if (Shelter.GetShelterSize() > 1)
                         {
                             Console.Clear();
+                            Console.WriteLine("\n");
+                            Shelter.DisplayShelter();//Active display
+                            Console.WriteLine("\n\n");
                             Console.WriteLine("What pet do you want to rename? ");
+                            Console.SetCursorPosition(0, 8);
+
                             int choice = Shelter.SelectPetMenu();
                             Menus.ReNameMenu((Pet)Shelter.GetPet(choice));
+                            //ActiveDisplay.StopTick();
+
                         }
                         else
                         {
@@ -199,8 +202,12 @@ namespace template_csharp_virtual_pet
                         else
                         {
                             Console.Clear();
+                            Console.WriteLine("\n");
+                            Shelter.DisplayShelter();//Active display
+                            Console.WriteLine("\n\n");
                             Console.WriteLine("Shelter capacity reached. Please remove a pet before adding anymore.");
                             Console.WriteLine("\nPress any key to go back to the main menu...");
+                            Console.SetCursorPosition(0, 8);
                             Console.ReadKey();
                         }
                         break;
@@ -216,13 +223,17 @@ namespace template_csharp_virtual_pet
 
                             int selection = Shelter.SelectPetMenu();
                             Shelter.RemovePetFromShelter((Pet)Shelter.GetPet(selection));
-                            
+
                         }
-                        else 
-                        { 
+                        else
+                        {
                             Console.Clear();
+                            Console.WriteLine("\n");
+                            Shelter.DisplayShelter();//Active display
+                            Console.WriteLine("\n\n");
                             Console.WriteLine("Cannot remove. You must have at least one pet in the shelter.");
                             Console.WriteLine("\nPress any key to go back to the main menu...");
+                            Console.SetCursorPosition(0, 8);
                             Console.ReadKey();
                         }
                         break;
@@ -233,6 +244,11 @@ namespace template_csharp_virtual_pet
                         Environment.Exit(0);
                         break;
                     default:
+                        Console.Clear();
+                        Console.WriteLine("\n");
+                        Shelter.DisplayShelter();//Active display
+                        Console.WriteLine("\n\n");
+                        Console.SetCursorPosition(0, 8);
                         Console.WriteLine("Invalid Input");
                         break;
                 }
@@ -241,24 +257,32 @@ namespace template_csharp_virtual_pet
         public static void FeedMenu(Pet usersPet)
         {
             Console.Clear();
-            
+            Console.WriteLine("\n");
+            Shelter.DisplayShelter();//Active display
+            Console.WriteLine("\n\n");
+
             Console.WriteLine("{0} has eaten!", usersPet.Name);
             Console.WriteLine("Boredom Level has decreased by 10!");
             int prevHungerLevel = usersPet.Hunger;
             usersPet.Feed();
             Console.WriteLine(prevHungerLevel + "  >>>  " + usersPet.Hunger);
             Console.WriteLine("Press any key to continue...");
-            Console.ReadKey(); 
+            Console.SetCursorPosition(0, 8);
+            Console.ReadKey();
         }
         public static void PlayMenu(Pet usersPet)
         {
             Console.Clear();
+            Console.WriteLine("\n");
+            Shelter.DisplayShelter();//Active display
+            Console.WriteLine("\n\n");
             Console.WriteLine("You played with {0}!", usersPet.Name);
             Console.WriteLine("Hunger Level has decreased by 10!");
             int prevBoredomLevel = usersPet.Boredom;
             usersPet.Play();
             Console.WriteLine(prevBoredomLevel + "  >>>  " + usersPet.Boredom);
             Console.WriteLine("Press any key to continue...");
+            Console.SetCursorPosition(0, 8);
             Console.ReadKey();
         }
         public static void EarnMoneyMenu()
@@ -282,12 +306,24 @@ namespace template_csharp_virtual_pet
         {
             Console.Clear();
             Console.WriteLine("\n");
-            Shelter.interact();
+            Shelter.DisplayShelter();//Active display
             Console.WriteLine("\n\n");
-            Console.WriteLine("Press any key to continue...");
-            Console.SetCursorPosition(0, 8); //Active displayy
-            Console.ReadKey();
-
+            Console.WriteLine("1. Interact with all pets");
+            Console.WriteLine("2. Choose one pet");
+            Console.SetCursorPosition(0, 8);
+            string playersChoice = Console.ReadLine();
+            switch (playersChoice)
+            {
+                case "1":
+                    Shelter.interact();
+                    break;
+                case "2":
+                    Shelter.InteractWithOne();
+                    break;
+                default:
+                    Console.WriteLine("Invalid input");
+                    break;
+            }
         }
     }
 }
