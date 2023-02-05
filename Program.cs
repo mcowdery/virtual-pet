@@ -9,9 +9,28 @@ bool menuUp = true;
 while (menuUp)
 {
     Menus.IntroMenu();
-    string species = Menus.ChooseYourSpeciesMenu();
+
+    //Organic or Robotic?
+    string type = Menus.OrganicOrRoboticMenu();
+
+    //Go to Job Menu or Species menu depending on if robotic or organic.
+    string subType="";
+    if (type == "Organic")
+    {
+        subType = Menus.SpeciesMenu();
+    }
+    else if (type == "Robotic")
+    {
+        subType = Menus.RobotTypeMenu();
+    }
+    else { subType = ""; }
+
     string name = Menus.NameMenu();
-    Shelter.AddPet(name, species);
-    Menus.Main((Pet)Shelter.GetPet(1));
+
+    //Add pet to shelter
+    Shelter.AddPet(name, subType);
+
+    //Start the main menu using the new pet just created
+    Menus.Main();
 }
 

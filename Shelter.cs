@@ -258,7 +258,7 @@ namespace template_csharp_virtual_pet
                     break;
             }
         }
-            public static void RemovePetFromShelter(Pet usersPet)
+        public static void RemovePetFromShelter(Pet usersPet)
         {
             petShelter.Remove(usersPet);
         }
