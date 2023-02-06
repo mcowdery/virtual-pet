@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -41,6 +43,22 @@ namespace template_csharp_virtual_pet
                 return 0;
             }
         }
+        public static void DisplayOrganic(int shelterNum)
+        {
+            shelterNum--;//Decrement so that 
+            //switch ()
+            string paddedName1;
+            string paddedSpecies1;
+
+            paddedName1 = petShelter[0].PaddedName();
+            paddedSpecies1 = petShelter[0].PaddedSpecies();
+
+            Console.WriteLine(String.Format($"|  Name{paddedName1,5}  |  "));
+            Console.WriteLine(String.Format($"|  Species{paddedSpecies1,5}  |  "));
+            Console.WriteLine(String.Format($"|  Health   {petShelter[0].Health,9}  |  "));
+            Console.WriteLine(String.Format($"|  Hunger   {petShelter[0].Hunger,9}  |  "));
+            Console.WriteLine(String.Format($"|  Boredom   {petShelter[0].Boredom,8}  |  "));
+        }
         public static void DisplayShelter()
         {
             string paddedName1;
@@ -60,8 +78,15 @@ namespace template_csharp_virtual_pet
                     paddedName1 = petShelter[0].PaddedName();
                     paddedSpecies1 = petShelter[0].PaddedSpecies();
 
+                    string subType = "";
+                    if (petShelter[0].Type == "Robotic")
+                    { subType = "R.Type "; }
+                    else if (petShelter[0].Type == "Organic") { subType = "Species"; }
+                    else { subType = "ERROR"; }
+
                     Console.WriteLine(String.Format($"|  Name{paddedName1,5}  |  "));
-                    Console.WriteLine(String.Format($"|  Species{paddedSpecies1,5}  |  "));
+                    Console.WriteLine(String.Format($"|  Type   {petShelter[0].Type,11}  |  "));
+                    Console.WriteLine(String.Format($"|  {subType}{paddedSpecies1,5}  |  "));
                     Console.WriteLine(String.Format($"|  Health   {petShelter[0].Health,9}  |  "));
                     Console.WriteLine(String.Format($"|  Hunger   {petShelter[0].Hunger,9}  |  "));
                     Console.WriteLine(String.Format($"|  Boredom   {petShelter[0].Boredom,8}  |  "));
@@ -212,40 +237,86 @@ namespace template_csharp_virtual_pet
                 count++;
             }
         }
-        public static void AddPet(string name, string species)
+        public static void AddOrganicPet(string name, string species)
         {
             switch (petShelter.Count)
             {
                 case 0:
-                    Pet pet1 = new Pet();
+                    OrganicPet pet1 = new OrganicPet();
                     pet1.Name = name;
                     pet1.Species = species;
                     pet1.Tick();
                     petShelter.Add(pet1);
                     break;
                 case 1:
-                    Pet pet2 = new Pet();
+                    OrganicPet pet2 = new OrganicPet();
                     pet2.Name = name;
                     pet2.Species = species;
                     pet2.Tick();
                     petShelter.Add(pet2);
                     break;
                 case 2:
-                    Pet pet3 = new Pet();
+                    OrganicPet pet3 = new OrganicPet();
                     pet3.Name = name;
                     pet3.Species = species;
                     pet3.Tick();
                     petShelter.Add(pet3);
                     break;
                 case 3:
-                    Pet pet4 = new Pet();
+                    OrganicPet pet4 = new OrganicPet();
                     pet4.Name = name;
                     pet4.Species = species;
                     pet4.Tick();
                     petShelter.Add(pet4);
                     break;
                 case 4:
-                    Pet pet5 = new Pet();
+                    OrganicPet pet5 = new OrganicPet();
+                    pet5.Name = name;
+                    pet5.Species = species;
+                    pet5.Tick();
+                    petShelter.Add(pet5);
+                    break;
+                default:
+                    Console.Clear();
+                    Console.WriteLine("Sorry! You can't have more than 5 pets!");
+                    Console.ReadKey();
+                    break;
+            }
+        }
+        public static void AddRoboticPet(string name, string species)
+        {
+            switch (petShelter.Count)
+            {
+                case 0:
+                    RoboticPet pet1 = new RoboticPet();
+                    pet1.Name = name;
+                    pet1.Species = species;
+                    pet1.Tick();
+                    petShelter.Add(pet1);
+                    break;
+                case 1:
+                    RoboticPet pet2 = new RoboticPet();
+                    pet2.Name = name;
+                    pet2.Species = species;
+                    pet2.Tick();
+                    petShelter.Add(pet2);
+                    break;
+                case 2:
+                    RoboticPet pet3 = new RoboticPet();
+                    pet3.Name = name;
+                    pet3.Species = species;
+                    pet3.Tick();
+                    petShelter.Add(pet3);
+                    break;
+                case 3:
+                    RoboticPet pet4 = new RoboticPet();
+                    pet4.Name = name;
+                    pet4.Species = species;
+                    pet4.Tick();
+                    petShelter.Add(pet4);
+                    break;
+                case 4:
+                    RoboticPet pet5 = new RoboticPet();
                     pet5.Name = name;
                     pet5.Species = species;
                     pet5.Tick();

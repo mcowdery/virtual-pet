@@ -180,9 +180,25 @@ namespace template_csharp_virtual_pet
                         if (Shelter.GetShelterSize() <= 4)
                         {
                             Console.Clear();
-                            string species = Menus.OrganicOrRoboticMenu();
+                            //Organic or Robotic?
+                            string type = Menus.OrganicOrRoboticMenu();
+
+                            //Go to Job Menu or Species menu depending on if robotic or organic.
+                            string subType = "";
+                            if (type == "Organic")
+                            {
+                                subType = Menus.SpeciesMenu();
+                            }
+                            else if (type == "Robotic")
+                            {
+                                subType = Menus.RobotTypeMenu();
+                            }
+                            else { subType = ""; }
+
+                            //Name Pet
                             string name = Menus.NameMenu();
-                            Shelter.AddPet(name, species);
+
+                            Shelter.AddOrganicPet(name, subType);
                             Menus.Main();
                             break;
                         }

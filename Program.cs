@@ -14,7 +14,7 @@ while (menuUp)
     string type = Menus.OrganicOrRoboticMenu();
 
     //Go to Job Menu or Species menu depending on if robotic or organic.
-    string subType="";
+    string subType = "";
     if (type == "Organic")
     {
         subType = Menus.SpeciesMenu();
@@ -28,7 +28,12 @@ while (menuUp)
     string name = Menus.NameMenu();
 
     //Add pet to shelter
-    Shelter.AddPet(name, subType);
+    if (type == "Organic")
+    { Shelter.AddOrganicPet(name, subType); }
+    else if (type == "Robotic")
+    { Shelter.AddRoboticPet(name, subType); }
+    else
+    { Console.WriteLine("ERROR: type not set correctly in Program.cs"); }
 
     //Start the main menu using the new pet just created
     Menus.Main();
