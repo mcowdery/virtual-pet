@@ -11,7 +11,7 @@ namespace template_csharp_virtual_pet
 {
     public static class Menus
     {
-
+        
 
         public static void IntroMenu()
         {
@@ -158,7 +158,7 @@ namespace template_csharp_virtual_pet
                 Console.WriteLine("5. Earn some money");
                 Console.WriteLine("6. Exit");
                 Console.SetCursorPosition(0, 8);
-                ActiveDisplay.DisplayStart();
+                var activeDisplay = ActiveDisplay.DisplayStart();
 
 
 
@@ -169,29 +169,33 @@ namespace template_csharp_virtual_pet
                     case "1": //Rename a pet
                         if (Shelter.GetShelterSize() > 1)
                         {
+                            ActiveDisplay.DisplayStop((System.Timers.Timer)activeDisplay);//Pauses Active Display
                             Console.Clear();
                             Console.WriteLine("\n");
-                            Shelter.DisplayShelter();//Active display
+                            Shelter.DisplayShelter();//Static display
                             Console.WriteLine("\n\n");
                             Console.WriteLine("What pet do you want to rename? ");
                             Console.SetCursorPosition(0, 8);
 
                             int choice = Shelter.SelectPetMenu();
                             Menus.ReNameMenu((Pet)Shelter.GetPet(choice));
-                            //ActiveDisplay.StopTick();
+                            
 
                         }
                         else
                         {
+                            ActiveDisplay.DisplayStop((System.Timers.Timer)activeDisplay);//Pauses Active Display
                             Menus.ReNameMenu((Pet)Shelter.GetPet(1));
                         }
                         break;
                     case "2":
+                        ActiveDisplay.DisplayStop((System.Timers.Timer)activeDisplay);//Pauses Active Display
                         Menus.InteractMenu();
                         break;
                     case "3":  //Adopt a pet
                         if (Shelter.GetShelterSize() <= 4)
                         {
+                            ActiveDisplay.DisplayStop((System.Timers.Timer)activeDisplay);//Pauses Active Display
                             Console.Clear();
                             string species = Menus.SecondaryChooseYourSpeciesMenu();
                             string name = Menus.AdoptNameMenu();
@@ -201,9 +205,10 @@ namespace template_csharp_virtual_pet
                         }
                         else
                         {
+                            ActiveDisplay.DisplayStop((System.Timers.Timer)activeDisplay);//Pauses Active Display
                             Console.Clear();
                             Console.WriteLine("\n");
-                            Shelter.DisplayShelter();//Active display
+                            Shelter.DisplayShelter();//Static display
                             Console.WriteLine("\n\n");
                             Console.WriteLine("Shelter capacity reached. Please remove a pet before adding anymore.");
                             Console.WriteLine("\nPress any key to go back to the main menu...");
@@ -214,6 +219,7 @@ namespace template_csharp_virtual_pet
                     case "4": //remove a pet
                         if (Shelter.GetShelterSize() > 1)
                         {
+                            ActiveDisplay.DisplayStop((System.Timers.Timer)activeDisplay);//Pauses Active Display
                             Console.Clear();
                             Console.WriteLine("\n");
                             Shelter.DisplayShelter();//Active display
@@ -227,6 +233,7 @@ namespace template_csharp_virtual_pet
                         }
                         else
                         {
+                            ActiveDisplay.DisplayStop((System.Timers.Timer)activeDisplay);//Pauses Active Display
                             Console.Clear();
                             Console.WriteLine("\n");
                             Shelter.DisplayShelter();//Active display
@@ -238,12 +245,14 @@ namespace template_csharp_virtual_pet
                         }
                         break;
                     case "5":
+                        ActiveDisplay.DisplayStop((System.Timers.Timer)activeDisplay);//Pauses Active Display
                         Menus.EarnMoneyMenu();
                         break;
                     case "6":
                         Environment.Exit(0);
                         break;
                     default:
+                        ActiveDisplay.DisplayStop((System.Timers.Timer)activeDisplay);//Pauses Active Display
                         Console.Clear();
                         Console.WriteLine("\n");
                         Shelter.DisplayShelter();//Active display
