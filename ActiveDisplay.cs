@@ -1,12 +1,12 @@
 ﻿using System;
 namespace template_csharp_virtual_pet
 {
-	public class ActiveDisplay
+	public static class ActiveDisplay
 	{
-		public static void DisplayStart()
+		public static object DisplayStart()
 		{
             
-            System.Timers.Timer activeDisplay = new(10000);
+            System.Timers.Timer activeDisplay = new(5000);
             activeDisplay.Start();
             activeDisplay.Elapsed += ActiveDisplay_Elapsed;
             void ActiveDisplay_Elapsed(object? sender, System.Timers.ElapsedEventArgs e)
@@ -18,10 +18,11 @@ namespace template_csharp_virtual_pet
                 Console.SetCursorPosition(0, 8);
 
             }
+            return activeDisplay;
 
         }
 
-        public void DisplayStop(System.Timers.Timer activeDisplay)
+        public static void DisplayStop(System.Timers.Timer activeDisplay)
         {
            activeDisplay.Stop();
         }
