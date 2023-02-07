@@ -8,6 +8,7 @@ using template_csharp_virtual_pet;
 bool menuUp = true;
 while (menuUp)
 {
+    Console.ForegroundColor = ConsoleColor.White;
     Menus.IntroMenu();
 
     //Organic or Robotic?

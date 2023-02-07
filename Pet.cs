@@ -15,6 +15,9 @@ namespace template_csharp_virtual_pet
         private int health = 60;
         private int hunger = 0;
         private int boredom = 0;
+        private string condition = "Good";
+        private string status = "Resting";
+        private int income = 0;
 
         public string Name { get; set; }
         public string Type { get; set; }
@@ -22,6 +25,9 @@ namespace template_csharp_virtual_pet
         public int Health { get; set; }
         public int Hunger { get; set; }
         public int Boredom { get; set; }
+        public string Condition { get; set; }
+        public string Status { get; set; }
+        public int Income { get; set; }
 
         public Pet()
         {
@@ -31,14 +37,22 @@ namespace template_csharp_virtual_pet
             Health = health;
             Hunger = hunger;
             Boredom = boredom;
+            Condition = condition;
+            Status = status;
+            Income = income;
         }
         public void SetType(string type) { Type = type; }
         public void SetHealth (int health) { Health = health; }
+        public void SetHunger(int hunger) { Hunger = hunger; }
+        public void SetCondition (string condition) { Condition = condition; }
+        public void SetStatus(string status) { Status = status; }
+        public void SetIncome(int income) { Income= income; }
         public string GetName(){ return Name; }
         public string GetSpecies() { return Species; }
         public int GetHealth(){ return Health; }
         public int GetHunger(){ return Hunger; }
         public int GetBoredom(){ return Boredom; }
+        public string GetStatus() { return Status; }
 
         public string PaddedName()
         {

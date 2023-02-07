@@ -4,6 +4,7 @@ using System.ComponentModel.Design;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
+using System.Threading.Channels;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 
@@ -114,16 +115,38 @@ namespace template_csharp_virtual_pet
         }
         public static void NameMenu(Pet usersPet)
         {
-            Console.Clear();
-            Console.WriteLine("What would you like to name your pet?");
-            usersPet.Name = Console.ReadLine();
+            while (true)
+            {
+                Console.Clear();
+                Console.WriteLine("What would you like to name your pet?");
+                usersPet.Name = Console.ReadLine();
+                if (usersPet.Name.Length < 12) { break; }
+                else 
+                {
+                    Console.Clear();
+                    Console.WriteLine("\nSorry. Name must be less than 11 characters long.");
+                    Console.Write("Press any key...");
+                    Console.ReadKey();
+                }
+            }
         }
         public static string NameMenu()
         {
-            Console.Clear();
-            Console.WriteLine("What would you like to name your pet?");
-            string name = Console.ReadLine();
-            return name;
+            while (true)
+            {
+                Console.Clear();
+                Console.WriteLine("What would you like to name your pet?");
+                string name = Console.ReadLine();
+                if (name.Length < 12) { return name; }
+                else
+                {
+                    Console.Clear();
+                    Console.WriteLine("\nSorry. Name must be less than 11 characters long.");
+                    Console.Write("Press any key...");
+                    Console.ReadKey();
+                }
+            }
+
         }
         public static void Main()
         {
@@ -143,7 +166,7 @@ namespace template_csharp_virtual_pet
                 Console.WriteLine("4. Remove a pet");
                 Console.WriteLine("5. Earn some money");
                 Console.WriteLine("6. Exit");
-                Console.SetCursorPosition(0, 8);
+                Console.SetCursorPosition(0, 12);
 
                 System.Timers.Timer activeDisplay = new(6000);
                 activeDisplay.Start();
@@ -154,7 +177,7 @@ namespace template_csharp_virtual_pet
                     Console.WriteLine("\n");
                     Shelter.DisplayShelter();
                     Console.WriteLine("\n\n");
-                    Console.SetCursorPosition(0, 8);
+                    Console.SetCursorPosition(0, 12);
                        
                 }
                 string userChoice = Console.ReadLine();
@@ -188,17 +211,24 @@ namespace template_csharp_virtual_pet
                             if (type == "Organic")
                             {
                                 subType = Menus.SpeciesMenu();
+                                //Name Pet
+                                string name = Menus.NameMenu();
+                                //Add to shelter
+                                Shelter.AddOrganicPet(name, subType);
                             }
                             else if (type == "Robotic")
                             {
                                 subType = Menus.RobotTypeMenu();
+                                //Name Pet
+                                string name = Menus.NameMenu();
+                                //Add to shelter
+                                Shelter.AddRoboticPet(name, subType);
                             }
                             else { subType = ""; }
 
-                            //Name Pet
-                            string name = Menus.NameMenu();
 
-                            Shelter.AddOrganicPet(name, subType);
+
+
                             Menus.Main();
                             break;
                         }

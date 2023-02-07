@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
@@ -12,7 +13,12 @@ namespace template_csharp_virtual_pet
     public static class Shelter
     {
         private static List<Pet> petShelter = new List<Pet>();
+        private static int money;
         public static List<Pet> PetShelter { get; set; }
+        public static int Money { get; set; }
+
+        //public static
+
 
         public static string GetPetName(int selection) { return petShelter[selection].Name; }
         public static string GetPetSpecies(int selection) { return petShelter[selection].Species;}
@@ -43,191 +49,251 @@ namespace template_csharp_virtual_pet
                 return 0;
             }
         }
+        public static void DisplaySetCursorPosition(int shelterNum, int line)
+        {
+            int position = 2;
+            switch (line) {
+                case 1: position = 2; break;
+                case 2: position = 3; break;
+                case 3: position = 4; break;
+                case 4: position = 5; break;
+                case 5: position = 6; break;
+                case 6: position = 7; break;
+                case 7: position = 8; break;
+                case 8: position = 9; break;
+                case 9: position = 10; break;
+                case 10: position = 11; break;
+            }
+
+            shelterNum++;
+            switch (shelterNum)
+            {
+                case 2: Console.SetCursorPosition(23, position); break;
+                case 3: Console.SetCursorPosition(46, position); break;
+                case 4: Console.SetCursorPosition(69, position); break;
+                case 5: Console.SetCursorPosition(92, position); break;
+                case 6: Console.SetCursorPosition(115, position); break;
+                case 7: Console.SetCursorPosition(138, position); break;
+                case 8: Console.SetCursorPosition(161, position); break;
+                case 9: Console.SetCursorPosition(184, position); break;
+                case 10: Console.SetCursorPosition(207, position); break;
+            }
+        }
         public static void DisplayOrganic(int shelterNum)
         {
-            shelterNum--;//Decrement so that 
-            //switch ()
-            string paddedName1;
-            string paddedSpecies1;
+            shelterNum--;//Decrement to match list position
 
-            paddedName1 = petShelter[0].PaddedName();
-            paddedSpecies1 = petShelter[0].PaddedSpecies();
+            string paddedName = petShelter[shelterNum].PaddedName();
+            string paddedSpecies = petShelter[shelterNum].PaddedSpecies();
 
-            Console.WriteLine(String.Format($"|  Name{paddedName1,5}  |  "));
-            Console.WriteLine(String.Format($"|  Species{paddedSpecies1,5}  |  "));
-            Console.WriteLine(String.Format($"|  Health   {petShelter[0].Health,9}  |  "));
-            Console.WriteLine(String.Format($"|  Hunger   {petShelter[0].Hunger,9}  |  "));
-            Console.WriteLine(String.Format($"|  Boredom   {petShelter[0].Boredom,8}  |  "));
+            DisplaySetCursorPosition(shelterNum, 1);
+            Console.WriteLine(String.Format($"|  Name{paddedName,5}  |  "));
+            DisplaySetCursorPosition(shelterNum, 2);
+            Console.WriteLine(String.Format($"|  Type   {petShelter[shelterNum].Type,11}  |  "));
+            DisplaySetCursorPosition(shelterNum, 3);
+            Console.WriteLine(String.Format($"|  Species{paddedSpecies,5}  |  "));
+            DisplaySetCursorPosition(shelterNum, 4);
+            Console.WriteLine(String.Format($"|  Health   {petShelter[shelterNum].Health,6}/60  |  "));
+            DisplaySetCursorPosition(shelterNum, 5);
+            Console.WriteLine(String.Format($"|  Hunger   {petShelter[shelterNum].Hunger,6}/60  |  "));
+            DisplaySetCursorPosition(shelterNum, 6);
+            Console.WriteLine(String.Format($"|  Boredom   {petShelter[shelterNum].Boredom,5}/60  |  "));
+            DisplaySetCursorPosition(shelterNum, 7);
+            Console.Write(String.Format($"|  Condition   "));
+            if (petShelter[shelterNum].Condition == "Starving")
+            {
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.Write($"{petShelter[shelterNum].Condition.Remove(5),6}");
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.WriteLine("  | ");
+            }
+            else if (petShelter[shelterNum].Condition == "DEAD")
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.Write($"{petShelter[shelterNum].Condition,6}");
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.WriteLine("  | ");
+            }
+            else
+            {
+                Console.WriteLine(String.Format($"{petShelter[shelterNum].Condition,6}  | "));
+            }
+
+            DisplaySetCursorPosition(shelterNum, 8);
+            Console.Write(String.Format($"|  Status   "));
+            if (petShelter[shelterNum].Status == "DEAD")
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.Write($"{petShelter[shelterNum].Status,9}");
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.WriteLine("  | ");
+            }
+            else 
+            {
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.Write($"{petShelter[shelterNum].Status,9}");
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.WriteLine("  | ");
+            }
+
+            DisplaySetCursorPosition(shelterNum, 9);
+            Console.WriteLine(String.Format($"|  Income   ${petShelter[shelterNum].Income,8}  |  "));
+        }
+        public static void DisplayRobotic(int shelterNum)
+        {
+            shelterNum--;//Decrement to match list position
+
+            string paddedName = petShelter[shelterNum].PaddedName();
+            string paddedSpecies = petShelter[shelterNum].PaddedSpecies();
+
+            DisplaySetCursorPosition(shelterNum, 1);
+            Console.WriteLine(String.Format($"|  Name{paddedName,5}  |  "));
+            DisplaySetCursorPosition(shelterNum, 2);
+            Console.WriteLine(String.Format($"|  Type   {petShelter[shelterNum].Type,11}  |  "));
+            DisplaySetCursorPosition(shelterNum, 3);
+            Console.WriteLine(String.Format($"|  Robot Type  {petShelter[shelterNum].Species,5}  |  "));
+            DisplaySetCursorPosition(shelterNum, 4);
+            Console.WriteLine(String.Format($"|  Health   {petShelter[shelterNum].Health,5}/100  |  "));
+            DisplaySetCursorPosition(shelterNum, 5);
+            Console.WriteLine(String.Format($"|  Battery   {petShelter[shelterNum].Hunger,4}/100  |  "));
+            DisplaySetCursorPosition(shelterNum, 6);
+            Console.WriteLine(String.Format($"|                      |  "));
+            DisplaySetCursorPosition(shelterNum, 7);
+            Console.Write(String.Format($"|  Condition   "));
+            if (petShelter[shelterNum].Condition == "Starving")
+            {
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.Write($"{petShelter[shelterNum].Condition.Remove(5),6}");
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.WriteLine("  | ");
+            }
+            else if (petShelter[shelterNum].Condition == "DEAD")
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.Write($"{petShelter[shelterNum].Condition,6}");
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.WriteLine("  | ");
+            }
+            else
+            {
+                Console.WriteLine(String.Format($"{petShelter[shelterNum].Condition,6}  | "));
+            }
+
+            DisplaySetCursorPosition(shelterNum, 8);
+            Console.Write(String.Format($"|  Status   "));
+            if (petShelter[shelterNum].Status == "DEAD")
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.Write($"{petShelter[shelterNum].Status,9}");
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.WriteLine("  | ");
+            }
+            else
+            {
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.Write($"{petShelter[shelterNum].Status,9}");
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.WriteLine("  | ");
+            }
+
+            DisplaySetCursorPosition(shelterNum, 9);
+            Console.WriteLine(String.Format($"|  Income   ${petShelter[shelterNum].Income,8}  |  "));
         }
         public static void DisplayShelter()
         {
-            string paddedName1;
-            string paddedName2;
-            string paddedName3;
-            string paddedName4;
-            string paddedName5;
-            string paddedSpecies1;
-            string paddedSpecies2;
-            string paddedSpecies3;
-            string paddedSpecies4;
-            string paddedSpecies5;
-
             switch (petShelter.Count)
             {
                 case 1:
-                    paddedName1 = petShelter[0].PaddedName();
-                    paddedSpecies1 = petShelter[0].PaddedSpecies();
-
-                    string subType = "";
-                    if (petShelter[0].Type == "Robotic")
-                    { subType = "R.Type "; }
-                    else if (petShelter[0].Type == "Organic") { subType = "Species"; }
-                    else { subType = "ERROR"; }
-
-                    Console.WriteLine(String.Format($"|  Name{paddedName1,5}  |  "));
-                    Console.WriteLine(String.Format($"|  Type   {petShelter[0].Type,11}  |  "));
-                    Console.WriteLine(String.Format($"|  {subType}{paddedSpecies1,5}  |  "));
-                    Console.WriteLine(String.Format($"|  Health   {petShelter[0].Health,9}  |  "));
-                    Console.WriteLine(String.Format($"|  Hunger   {petShelter[0].Hunger,9}  |  "));
-                    Console.WriteLine(String.Format($"|  Boredom   {petShelter[0].Boredom,8}  |  "));
+                    //Shelter 1
+                    if (petShelter[0].Type == "Organic") { DisplayOrganic(1); }
+                    else if (petShelter[0].Type == "Robotic") { DisplayRobotic(1); }
+                    else { Console.WriteLine("Error"); }
                     break;
                 case 2:
-                    paddedName1 = petShelter[0].PaddedName();
-                    paddedName2 = petShelter[1].PaddedName();
-                    paddedSpecies1 = petShelter[0].PaddedSpecies();
-                    paddedSpecies2 = petShelter[1].PaddedSpecies();
+                    //Shelter 1
+                    if (petShelter[0].Type == "Organic") { DisplayOrganic(1); }
+                    else if (petShelter[0].Type == "Robotic") { DisplayRobotic(1); }
+                    else { Console.WriteLine("Error"); }
 
-                    Console.WriteLine(String.Format(
-                        $"|  Name{paddedName1,5}  |  " +
-                        $"Name{paddedName2,5}  |  "));
-                    Console.WriteLine(String.Format(
-                        $"|  Species{paddedSpecies1,5}  |  " +
-                        $"Species{paddedSpecies2,5}  |  "));
-                    Console.WriteLine(String.Format(
-                        $"|  Health   {petShelter[0].Health,9}  |  " +
-                        $"Health   {petShelter[1].Health,9}  |  "));
-                    Console.WriteLine(String.Format(
-                        $"|  Hunger   {petShelter[0].Hunger,9}  |  " +
-                        $"Hunger   {petShelter[1].Hunger,9}  |  "));
-                    Console.WriteLine(String.Format(
-                        $"|  Boredom   {petShelter[0].Boredom,8}  |  " +
-                        $"Boredom   {petShelter[1].Boredom,8}  |  "));
+                    //Shelter2 
+                    if (petShelter[1].Type == "Organic") { DisplayOrganic(2); }
+                    else if (petShelter[1].Type == "Robotic") { DisplayRobotic(2); }
+                    else { Console.WriteLine("Error"); }
+
                     break;
                 case 3:
-                    paddedName1 = petShelter[0].PaddedName();
-                    paddedName2 = petShelter[1].PaddedName();
-                    paddedName3 = petShelter[2].PaddedName();
+                    //Shelter 1
+                    if (petShelter[0].Type == "Organic") { DisplayOrganic(1); }
+                    else if (petShelter[0].Type == "Robotic") { DisplayRobotic(1); }
+                    else { Console.WriteLine("Error"); }
 
-                    paddedSpecies1 = petShelter[0].PaddedSpecies();
-                    paddedSpecies2 = petShelter[1].PaddedSpecies();
-                    paddedSpecies3 = petShelter[2].PaddedSpecies();
+                    //Shelter2 
+                    if (petShelter[1].Type == "Organic") { DisplayOrganic(2); }
+                    else if (petShelter[1].Type == "Robotic") { DisplayRobotic(2); }
+                    else { Console.WriteLine("Error"); }
 
-                    Console.WriteLine(String.Format(
-                        $"|  Name{paddedName1,5}  |  " +
-                        $"Name{paddedName2,5}  |  " +
-                        $"Name{paddedName3,5}  |  "));
-                    Console.WriteLine(String.Format(
-                        $"|  Species{paddedSpecies1,5}  |  " +
-                        $"Species{paddedSpecies2,5}  |  " +
-                        $"Species{paddedSpecies3,5}  |  "));
-                    Console.WriteLine(String.Format(
-                        $"|  Health   {petShelter[0].Health,9}  |  " +
-                        $"Health   {petShelter[1].Health,9}  |  " +
-                        $"Health   {petShelter[2].Health,9}  |  "));
-                    Console.WriteLine(String.Format(
-                        $"|  Hunger   {petShelter[0].Hunger,9}  |  " +
-                        $"Hunger   {petShelter[1].Hunger,9}  |  " +
-                        $"Hunger   {petShelter[2].Hunger,9}  |  "));
-                    Console.WriteLine(String.Format(
-                        $"|  Boredom   {petShelter[0].Boredom,8}  |  " +
-                        $"Boredom   {petShelter[1].Boredom,8}  |  " +
-                        $"Boredom   {petShelter[2].Boredom,8}  |  "));
+                    //Shelter3 
+                    if (petShelter[2].Type == "Organic") { DisplayOrganic(3); }
+                    else if (petShelter[2].Type == "Robotic") { DisplayRobotic(3); }
+                    else { Console.WriteLine("Error"); }
+
                     break;
                 case 4:
-                    paddedName1 = petShelter[0].PaddedName();
-                    paddedName2 = petShelter[1].PaddedName();
-                    paddedName3 = petShelter[2].PaddedName();
-                    paddedName4 = petShelter[3].PaddedName();
+                    //Shelter 1
+                    if (petShelter[0].Type == "Organic") { DisplayOrganic(1); }
+                    else if (petShelter[0].Type == "Robotic") { DisplayRobotic(1); }
+                    else { Console.WriteLine("Error"); }
 
-                    paddedSpecies1 = petShelter[0].PaddedSpecies();
-                    paddedSpecies2 = petShelter[1].PaddedSpecies();
-                    paddedSpecies3 = petShelter[2].PaddedSpecies();
-                    paddedSpecies4 = petShelter[3].PaddedSpecies();
+                    //Shelter2 
+                    if (petShelter[1].Type == "Organic") { DisplayOrganic(2); }
+                    else if (petShelter[1].Type == "Robotic") { DisplayRobotic(2); }
+                    else { Console.WriteLine("Error"); }
 
-                    Console.WriteLine(String.Format(
-                        $"|  Name{paddedName1,5}  |  " +
-                        $"Name{paddedName2,5}  |  " +
-                        $"Name{paddedName3,5}  |  " +
-                        $"Name{paddedName4,5}  |  "));
-                    Console.WriteLine(String.Format(
-                        $"|  Species{paddedSpecies1,5}  |  " +
-                        $"Species{paddedSpecies2,5}  |  " +
-                        $"Species{paddedSpecies3,5}  |  " +
-                        $"Species{paddedSpecies4,5}  |  "));
-                    Console.WriteLine(String.Format(
-                        $"|  Health   {petShelter[0].Health,9}  |  " +
-                        $"Health   {petShelter[1].Health,9}  |  " +
-                        $"Health   {petShelter[2].Health,9}  |  " +
-                        $"Health   {petShelter[3].Health,9}  |  "));
-                    Console.WriteLine(String.Format(
-                        $"|  Hunger   {petShelter[0].Hunger,9}  |  " +
-                        $"Hunger   {petShelter[1].Hunger,9}  |  " +
-                        $"Hunger   {petShelter[2].Hunger,9}  |  " +
-                        $"Hunger   {petShelter[3].Hunger,9}  |  "));
-                    Console.WriteLine(String.Format(
-                        $"|  Boredom   {petShelter[0].Boredom,8}  |  " +
-                        $"Boredom   {petShelter[1].Boredom,8}  |  " +
-                        $"Boredom   {petShelter[2].Boredom,8}  |  " +
-                        $"Boredom   {petShelter[3].Boredom,8}  |  "));
+                    //Shelter3 
+                    if (petShelter[2].Type == "Organic") { DisplayOrganic(3); }
+                    else if (petShelter[2].Type == "Robotic") { DisplayRobotic(3); }
+                    else { Console.WriteLine("Error"); }
+
+                    //Shelter4 
+                    if (petShelter[3].Type == "Organic") { DisplayOrganic(4); }
+                    else if (petShelter[3].Type == "Robotic") { DisplayRobotic(4); }
+                    else { Console.WriteLine("Error"); }
+
                     break;
                 case 5:
-                    paddedName1 = petShelter[0].PaddedName();
-                    paddedName2 = petShelter[1].PaddedName();
-                    paddedName3 = petShelter[2].PaddedName();
-                    paddedName4 = petShelter[3].PaddedName();
-                    paddedName5 = petShelter[4].PaddedName();
+                    //Shelter 1
+                    if (petShelter[0].Type == "Organic") { DisplayOrganic(1); }
+                    else if (petShelter[0].Type == "Robotic") { DisplayRobotic(1); }
+                    else { Console.WriteLine("Error"); }
 
-                    paddedSpecies1 = petShelter[0].PaddedSpecies();
-                    paddedSpecies2 = petShelter[1].PaddedSpecies();
-                    paddedSpecies3 = petShelter[2].PaddedSpecies();
-                    paddedSpecies4 = petShelter[3].PaddedSpecies();
-                    paddedSpecies5 = petShelter[4].PaddedSpecies();
+                    //Shelter2 
+                    if (petShelter[1].Type == "Organic") { DisplayOrganic(2); }
+                    else if (petShelter[1].Type == "Robotic") { DisplayRobotic(2); }
+                    else { Console.WriteLine("Error"); }
 
-                    Console.WriteLine(String.Format(
-                        $"|  Name{paddedName1,5}  |  " +
-                        $"Name{paddedName2,5}  |  " +
-                        $"Name{paddedName3,5}  |  " +
-                        $"Name{paddedName4,5}  |  " +
-                        $"Name{paddedName5,5}  |"));
-                    Console.WriteLine(String.Format(
-                        $"|  Species{paddedSpecies1,5}  |  " +
-                        $"Species{paddedSpecies2,5}  |  " +
-                        $"Species{paddedSpecies3,5}  |  " +
-                        $"Species{paddedSpecies4,5}  |  " +
-                        $"Species{paddedSpecies5,5}  |"));
-                    Console.WriteLine(String.Format(
-                        $"|  Health   {petShelter[0].Health,9}  |  " +
-                        $"Health   {petShelter[1].Health,9}  |  " +
-                        $"Health   {petShelter[2].Health,9}  |  " +
-                        $"Health   {petShelter[3].Health,9}  |  " +
-                        $"Health   {petShelter[4].Health,9}  |  "));
-                    Console.WriteLine(String.Format(
-                        $"|  Hunger   {petShelter[0].Hunger,9}  |  " +
-                        $"Hunger   {petShelter[1].Hunger,9}  |  " +
-                        $"Hunger   {petShelter[2].Hunger,9}  |  " +
-                        $"Hunger   {petShelter[3].Hunger,9}  |  " +
-                        $"Hunger   {petShelter[4].Hunger,9}  |  "));
-                    Console.WriteLine(String.Format(
-                        $"|  Boredom   {petShelter[0].Boredom,8}  |  " +
-                        $"Boredom   {petShelter[1].Boredom,8}  |  " +
-                        $"Boredom   {petShelter[2].Boredom,8}  |  " +
-                        $"Boredom   {petShelter[3].Boredom,8}  |  " +
-                        $"Boredom   {petShelter[4].Boredom,8}  |  "));
+                    //Shelter3 
+                    if (petShelter[2].Type == "Organic") { DisplayOrganic(3); }
+                    else if (petShelter[2].Type == "Robotic") { DisplayRobotic(3); }
+                    else { Console.WriteLine("Error"); }
+
+                    //Shelter4 
+                    if (petShelter[3].Type == "Organic") { DisplayOrganic(4); }
+                    else if (petShelter[3].Type == "Robotic") { DisplayRobotic(4); }
+                    else { Console.WriteLine("Error"); }
+
+                    //Shelter5
+                    if (petShelter[4].Type == "Organic") { DisplayOrganic(5); }
+                    else if (petShelter[4].Type == "Robotic") { DisplayRobotic(5); }
+                    else { Console.WriteLine("Error"); }
+
                     break;
                 default:
                     break;
             }
         }
+        public static void DisplayWallet()
+        { Console.WriteLine("Wallet: $"+money); }
+
         public static void SelectPetSubMenu()
         {
             int count=1;
