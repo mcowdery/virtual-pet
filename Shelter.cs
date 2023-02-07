@@ -17,9 +17,6 @@ namespace template_csharp_virtual_pet
         public static List<Pet> PetShelter { get; set; }
         public static int Money { get; set; }
 
-        //public static
-
-
         public static string GetPetName(int selection) { return petShelter[selection].Name; }
         public static string GetPetSpecies(int selection) { return petShelter[selection].Species;}
         public static object GetPet(int selection) { return petShelter[selection-1]; }
