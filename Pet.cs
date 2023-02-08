@@ -52,6 +52,7 @@ namespace template_csharp_virtual_pet
         public int GetHealth() { return Health; }
         public int GetHunger() { return Hunger; }
         public int GetBoredom() { return Boredom; }
+        public string GetCondition() { return Condition; }
         public string GetStatus() { return Status; }
 
         public string PaddedName()

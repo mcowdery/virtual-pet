@@ -13,18 +13,17 @@ namespace template_csharp_virtual_pet
     public static class Shelter
     {
         private static List<Pet> petShelter = new List<Pet>();
-        private static int money;
+        public static int wallet = 0;
         public static int cursorPos = 14;
 
         public static List<Pet> PetShelter { get; set; }
-        public static int Money { get; set; }
-        public static int CursorPos { get; set; }
 
         public static string GetPetName(int selection) { return petShelter[selection].Name; }
         public static string GetPetSpecies(int selection) { return petShelter[selection].Species; }
         public static object GetPet(int selection) { return petShelter[selection - 1]; }
         public static int GetShelterSize() { return petShelter.Count; }
-        public static int GetCursorPos() { return CursorPos; }
+        public static int GetCursorPos() { return cursorPos; }
+        public static void AddToWallet(int money) { wallet += money; }
         public static int SelectPetMenu()
         {
             Console.WriteLine("\n\n");
@@ -58,53 +57,6 @@ namespace template_csharp_virtual_pet
                     catch
                     {
                         Console.SetCursorPosition(0, cursorPos);
-                        Console.Write("".PadRight(Console.BufferWidth) + "\r");
-                        Console.SetCursorPosition(0, cursorPos + 3);
-                    }
-                }
-            }
-            else
-            {
-                return 0;
-            }
-        }
-        public static int SelectPetMenu2()
-        {
-            Console.WriteLine("\n\n");
-            if (Shelter.GetShelterSize() > 1)
-            {
-                int selection = 0;
-                while (true)
-                {
-                    Console.Clear();
-                    Console.SetCursorPosition(0, cursorPos + 3);
-                    int count = 1;
-                    foreach (var pet in petShelter)
-                    {
-                       
-                        Console.WriteLine(count + ". " + pet.Name);
-                        count++;
-                    }
-                    Console.SetCursorPosition(0, cursorPos);
-                    try
-                    {
-                        selection = Convert.ToInt32(Console.ReadLine());
-
-                        if (selection >= 0 && selection <= count - 1)
-                        { return selection; }
-                        else
-                        {
-                            Console.SetCursorPosition(0, cursorPos);
-                            Console.Clear();
-                            Console.Write("".PadRight(Console.BufferWidth) + "\r");
-                            Console.SetCursorPosition(0, cursorPos + 3);
-                        }
-                        Console.SetCursorPosition(0, cursorPos);
-                    }
-                    catch
-                    {
-                        Console.SetCursorPosition(0, cursorPos);
-                        Console.Clear();
                         Console.Write("".PadRight(Console.BufferWidth) + "\r");
                         Console.SetCursorPosition(0, cursorPos + 3);
                     }
@@ -361,7 +313,7 @@ namespace template_csharp_virtual_pet
             }
         }
         public static void DisplayWallet()
-        { Console.WriteLine("Wallet: $" + money); }
+        { Console.WriteLine("Wallet: $" + wallet); }
 
         public static void SelectPetSubMenu()
         {

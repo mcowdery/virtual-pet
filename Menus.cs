@@ -328,7 +328,8 @@ namespace template_csharp_virtual_pet
                         break;
                     case "5":
                         ActiveDisplay.DisplayStop((System.Timers.Timer)activeDisplay);//Pauses Active Display
-                        Menus.EarnMoneyMenu();
+                        Pet pet = (Pet)Shelter.GetPet(1);
+                        pet.SetStatus("Working");
                         break;
                     case "6":
                         Environment.Exit(0);
