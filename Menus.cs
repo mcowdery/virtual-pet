@@ -333,6 +333,9 @@ namespace template_csharp_virtual_pet
                     case "6":
                         Environment.Exit(0);
                         break;
+                    case "7":
+                        Menus.DebugMenu();
+                        break;
                     default:
                         ActiveDisplay.DisplayStop((System.Timers.Timer)activeDisplay);//Pauses Active Display
                         Console.Clear();
@@ -420,5 +423,54 @@ namespace template_csharp_virtual_pet
                     break;
             }
         }
+
+        public static void DebugMenu()
+        {
+            Console.Clear();
+            Console.SetCursorPosition(0, Shelter.cursorPos+3);
+            Console.WriteLine("What would you like to debug?");
+            Console.WriteLine("1. Kill a pet");
+            Console.WriteLine("2. Max out shelter");
+            Console.WriteLine("3. Set conditions, moods, etc");
+            Console.WriteLine("4. Credit page : Hear from the creators of Virtual Pet: Pocket Universe of madness");
+            Console.WriteLine("5. Return to main menu");
+            Console.WriteLine("\n");
+
+            string userchoice = Console.ReadLine();
+
+            switch (userchoice)
+            {
+                case "1":
+                    Console.SetCursorPosition(0, Shelter.cursorPos);
+                    int choice = Shelter.SelectPetMenu2();
+                    Console.WriteLine(choice);
+                    Pet pet = (Pet)Shelter.GetPet(choice);
+                    pet.SetHealth(0);
+                    break;
+                case "2":
+                   while(Shelter.GetShelterSize() < 5)
+                    {
+                        Shelter.AddOrganicPet("Tim", "Parrot");
+                    }
+
+                    break;
+                case "3":
+
+                    break;
+                case "4":
+                    break;
+                case "5":
+                    break;
+                default:
+                    break;
+            }
+
+
+            Console.WriteLine("Press any key to continue...");
+            Console.SetCursorPosition(0, 8); //Active displayy
+            Console.ReadKey();
+
+        }
+
     }
 }

@@ -66,6 +66,54 @@ namespace template_csharp_virtual_pet
                 return 0;
             }
         }
+
+        public static int SelectPetMenu2()
+        {
+            Console.WriteLine("\n\n");
+            if (Shelter.GetShelterSize() > 1)
+            {
+                int selection = 0;
+                while (true)
+                {
+                    Console.Clear();
+                    Console.SetCursorPosition(0, cursorPos + 3);
+                    int count = 1;
+                    foreach (var pet in petShelter)
+                    {
+                       
+                        Console.WriteLine(count + ". " + pet.Name);
+                        count++;
+                    }
+                    Console.SetCursorPosition(0, cursorPos);
+                    try
+                    {
+                        selection = Convert.ToInt32(Console.ReadLine());
+
+                        if (selection >= 0 && selection <= count - 1)
+                        { return selection; }
+                        else
+                        {
+                            Console.SetCursorPosition(0, cursorPos);
+                            Console.Clear();
+                            Console.Write("".PadRight(Console.BufferWidth) + "\r");
+                            Console.SetCursorPosition(0, cursorPos + 3);
+                        }
+                        Console.SetCursorPosition(0, cursorPos);
+                    }
+                    catch
+                    {
+                        Console.SetCursorPosition(0, cursorPos);
+                        Console.Clear();
+                        Console.Write("".PadRight(Console.BufferWidth) + "\r");
+                        Console.SetCursorPosition(0, cursorPos + 3);
+                    }
+                }
+            }
+            else
+            {
+                return 0;
+            }
+        }
         public static void DisplaySetCursorPosition(int shelterNum, int line)
         {
             int position = 2;
@@ -461,7 +509,7 @@ namespace template_csharp_virtual_pet
                 action = "took";
             }
             Console.Clear();
-            Console.WriteLine("\nYou " + action + " all the pets to the doctor");
+            Console.WriteLine("\nYou " + action + " all the pets");
             Console.WriteLine("\nPress enter to return to the Main Menu");
             Console.ReadLine();
         }
