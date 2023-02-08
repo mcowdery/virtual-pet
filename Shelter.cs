@@ -506,7 +506,7 @@ namespace template_csharp_virtual_pet
             }
             else if (interactAll == "3")
             {
-                action = "took";
+                action = "visited the doctor with";
             }
             Console.Clear();
             Console.WriteLine("\nYou " + action + " all the pets");
