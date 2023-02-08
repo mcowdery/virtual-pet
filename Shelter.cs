@@ -13,18 +13,17 @@ namespace template_csharp_virtual_pet
     public static class Shelter
     {
         private static List<Pet> petShelter = new List<Pet>();
-        private static int money;
+        public static int wallet = 0;
         public static int cursorPos = 14;
 
         public static List<Pet> PetShelter { get; set; }
-        public static int Money { get; set; }
-        public static int CursorPos { get; set; }
 
         public static string GetPetName(int selection) { return petShelter[selection].Name; }
         public static string GetPetSpecies(int selection) { return petShelter[selection].Species; }
         public static object GetPet(int selection) { return petShelter[selection - 1]; }
         public static int GetShelterSize() { return petShelter.Count; }
-        public static int GetCursorPos() { return CursorPos; }
+        public static int GetCursorPos() { return cursorPos; }
+        public static void AddToWallet(int money) { wallet += money; }
         public static int SelectPetMenu()
         {
             Console.WriteLine("\n\n");
@@ -33,6 +32,8 @@ namespace template_csharp_virtual_pet
                 int selection = 0;
                 while (true)
                 {
+                    Console.Clear();
+                    Console.SetCursorPosition(0, cursorPos + 3);
                     int count = 1;
                     foreach (var pet in petShelter)
                     {
@@ -312,7 +313,7 @@ namespace template_csharp_virtual_pet
             }
         }
         public static void DisplayWallet()
-        { Console.WriteLine("Wallet: $" + money); }
+        { Console.WriteLine("Wallet: $" + wallet); }
 
         public static void SelectPetSubMenu()
         {
@@ -461,7 +462,7 @@ namespace template_csharp_virtual_pet
                 action = "took";
             }
             Console.Clear();
-            Console.WriteLine("\nYou " + action + " all the pets to the doctor");
+            Console.WriteLine("\nYou " + action + " all the pets");
             Console.WriteLine("\nPress enter to return to the Main Menu");
             Console.ReadLine();
         }
