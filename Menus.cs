@@ -442,8 +442,8 @@ namespace template_csharp_virtual_pet
             {
                 case "1":
                     Console.SetCursorPosition(0, Shelter.cursorPos);
-                    int choice = Shelter.SelectPetMenu2();
-                    Console.WriteLine(choice);
+                    int choice = Shelter.SelectPetMenu();
+                    if (Shelter.GetShelterSize() < 2) { choice = 1; } 
                     Pet pet = (Pet)Shelter.GetPet(choice);
                     pet.SetHealth(0);
                     break;
@@ -452,7 +452,6 @@ namespace template_csharp_virtual_pet
                     {
                         Shelter.AddOrganicPet("Tim", "Parrot");
                     }
-
                     break;
                 case "3":
 

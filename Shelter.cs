@@ -33,6 +33,8 @@ namespace template_csharp_virtual_pet
                 int selection = 0;
                 while (true)
                 {
+                    Console.Clear();
+                    Console.SetCursorPosition(0, cursorPos + 3);
                     int count = 1;
                     foreach (var pet in petShelter)
                     {
@@ -66,7 +68,6 @@ namespace template_csharp_virtual_pet
                 return 0;
             }
         }
-
         public static int SelectPetMenu2()
         {
             Console.WriteLine("\n\n");
