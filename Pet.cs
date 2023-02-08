@@ -10,30 +10,49 @@ namespace template_csharp_virtual_pet
     public class Pet
     {
         private string name = "";
+        private string type = "";
         private string species = "";
         private int health = 60;
         private int hunger = 0;
         private int boredom = 0;
+        private string condition = "Good";
+        private string status = "Resting";
+        private int income = 0;
 
         public string Name { get; set; }
+        public string Type { get; set; }
         public string Species { get; set; }
         public int Health { get; set; }
         public int Hunger { get; set; }
         public int Boredom { get; set; }
+        public string Condition { get; set; }
+        public string Status { get; set; }
+        public int Income { get; set; }
 
         public Pet()
         {
             Name = name;
+            Type = type;
             Species = species;
             Health = health;
             Hunger = hunger;
             Boredom = boredom;
+            Condition = condition;
+            Status = status;
+            Income = income;
         }
-        public string GetName(){ return Name; }
+        public void SetType(string type) { Type = type; }
+        public void SetHealth(int health) { Health = health; }
+        public void SetHunger(int hunger) { Hunger = hunger; }
+        public void SetCondition(string condition) { Condition = condition; }
+        public void SetStatus(string status) { Status = status; }
+        public void SetIncome(int income) { Income = income; }
+        public string GetName() { return Name; }
         public string GetSpecies() { return Species; }
-        public int GetHealth(){ return Health; }
-        public int GetHunger(){ return Hunger; }
-        public int GetBoredom(){ return Boredom; }
+        public int GetHealth() { return Health; }
+        public int GetHunger() { return Hunger; }
+        public int GetBoredom() { return Boredom; }
+        public string GetStatus() { return Status; }
 
         public string PaddedName()
         {
@@ -72,43 +91,9 @@ namespace template_csharp_virtual_pet
             Console.WriteLine(Name + " The " + Species + ":");
             Console.WriteLine("Health - " + Health + "\n" + "Hunger - " + Hunger + "\n" + "Boredom - " + Boredom + "\n");
         }
-        public void Tick()
+        public virtual void Tick()
         {
-            System.Timers.Timer tick = new(9000);//instatiates new timer called tick
-            tick.Start();
-            tick.Elapsed += Tick_Elapsed; // says once timer is elapsed go to tick_Elapsed function
-            void Tick_Elapsed(object? sender, System.Timers.ElapsedEventArgs e)
-            {
-                Boredom += 10;
-                Hunger += 10;
-                bool starved = false;
-                bool crazyBored = false;
-
-                if (Hunger >= 60)
-                {
-                    Hunger = 60;
-                    starved = true;
-                }
-
-                if (Boredom >= 60)
-                {
-                    Boredom = 60;
-                    crazyBored = true;
-                }
-
-                if (starved && crazyBored)
-                {
-                    Health -= 5;
-                }
-
-                if (Health <= 0)
-                {
-                    tick.Stop();
-                    tick.Dispose();
-                    Console.Clear();
-                    Console.WriteLine("OOH NOOOO...." + Name + " The " + Species + " Died!!\nYou have to pay attention and move quicker next time.\nGAME OVER");
-                }
-            }
+            //overridden by childs
         }
     }
 }

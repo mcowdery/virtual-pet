@@ -14,13 +14,13 @@ namespace template_csharp_virtual_pet
         }
         public override void Tick()
         {
-            System.Timers.Timer tick = new(5000);//instatiates new timer called tick
+            System.Timers.Timer tick = new(500);//instatiates new timer called tick
             tick.Start();
             tick.Elapsed += Tick_Elapsed; // says once timer is elapsed go to tick_Elapsed function
             void Tick_Elapsed(object? sender, System.Timers.ElapsedEventArgs e)
             {
-                Boredom += 20;
-                Hunger += 10;
+                Boredom += 1;
+                Hunger += 1;
                 bool starved = false;
                 bool crazyBored = false;
 
@@ -29,8 +29,8 @@ namespace template_csharp_virtual_pet
                     Hunger = 60;
                     starved = true;
                 }
-                else if (Hunger < 60) 
-                { 
+                else if (Hunger < 60)
+                {
                     starved = false;
                     SetCondition("Good");
                 }
@@ -58,7 +58,11 @@ namespace template_csharp_virtual_pet
                     SetStatus("DEAD");
                     SetCondition("DEAD");
                     Console.Clear();
-                    Console.WriteLine("OOH NOOOO...." + Name + " The " + Species + " Died!!\nYou have to pay attention and move quicker next time.\nGAME OVER");
+                    //Shelter.DisplayShelter();
+                    Console.SetCursorPosition(0, Shelter.cursorPos+3);
+                    Console.WriteLine("OOH NOOOO...." + Name + " The " + Species + " Died!!\nYou have to pay attention and move quicker next time.");
+                    Console.WriteLine("\nPress any key to continue...");
+                    Console.ReadKey();
                 }
             }
         }

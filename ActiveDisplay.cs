@@ -1,11 +1,11 @@
 ﻿using System;
 namespace template_csharp_virtual_pet
 {
-	public static class ActiveDisplay
-	{
-		public static object DisplayStart()
-		{
-            System.Timers.Timer activeDisplay = new(3000);
+    public static class ActiveDisplay
+    {
+        public static object DisplayStart()
+        {
+            System.Timers.Timer activeDisplay = new(500);
             activeDisplay.Start();
             activeDisplay.Elapsed += ActiveDisplay_Elapsed;
             void ActiveDisplay_Elapsed(object? sender, System.Timers.ElapsedEventArgs e)
@@ -20,7 +20,7 @@ namespace template_csharp_virtual_pet
         }
         public static void DisplayStop(System.Timers.Timer activeDisplay)
         {
-           activeDisplay.Stop();
+            activeDisplay.Stop();
         }
         public static void StopTick(System.Timers.Timer tick)
         {
@@ -30,6 +30,6 @@ namespace template_csharp_virtual_pet
         {
             tick.Start();
         }
-	}
+    }
 }
 

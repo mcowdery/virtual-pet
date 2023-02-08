@@ -6,12 +6,16 @@ namespace virtual_pet_tests
     public class PetTests
     {
         private Pet testPet;
-        [SetUp] public void SetUp() { 
-            testPet = new Pet(); 
+        [SetUp]
+        public void SetUp()
+        {
+            testPet = new Pet();
         }
 
-        [Test] public void Pet_Constructor_Should_Instantiate_Pet_Object() { 
-            Assert.NotNull(testPet); 
+        [Test]
+        public void Pet_Constructor_Should_Instantiate_Pet_Object()
+        {
+            Assert.NotNull(testPet);
         }
 
         // INSTRUCTIONS:        
@@ -20,7 +24,7 @@ namespace virtual_pet_tests
 
         [Test]
         public void Pet_Should_Have_Name()
-        {            
+        {
             testPet.Name = "Pet Name";
             Assert.AreEqual("Pet Name", testPet.Name);
         }
