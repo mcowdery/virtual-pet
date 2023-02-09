@@ -402,7 +402,7 @@ namespace template_csharp_virtual_pet
                                                                                                                                     title10.Stop();
                                                                                                                                     title10.Dispose();
 
-                                                                                                                                    System.Timers.Timer title11 = new(3000);
+                                                                                                                                    System.Timers.Timer title11 = new(1500);
                                                                                                                                     title11.Start();
                                                                                                                                     title11.Elapsed += Title11_Elapsed;
                                                                                                                                     void Title11_Elapsed(object? sender, System.Timers.ElapsedEventArgs e)
@@ -457,11 +457,28 @@ namespace template_csharp_virtual_pet
                 }
             }
 
-
+            //Console.ReadKey();
         }
         public static string OrganicOrRoboticMenu()
         {
             Console.Clear();
+            Console.WriteLine("WELCOME TO MAS CODE'S");
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.SetCursorPosition(0, 2);
+            Console.WriteLine("---------------------------------------------------------------------------------------------------");
+            Console.WriteLine(@"          _________ _______ _________          _______  _             _______  _______ _________  ");
+            Console.WriteLine(@" |\     /|\__   __/(  ____ )\__   __/|\     /|(  ___  )( \           (  ____ )(  ____ \\__   ___| ");
+            Console.WriteLine(@" | )   ( |   ) (   | (    )|   ) (   | )   ( || (   ) || (           | (    )|| (    \/   ) (     ");
+            Console.WriteLine(@" | |   | |   | |   | (____)|   | |   | |   | || (___) || |           | (____)|| (__       | |     ");
+            Console.WriteLine(@" ( (   ) )   | |   |     __)   | |   | |   | ||  ___  || |           |  _____)|  __)      | |     ");
+            Console.WriteLine(@" \ \_ / /    | |   | (\ (      | |   | |   | || (   ) || |           | (      | (         | |     ");
+            Console.WriteLine(@"  \    /  ___) (___| ) \ \__   | |   | (___) || )   ( || (____/\     | )      | (____/\   | |     ");
+            Console.WriteLine(@"   \__/   \_______/|/   \__/   )_(   (_______)|/     \|(_______/     |__|    |_________| |___|    " + "\n");
+            Console.WriteLine("---------------------------------------------------------------------------------------------------\n");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("This pocket universe moves fast, "
+    + "You will have to move fast as well to keep your new"
+    + " friends alive and happy.\n\n");
             Console.WriteLine("Do you want a robotic or organic pet?\n");
             Console.WriteLine("1. Organic");
             Console.WriteLine("2. Robotic");
@@ -517,6 +534,23 @@ namespace template_csharp_virtual_pet
     public static string SpeciesMenu()
         {
             Console.Clear();
+            Console.WriteLine("WELCOME TO MAS CODE'S");
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.SetCursorPosition(0, 2);
+            Console.WriteLine("---------------------------------------------------------------------------------------------------");
+            Console.WriteLine(@"          _________ _______ _________          _______  _             _______  _______ _________  ");
+            Console.WriteLine(@" |\     /|\__   __/(  ____ )\__   __/|\     /|(  ___  )( \           (  ____ )(  ____ \\__   ___| ");
+            Console.WriteLine(@" | )   ( |   ) (   | (    )|   ) (   | )   ( || (   ) || (           | (    )|| (    \/   ) (     ");
+            Console.WriteLine(@" | |   | |   | |   | (____)|   | |   | |   | || (___) || |           | (____)|| (__       | |     ");
+            Console.WriteLine(@" ( (   ) )   | |   |     __)   | |   | |   | ||  ___  || |           |  _____)|  __)      | |     ");
+            Console.WriteLine(@" \ \_ / /    | |   | (\ (      | |   | |   | || (   ) || |           | (      | (         | |     ");
+            Console.WriteLine(@"  \    /  ___) (___| ) \ \__   | |   | (___) || )   ( || (____/\     | )      | (____/\   | |     ");
+            Console.WriteLine(@"   \__/   \_______/|/   \__/   )_(   (_______)|/     \|(_______/     |__|    |_________| |___|    " + "\n");
+            Console.WriteLine("---------------------------------------------------------------------------------------------------\n");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("This pocket universe moves fast, "
+    + "You will have to move fast as well to keep your new"
+    + " friends alive and happy.\n\n");
             Console.WriteLine("What Species would you like to start with?\n");
             Console.WriteLine("1. Lion");
             Console.WriteLine("2. Tiger");
@@ -650,6 +684,23 @@ namespace template_csharp_virtual_pet
             while (true)
             {
                 Console.Clear();
+                Console.WriteLine("WELCOME TO MAS CODE'S");
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.SetCursorPosition(0, 2);
+                Console.WriteLine("---------------------------------------------------------------------------------------------------");
+                Console.WriteLine(@"          _________ _______ _________          _______  _             _______  _______ _________  ");
+                Console.WriteLine(@" |\     /|\__   __/(  ____ )\__   __/|\     /|(  ___  )( \           (  ____ )(  ____ \\__   ___| ");
+                Console.WriteLine(@" | )   ( |   ) (   | (    )|   ) (   | )   ( || (   ) || (           | (    )|| (    \/   ) (     ");
+                Console.WriteLine(@" | |   | |   | |   | (____)|   | |   | |   | || (___) || |           | (____)|| (__       | |     ");
+                Console.WriteLine(@" ( (   ) )   | |   |     __)   | |   | |   | ||  ___  || |           |  _____)|  __)      | |     ");
+                Console.WriteLine(@" \ \_ / /    | |   | (\ (      | |   | |   | || (   ) || |           | (      | (         | |     ");
+                Console.WriteLine(@"  \    /  ___) (___| ) \ \__   | |   | (___) || )   ( || (____/\     | )      | (____/\   | |     ");
+                Console.WriteLine(@"   \__/   \_______/|/   \__/   )_(   (_______)|/     \|(_______/     |__|    |_________| |___|    " + "\n");
+                Console.WriteLine("---------------------------------------------------------------------------------------------------\n");
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.WriteLine("This pocket universe moves fast, " 
+                    + "You will have to move fast as well to keep your new" 
+                    + " friends alive and happy.\n\n");
                 Console.WriteLine("What would you like to name your pet?");
                 Console.Write("\n>> ");
                 string name = Console.ReadLine();
@@ -668,6 +719,23 @@ namespace template_csharp_virtual_pet
             while (true)
             {
                 Console.Clear();
+                Console.WriteLine("WELCOME TO MAS CODE'S");
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.SetCursorPosition(0, 2);
+                Console.WriteLine("---------------------------------------------------------------------------------------------------");
+                Console.WriteLine(@"          _________ _______ _________          _______  _             _______  _______ _________  ");
+                Console.WriteLine(@" |\     /|\__   __/(  ____ )\__   __/|\     /|(  ___  )( \           (  ____ )(  ____ \\__   ___| ");
+                Console.WriteLine(@" | )   ( |   ) (   | (    )|   ) (   | )   ( || (   ) || (           | (    )|| (    \/   ) (     ");
+                Console.WriteLine(@" | |   | |   | |   | (____)|   | |   | |   | || (___) || |           | (____)|| (__       | |     ");
+                Console.WriteLine(@" ( (   ) )   | |   |     __)   | |   | |   | ||  ___  || |           |  _____)|  __)      | |     ");
+                Console.WriteLine(@" \ \_ / /    | |   | (\ (      | |   | |   | || (   ) || |           | (      | (         | |     ");
+                Console.WriteLine(@"  \    /  ___) (___| ) \ \__   | |   | (___) || )   ( || (____/\     | )      | (____/\   | |     ");
+                Console.WriteLine(@"   \__/   \_______/|/   \__/   )_(   (_______)|/     \|(_______/     |__|    |_________| |___|    " + "\n");
+                Console.WriteLine("---------------------------------------------------------------------------------------------------\n");
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.WriteLine("This pocket universe moves fast, "
+    + "You will have to move fast as well to keep your new"
+    + " friends alive and happy.\n\n");
                 Console.WriteLine("What would you like to name your pet?");
                 Console.Write("\n>> ");
                 usersPet.Name = Console.ReadLine();
