@@ -505,7 +505,7 @@ namespace template_csharp_virtual_pet
             }
             else if (interactAll == "3")
             {
-                action = "took";
+                action = "visited the doctor with";
             }
             Console.Clear();
             Console.WriteLine("\nYou " + action + " all the pets");
@@ -571,6 +571,58 @@ namespace template_csharp_virtual_pet
                 Console.ReadLine();
                 Console.Clear();
             }
+        }
+
+        public static void petClothing()
+        {
+
+            Console.Clear();
+            Shelter.DisplayShelter();//Active display
+            Console.SetCursorPosition(0, Shelter.cursorPos + 3);
+            int choice = 1;
+            if (GetShelterSize() > 1)
+            {
+                Console.WriteLine("Which pet do you want to interact with?");
+                choice = SelectPetMenu();
+            }
+            choice--;
+            Console.WriteLine("The weather is chilly would you like to add a:\n1. Sweater\n2. Scarve\n3. Hat");
+
+            Console.SetCursorPosition(0, Shelter.cursorPos);
+            ConsoleKeyInfo selection = Console.ReadKey(true);
+
+    
+            {
+                if (selection.KeyChar == '1')
+                {
+                    Console.Clear();
+                    Shelter.DisplayShelter();//Active display
+                    Console.WriteLine("You put a sweater on " + petShelter[choice].Name);
+                    Console.SetCursorPosition(0, Shelter.cursorPos + 3);
+                    Console.WriteLine("\nPress enter to return to the Main Menu");
+
+                }
+                else if (selection.KeyChar == '2')
+                {
+                    Console.Clear();
+                    Shelter.DisplayShelter();//Active display
+                    Console.WriteLine("You gave " + petShelter[choice].Name + " a scarve");
+                    Console.SetCursorPosition(0, Shelter.cursorPos + 3);        
+                    Console.WriteLine("\nPress enter to return to the Main Menu");
+                }
+                else if (selection.KeyChar == '3')
+                {
+                    Console.Clear();
+                    Shelter.DisplayShelter();//Active display
+                    Console.WriteLine("You gave " + petShelter[choice].Name + " a hat");
+                    Console.SetCursorPosition(0, Shelter.cursorPos + 3);
+                    Console.WriteLine("\nPress enter to return to the Main Menu");
+
+                }
+                
+            }
+
+
         }
     }
 }

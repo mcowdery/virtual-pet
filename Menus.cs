@@ -520,7 +520,7 @@ namespace template_csharp_virtual_pet
             Console.WriteLine("What would you like to debug?");
             Console.WriteLine("1. Kill a pet");
             Console.WriteLine("2. Max out shelter");
-            Console.WriteLine("3. Set conditions, moods, etc");
+            Console.WriteLine("3. Add item for warmth");
             Console.WriteLine("4. Credit page : Hear from the creators of Virtual Pet: Pocket Universe of madness");
             Console.WriteLine("5. Return to main menu");
             Console.WriteLine("\n");
@@ -544,7 +544,11 @@ namespace template_csharp_virtual_pet
                     }
                     break;
                 case "3":
-
+                    Console.SetCursorPosition(0, Shelter.cursorPos);
+                    int selection = Shelter.SelectPetMenu();
+                    if (Shelter.GetShelterSize() < 2) { selection = 1; }
+                    Pet Pet = (Pet)Shelter.GetPet(selection);
+                    Shelter.petClothing();
                     break;
                 case "4":
                     break;
