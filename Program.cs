@@ -8,6 +8,7 @@ using template_csharp_virtual_pet;
 bool menuUp = true;
 while (menuUp)
 {
+
     //Initial Set up
     Console.SetWindowSize(120, 35);
     Console.ForegroundColor = ConsoleColor.White;

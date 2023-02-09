@@ -83,9 +83,7 @@ namespace template_csharp_virtual_pet
         }
         public void SeeDoctor()
         {
-            Console.WriteLine("Take your pet to the doctor");
             Health += 30;
-            //Stethiscope image
         }
         public void DisplayStatus()
         {
