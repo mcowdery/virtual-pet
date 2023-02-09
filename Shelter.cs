@@ -527,5 +527,48 @@ namespace template_csharp_virtual_pet
                 Console.ReadLine();
             }
         }
+
+        public static void petClothing()
+        {
+            Console.Clear();
+            Shelter.DisplayShelter();//Active display
+            Console.SetCursorPosition(0, Shelter.cursorPos + 3);
+            Console.WriteLine("The weather is chilly would you like to add a:\n1. Sweater\n2. Scarve\n3. Hat");
+
+            Console.SetCursorPosition(0, Shelter.cursorPos);
+            var interactAll = Console.ReadLine().ToLower();
+            int choice = 1;
+            {
+                if (interactAll == "1")
+                {
+                    Console.Clear();
+                    Shelter.DisplayShelter();//Active display
+                    Console.WriteLine("You put a sweater on " + petShelter[choice].Name);
+                    Console.SetCursorPosition(0, Shelter.cursorPos + 3);
+                    Console.WriteLine("\nPress enter to return to the Main Menu");
+
+                }
+                else if (interactAll == "2")
+                {
+                    Console.Clear();
+                    Shelter.DisplayShelter();//Active display
+                    Console.WriteLine("You gave " + petShelter[choice].Name + " a scarve");
+                    Console.SetCursorPosition(0, Shelter.cursorPos + 3);        
+                    Console.WriteLine("\nPress enter to return to the Main Menu");
+                }
+                else if (interactAll == "3")
+                {
+                    Console.Clear();
+                    Shelter.DisplayShelter();//Active display
+                    Console.WriteLine("You gave " + petShelter[choice].Name + " a hat");
+                    Console.SetCursorPosition(0, Shelter.cursorPos + 3);
+                    Console.WriteLine("\nPress enter to return to the Main Menu");
+
+                }
+                
+            }
+
+
+        }
     }
 }
