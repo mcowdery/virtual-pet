@@ -530,16 +530,25 @@ namespace template_csharp_virtual_pet
 
         public static void petClothing()
         {
+
             Console.Clear();
             Shelter.DisplayShelter();//Active display
             Console.SetCursorPosition(0, Shelter.cursorPos + 3);
+            int choice = 1;
+            if (GetShelterSize() > 1)
+            {
+                Console.WriteLine("Which pet do you want to interact with?");
+                choice = SelectPetMenu();
+            }
+            choice--;
             Console.WriteLine("The weather is chilly would you like to add a:\n1. Sweater\n2. Scarve\n3. Hat");
 
             Console.SetCursorPosition(0, Shelter.cursorPos);
-            var interactAll = Console.ReadLine().ToLower();
-            int choice;
+            ConsoleKeyInfo selection = Console.ReadKey(true);
+
+    
             {
-                if (interactAll == "1")
+                if (selection.KeyChar == '1')
                 {
                     Console.Clear();
                     Shelter.DisplayShelter();//Active display
@@ -548,7 +557,7 @@ namespace template_csharp_virtual_pet
                     Console.WriteLine("\nPress enter to return to the Main Menu");
 
                 }
-                else if (interactAll == "2")
+                else if (selection.KeyChar == '2')
                 {
                     Console.Clear();
                     Shelter.DisplayShelter();//Active display
@@ -556,7 +565,7 @@ namespace template_csharp_virtual_pet
                     Console.SetCursorPosition(0, Shelter.cursorPos + 3);        
                     Console.WriteLine("\nPress enter to return to the Main Menu");
                 }
-                else if (interactAll == "3")
+                else if (selection.KeyChar == '3')
                 {
                     Console.Clear();
                     Shelter.DisplayShelter();//Active display
