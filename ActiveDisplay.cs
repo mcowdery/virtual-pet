@@ -5,7 +5,7 @@ namespace template_csharp_virtual_pet
     {
         public static object DisplayStart()
         {
-            System.Timers.Timer activeDisplay = new(5000);
+            System.Timers.Timer activeDisplay = new(100);
             activeDisplay.Start();
             activeDisplay.Elapsed += ActiveDisplay_Elapsed;
             void ActiveDisplay_Elapsed(object? sender, System.Timers.ElapsedEventArgs e)
@@ -13,12 +13,17 @@ namespace template_csharp_virtual_pet
                 Console.SetCursorPosition(0, 0);
                 Shelter.DisplayShelter();
                 Console.SetCursorPosition(0, Shelter.cursorPos);
+                Console.Write("\n>> ");
             }
             return activeDisplay;
         }
         public static void DisplayStop(System.Timers.Timer activeDisplay)
         {
             activeDisplay.Stop();
+        }
+        public static void DisplayStart(System.Timers.Timer activeDisplay)
+        {
+            activeDisplay.Start();
         }
         public static void StopTick(System.Timers.Timer tick)
         {
