@@ -235,6 +235,24 @@ namespace template_csharp_virtual_pet
                 }
             }
         }
+        public static void NameMenu(Pet usersPet)
+        {
+            while (true)
+            {
+                Console.Clear();
+                Console.WriteLine("What would you like to name your pet?");
+                Console.Write("\n>> ");
+                usersPet.Name = Console.ReadLine();
+                if (usersPet.Name.Length < 12) { break; }
+                else
+                {
+                    Console.Clear();
+                    Console.WriteLine("\nSorry. Name must be less than 11 characters long.");
+                    Console.Write("Press any key...");
+                    Console.ReadKey();
+                }
+            }
+        }
         public static void NameMenu2(Pet usersPet)
         {
             while (true)
@@ -296,7 +314,9 @@ namespace template_csharp_virtual_pet
                 Console.WriteLine("4. Remove a pet");
                 Console.WriteLine("5. Earn some money");
                 Console.WriteLine("6. Exit");
-
+                Console.WriteLine("\n\n'd' to discipline");
+                Console.WriteLine("'f' to feed a pet ($10)");
+                Console.WriteLine("'F' to feed all ($500)");
 
 
 
@@ -313,16 +333,16 @@ namespace template_csharp_virtual_pet
                         {
                             ActiveDisplay.DisplayStop((System.Timers.Timer)activeDisplay);//Pauses Active Display
                             Console.Clear();
-                            Shelter.DisplayShelter();//Static display
+                            //Shelter.DisplayShelter();//Static display
                             Console.WriteLine("What pet do you want to rename? ");
                             Console.SetCursorPosition(0, Shelter.cursorPos);
                             int choice = Shelter.SelectPetMenu();
-                            Menus.NameMenu2((Pet)Shelter.GetPet(choice));
+                            Menus.NameMenu((Pet)Shelter.GetPet(choice));
                         }
                         else
                         {
                             ActiveDisplay.DisplayStop((System.Timers.Timer)activeDisplay);//Pauses Active Display
-                            Menus.NameMenu2((Pet)Shelter.GetPet(1));
+                            Menus.NameMenu((Pet)Shelter.GetPet(1));
                         }
                         break;
                     case '2':
@@ -357,10 +377,6 @@ namespace template_csharp_virtual_pet
                                 Shelter.AddRoboticPet(name, subType);
                             }
                             else { subType = ""; }
-
-
-
-
                             Menus.MainMenu();
                             break;
                         }
