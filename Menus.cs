@@ -316,7 +316,9 @@ namespace template_csharp_virtual_pet
                 Console.WriteLine("6. Exit");
                 Console.WriteLine("\n\n'd' to discipline");
                 Console.WriteLine("'f' to feed a pet ($10)");
-                Console.WriteLine("'F' to feed all ($500)");
+                Console.WriteLine("'F' to feed all ($500) *Not implemented yet");
+                Console.WriteLine("Use arrow keys to change which pet you are interacting with (must have more than one pet)");
+
 
 
 
@@ -420,6 +422,10 @@ namespace template_csharp_virtual_pet
                     case '7':
                         Menus.DebugMenu();
                         break;
+                    case 'f':
+                        pet = (Pet)Shelter.GetPet(Shelter.activePetPos);
+                        pet.Feed();
+                        break;
                     default:
                         Console.Clear();
                         Shelter.DisplayShelter();//Active display
@@ -427,6 +433,15 @@ namespace template_csharp_virtual_pet
                         //Console.WriteLine("Invalid Input");
                         Console.SetCursorPosition(0, Shelter.cursorPos);
                         Console.Write("".PadRight(Console.BufferWidth) + "\r");
+                        break;
+                }
+                switch (userChoice.Key)
+                {
+                    case ConsoleKey.RightArrow:
+                        Shelter.ChangeActivePetRight();
+                        break;
+                    case ConsoleKey.LeftArrow:
+                        Shelter.ChangeActivePetLeft();
                         break;
                 }
             ActiveDisplay.DisplayStart((System.Timers.Timer)activeDisplay);//Pauses Display during input

@@ -15,6 +15,7 @@ namespace template_csharp_virtual_pet
         private static List<Pet> petShelter = new List<Pet>();
         public static int wallet = 0;
         public static int cursorPos = 12;
+        public static int activePetPos = 1;
 
         public static List<Pet> PetShelter { get; set; }
 
@@ -24,6 +25,8 @@ namespace template_csharp_virtual_pet
         public static int GetShelterSize() { return petShelter.Count; }
         public static int GetCursorPos() { return cursorPos; }
         public static void AddToWallet(int money) { wallet += money; }
+        public static void ChangeActivePetRight() { if (activePetPos < 5 && activePetPos < GetShelterSize()) { activePetPos++; } }
+        public static void ChangeActivePetLeft(){ if (activePetPos > 1) { activePetPos--; } }
         public static int SelectPetMenu()
         {
             Console.WriteLine("\n\n");
@@ -311,6 +314,16 @@ namespace template_csharp_virtual_pet
                 default:
                     break;
             }
+            switch(activePetPos)
+            {
+                case 1: Console.SetCursorPosition(6, 11); break;
+                case 2: Console.SetCursorPosition(30, 11); break;
+                case 3: Console.SetCursorPosition(53, 11); break;
+                case 4: Console.SetCursorPosition(76, 11); break;
+                case 5: Console.SetCursorPosition(97, 11); break;
+            }
+            Console.Write("___ACTIVE___\n");
+            Console.WriteLine(activePetPos);
         }
         public static void DisplayWallet()
         { Console.WriteLine("Wallet: $" + wallet); }
