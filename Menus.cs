@@ -495,13 +495,13 @@ namespace template_csharp_virtual_pet
             Console.WriteLine("1. Interact with all pets");
             Console.WriteLine("2. Choose one pet");
             Console.SetCursorPosition(0, Shelter.cursorPos);
-            string playersChoice = Console.ReadLine();
-            switch (playersChoice)
+            ConsoleKeyInfo playersChoice = Console.ReadKey(true);
+            switch (playersChoice.KeyChar)
             {
-                case "1":
+                case '1':
                     Shelter.interact();
                     break;
-                case "2":
+                case '2':
                     Shelter.InteractWithOne();
                     break;
                 default:
@@ -526,33 +526,27 @@ namespace template_csharp_virtual_pet
             Console.WriteLine("\n");
 
             Console.SetCursorPosition(0, Shelter.cursorPos);
-            string userchoice = Console.ReadLine();
+            ConsoleKeyInfo userChoice = Console.ReadKey(true);
 
-            switch (userchoice)
+            switch (userChoice.KeyChar)
             {
-                case "1":
+                case '1':
                     Console.SetCursorPosition(0, Shelter.cursorPos);
                     int choice = Shelter.SelectPetMenu();
                     if (Shelter.GetShelterSize() < 2) { choice = 1; } 
                     Pet pet = (Pet)Shelter.GetPet(choice);
                     pet.SetHealth(0);
                     break;
-                case "2":
+                case '2':
                    while(Shelter.GetShelterSize() < 5)
                     {
                         Shelter.AddOrganicPet("Tim", "Parrot");
                     }
                     break;
-                case "3":
-                    Console.SetCursorPosition(0, Shelter.cursorPos);
-                    int selection = Shelter.SelectPetMenu();
-                    if (Shelter.GetShelterSize() < 2) { selection = 1; }
-                    Pet Pet = (Pet)Shelter.GetPet(selection);
+                case '3':
                     Shelter.petClothing();
                     break;
-                case "4":
-                    break;
-                case "5":
+                case '4':
                     break;
                 default:
                     break;

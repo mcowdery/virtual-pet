@@ -477,40 +477,40 @@ namespace template_csharp_virtual_pet
             Console.WriteLine("How would you like to interact with all pets in the shelter?\n\n1. Feed\n2. Play\n3. See Doctor");
 
             Console.SetCursorPosition(0, Shelter.cursorPos);
-            var interactAll = Console.ReadLine().ToLower();
+            ConsoleKeyInfo interactAll = Console.ReadKey(true);
             for (int i = 0; i < petShelter.Count; i++)
             {
-                if (interactAll == "1")
+                if (interactAll.KeyChar == '1')
                 {
                     petShelter[i].Feed();
                 }
-                else if (interactAll == "2")
+                else if (interactAll.KeyChar == '2')
                 {
                     petShelter[i].Play();
                 }
-                else if (interactAll == "3")
+                else if (interactAll.KeyChar == '3')
                 {
                     petShelter[i].SeeDoctor();
                 }
                 petShelter[i].DisplayStatus();
             }
             var action = "";
-            if (interactAll == "1")
+            if (interactAll.KeyChar == '1')
             {
                 action = "fed";
             }
-            else if (interactAll == "2")
+            else if (interactAll.KeyChar == '2')
             {
                 action = "played with";
             }
-            else if (interactAll == "3")
+            else if (interactAll.KeyChar == '3')
             {
                 action = "visited the doctor with";
             }
             Console.Clear();
             Console.WriteLine("\nYou " + action + " all the pets");
             Console.WriteLine("\nPress enter to return to the Main Menu");
-            Console.ReadLine();
+            Console.ReadKey();
             Console.Clear();
         }
         public static void InteractWithOne()
@@ -534,8 +534,8 @@ namespace template_csharp_virtual_pet
             Console.WriteLine("How would you like to interact with this pet?\n1. Feed\n2. Play\n3. See Doctor");
 
             Console.SetCursorPosition(0, Shelter.cursorPos);
-            var interact = Console.ReadLine();
-            if (interact == "1")
+            ConsoleKeyInfo interact = Console.ReadKey(true);
+            if (interact.KeyChar == '1')
             {
                 Console.Clear();
                 petShelter[choice].Feed();
@@ -544,10 +544,10 @@ namespace template_csharp_virtual_pet
                 Console.SetCursorPosition(0, Shelter.cursorPos + 3);
                 Console.WriteLine(" You fed " + petShelter[choice].Name + " Well done!");
                 Console.WriteLine("\nPress enter to return to the Main Menu");
-                Console.ReadLine();
+                Console.ReadKey();
                 Console.Clear();
             }
-            else if (interact == "2")
+            else if (interact.KeyChar == '2')
             {
                 Console.Clear();
                 petShelter[choice].Play();
@@ -556,10 +556,10 @@ namespace template_csharp_virtual_pet
                 Console.SetCursorPosition(0, Shelter.cursorPos + 3);
                 Console.WriteLine("You played with " + petShelter[choice].Name);
                 Console.WriteLine("\nPress enter to return to the Main Menu");
-                Console.ReadLine();
+                Console.ReadKey();
                 Console.Clear();
             }
-            else if (interact == "3")
+            else if (interact.KeyChar == '3')
             {
                 Console.Clear();
                 petShelter[choice].SeeDoctor();
@@ -568,7 +568,7 @@ namespace template_csharp_virtual_pet
                 Console.SetCursorPosition(0, Shelter.cursorPos + 3);
                 Console.WriteLine(petShelter[choice].Name + " is extra healthy after seeing the doc");
                 Console.WriteLine("\nPress enter to return to the Main Menu");
-                Console.ReadLine();
+                Console.ReadKey();
                 Console.Clear();
             }
         }
@@ -582,14 +582,26 @@ namespace template_csharp_virtual_pet
             int choice = 1;
             if (GetShelterSize() > 1)
             {
-                Console.WriteLine("Which pet do you want to interact with?");
+
+                Console.Clear();
+                Shelter.DisplayShelter();//Active display
+                Console.SetCursorPosition(0, Shelter.cursorPos );
+                Console.WriteLine("\n\nWhich pet do you want to interact with?");
+                Console.SetCursorPosition(0, Shelter.cursorPos + 3);
                 choice = SelectPetMenu();
+                Console.Clear();
+
             }
             choice--;
-            Console.WriteLine("The weather is chilly would you like to add a:\n1. Sweater\n2. Scarve\n3. Hat");
 
+            Console.Clear();
+            Shelter.DisplayShelter();//Active display
+            Console.SetCursorPosition(0, Shelter.cursorPos + 3);
+            Console.WriteLine("The weather is chilly would you like to add a:\n1. Sweater\n2. Scarve\n3. Hat");
+            
             Console.SetCursorPosition(0, Shelter.cursorPos);
             ConsoleKeyInfo selection = Console.ReadKey(true);
+
 
     
             {
@@ -618,7 +630,10 @@ namespace template_csharp_virtual_pet
                     Console.SetCursorPosition(0, Shelter.cursorPos + 3);
                     Console.WriteLine("\nPress enter to return to the Main Menu");
 
+
                 }
+
+                Console.ReadKey();
                 
             }
 
