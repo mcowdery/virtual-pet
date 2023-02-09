@@ -25,11 +25,25 @@ namespace template_csharp_virtual_pet
         public static int GetShelterSize() { return petShelter.Count; }
         public static int GetCursorPos() { return cursorPos; }
         public static void AddToWallet(int money) { wallet += money; }
-        public static void ChangeActivePetRight() { if (activePetPos < 5 && activePetPos < GetShelterSize()) { activePetPos++; } }
-        public static void ChangeActivePetLeft(){ if (activePetPos > 1) { activePetPos--; } }
+        public static void ChangeActivePetRight() { if (activePetPos < 5 && activePetPos < GetShelterSize())
+            {
+                //ActiveDisplay.DisplayStop((System.Timers.Timer)activeDisplay);//Pauses Display
+                Console.SetCursorPosition(6, 11);
+                Console.Write("".PadRight(Console.BufferWidth) + "\r");
+                activePetPos++; 
+            } 
+        }
+        public static void ChangeActivePetLeft()
+        { if (activePetPos > 1) 
+            {
+                Console.SetCursorPosition(6, 11);
+                Console.Write("".PadRight(Console.BufferWidth) + "\r");
+                activePetPos--; }
+
+        }
         public static int SelectPetMenu()
         {
-            Console.WriteLine("\n\n");
+            //Console.WriteLine("\n\n");
             if (Shelter.GetShelterSize() > 1)
             {
                 int selection = 0;
@@ -44,8 +58,13 @@ namespace template_csharp_virtual_pet
                         count++;
                     }
                     Console.SetCursorPosition(0, cursorPos);
-                    try { 
-                    selection = Convert.ToInt32(Console.ReadLine());
+                    try 
+                    {
+                        ConsoleKeyInfo UserInput = Console.ReadKey();
+                        if (char.IsDigit(UserInput.KeyChar))
+                        {
+                            selection = int.Parse(UserInput.KeyChar.ToString()); // use Parse if it's a Digit
+                        }
 
                         if (selection >= 0 && selection <= count - 1)
                         { return selection; }
@@ -90,6 +109,7 @@ namespace template_csharp_virtual_pet
             shelterNum++;
             switch (shelterNum)
             {
+                case 1: Console.SetCursorPosition(0, position); break;
                 case 2: Console.SetCursorPosition(23, position); break;
                 case 3: Console.SetCursorPosition(46, position); break;
                 case 4: Console.SetCursorPosition(69, position); break;
@@ -223,8 +243,9 @@ namespace template_csharp_virtual_pet
         }
         public static void DisplayShelter()
         {
+            Console.SetCursorPosition(0, 0);
             DisplayWallet();
-            Console.WriteLine("");
+            Console.SetCursorPosition(0, 2);
             switch (petShelter.Count)
             {
                 case 1:
@@ -483,6 +504,7 @@ namespace template_csharp_virtual_pet
             Console.WriteLine("\nYou " + action + " all the pets");
             Console.WriteLine("\nPress enter to return to the Main Menu");
             Console.ReadLine();
+            Console.Clear();
         }
         public static void InteractWithOne()
         {
@@ -516,6 +538,7 @@ namespace template_csharp_virtual_pet
                 Console.WriteLine(" You fed " + petShelter[choice].Name + " Well done!");
                 Console.WriteLine("\nPress enter to return to the Main Menu");
                 Console.ReadLine();
+                Console.Clear();
             }
             else if (interact == "2")
             {
@@ -527,6 +550,7 @@ namespace template_csharp_virtual_pet
                 Console.WriteLine("You played with " + petShelter[choice].Name);
                 Console.WriteLine("\nPress enter to return to the Main Menu");
                 Console.ReadLine();
+                Console.Clear();
             }
             else if (interact == "3")
             {
@@ -538,6 +562,7 @@ namespace template_csharp_virtual_pet
                 Console.WriteLine(petShelter[choice].Name + " is extra healthy after seeing the doc");
                 Console.WriteLine("\nPress enter to return to the Main Menu");
                 Console.ReadLine();
+                Console.Clear();
             }
         }
     }

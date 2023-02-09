@@ -85,7 +85,9 @@ namespace template_csharp_virtual_pet
                     Console.SetCursorPosition(0, Shelter.cursorPos + 3);
                     Console.WriteLine("OOH NOOOO...." + Name + " The " + Species + " Died!!\nYou have to pay attention and move quicker next time.");
                     Console.WriteLine("\nPress any key to continue...");
-                    //Console.ReadKey();
+
+                    Console.ReadKey();
+                    Console.Clear();
                 }
                 //Changes Pet Status
 

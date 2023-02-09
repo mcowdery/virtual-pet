@@ -39,6 +39,7 @@ namespace template_csharp_virtual_pet
                     Console.WriteLine("OOH NOOOO...." + Name + " The " + Species + " Died!!\nYou have to pay attention and move quicker next time.\nGAME OVER");
                     Console.WriteLine("Press any key to continue...");
                     Console.ReadKey();
+                    Console.Clear();
                 }
             }
         }
