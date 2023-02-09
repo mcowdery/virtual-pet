@@ -47,26 +47,26 @@ namespace template_csharp_virtual_pet
                 }
                 if (time % rnd.Next(10, 25) == 0)
                 {
-                    switch (rnd.Next(1, 4))
+                    switch (rnd.Next(1, 30))
                     {
                         case 1:
                             SetStatus("Beeping"); break; //
                         case 2:
-                            SetStatus("Breaking"); break;  //bad money starts ticking negative
+                            SetStatus("Breaking"); break;
                         case 3:
                             SetStatus("Updating"); break;
                         case 4:
                             SetStatus("Cleaning"); break;
                         case 5:
-                            SetStatus("Hacking"); break;
+                            SetStatus("Hacking"); break; //bad
                         case 6:
-                            SetStatus("SDeveloping"); break;
+                            SetStatus("Programming"); break;
                         case 7:
                             SetStatus("Computing"); break; //exercise
                         case 8:
-                            SetStatus("Rusting"); break; //bad
+                            SetStatus("Rusting"); break;
                         case 9:
-                            SetStatus("Staring"); break;
+                            SetStatus("Staring"); break; //bad
                         case 10:
                             SetStatus("Loading"); break;
                         case 11:
@@ -89,6 +89,26 @@ namespace template_csharp_virtual_pet
                             SetStatus("Git Commit..."); break;
                         case 20:
                             SetStatus("Git Push..."); break;
+                        case 21:
+                            SetStatus("Scheming"); break; //bad
+                        case 22:
+                            SetStatus("Laughing"); break; //bad
+                        case 23:
+                            SetStatus("Plotting"); break; //bad
+                        case 24:
+                            SetStatus("Stealing"); break; //bad
+                        case 25:
+                            SetStatus("Threatening"); break; //bad
+                        case 26:
+                            SetStatus("Defrauding"); break; //bad
+                        case 27:
+                            SetStatus("Meditating"); break; //bad
+                        case 28:
+                            SetStatus("Escaping"); break; //bad
+                        case 29:
+                            SetStatus("Terrorism"); break; //bad
+                        case 30:
+                            SetStatus("Espionage"); break; //bad
                     }
                 }
             }

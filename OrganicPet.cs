@@ -94,7 +94,7 @@ namespace template_csharp_virtual_pet
 
                 if (time % rnd.Next(10, 25) == 0)
                 {
-                    switch (rnd.Next(1, 4))
+                    switch (rnd.Next(1, 20))
                     {
                         case 1:
                             SetStatus("Playing"); break; //
@@ -113,15 +113,15 @@ namespace template_csharp_virtual_pet
                         case 8:
                             SetStatus("RanAway"); break; //bad
                         case 9:
-                            SetStatus("Fighting"); break;
+                            SetStatus("Fighting"); break;//
                         case 10:
-                            SetStatus("Scratching"); break;
+                            SetStatus("Scratching"); break;//
                         case 11:
-                            SetStatus("Breaking"); break;
+                            SetStatus("Breaking"); break;//
                         case 12:
-                            SetStatus("Peeing"); break;
+                            SetStatus("Peeing"); break;//
                         case 13:
-                            SetStatus("Pooping"); break;
+                            SetStatus("Pooping"); break;//
                         case 14:
                             SetStatus("Hunting"); break;
                         case 15:
@@ -136,6 +136,24 @@ namespace template_csharp_virtual_pet
                             SetStatus("Sprinting"); break;
                         case 20:
                             SetStatus("Mingling"); break;
+                        case 21:
+                            SetStatus("Bored"); break;
+                        case 22:
+                            SetStatus("Chasing"); break;
+                        case 23:
+                            SetStatus("Spelunking"); break;
+                        case 24:
+                            SetStatus("Acting"); break;
+                        case 25:
+                            SetStatus("Wooing"); break;
+                        case 26:
+                            SetStatus("Rolling"); break;
+                        case 27:
+                            SetStatus("Prancing"); break;
+                        case 28:
+                            SetStatus("Scheming"); break;
+                        case 29:
+                            SetStatus("Laughing Meniacally"); break;
                     }
                 }
             }

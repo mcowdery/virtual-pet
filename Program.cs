@@ -9,6 +9,7 @@ bool menuUp = true;
 while (menuUp)
 {
     //Initial Set up
+    Console.SetWindowSize(120, 35);
     Console.ForegroundColor = ConsoleColor.White;
     Console.CursorVisible = false;
     //Console.BackgroundColor = ConsoleColor.DarkGray;

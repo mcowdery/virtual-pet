@@ -14,6 +14,7 @@ namespace template_csharp_virtual_pet
     {
         public static void IntroMenu()
         {
+            /*
             string welcomeMessage = "WELCOME TO MAS CODE'S";
             welcomeMessage.ToCharArray();
             Console.Write(welcomeMessage[0]);
@@ -457,7 +458,7 @@ namespace template_csharp_virtual_pet
                 }
             }
 
-            //Console.ReadKey();
+            *///Console.ReadKey();
         }
         public static string OrganicOrRoboticMenu()
         {

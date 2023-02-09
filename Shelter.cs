@@ -145,7 +145,7 @@ namespace template_csharp_virtual_pet
             Console.WriteLine(String.Format($"|  Boredom   {petShelter[shelterNum].Boredom,5}/60  |  "));
             DisplaySetCursorPosition(shelterNum, 7);
             Console.Write(String.Format($"|  Condition   "));
-            if (petShelter[shelterNum].Condition == "Starving")
+            if (petShelter[shelterNum].Condition == "Starving" || petShelter[shelterNum].Condition == "Bored")
             {
                 Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.Write($"{petShelter[shelterNum].Condition.Remove(5),6}");
@@ -171,6 +171,19 @@ namespace template_csharp_virtual_pet
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.Write($"{petShelter[shelterNum].Status,9}");
                 Console.ForegroundColor = ConsoleColor.White;
+                Console.WriteLine("  | ");
+            }
+            else if (petShelter[shelterNum].Status == "RanAway" ||
+                petShelter[shelterNum].Status == "RanAway" ||
+                petShelter[shelterNum].Status == "Fighting" ||
+                petShelter[shelterNum].Status == "Scratching" ||
+                petShelter[shelterNum].Status == "Breaking" ||
+                petShelter[shelterNum].Status == "Peeing" ||
+                petShelter[shelterNum].Status == "Pooping")
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.Write($"{petShelter[shelterNum].Status,9}");
+                Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.WriteLine("  | ");
             }
             else
