@@ -181,9 +181,9 @@ namespace template_csharp_virtual_pet
                 petShelter[shelterNum].Status == "Peeing" ||
                 petShelter[shelterNum].Status == "Pooping")
             {
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.Write($"{petShelter[shelterNum].Status,9}");
                 Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.Write($"{petShelter[shelterNum].Status,9}");
+                Console.ForegroundColor = ConsoleColor.White;
                 Console.WriteLine("  | ");
             }
             else
