@@ -14,22 +14,450 @@ namespace template_csharp_virtual_pet
     {
         public static void IntroMenu()
         {
-            Console.Clear();
-            Console.WriteLine("WELCOME TO MAS CODE'S\n");
-            Console.WriteLine(@"                _________ _______ _________          _______  _             _______  _______ _________  ");
-            Console.WriteLine(@"       |\     /|\__   __/(  ____ )\__   __/|\     /|(  ___  )( \           (  ____ )(  ____ \\__   ___| ");
-            Console.WriteLine(@"       | )   ( |   ) (   | (    )|   ) (   | )   ( || (   ) || (           | (    )|| (    \/   ) (     ");
-            Console.WriteLine(@"       | |   | |   | |   | (____)|   | |   | |   | || (___) || |           | (____)|| (__       | |     ");
-            Console.WriteLine(@"       ( (   ) )   | |   |     __)   | |   | |   | ||  ___  || |           |  _____)|  __)      | |     ");
-            Console.WriteLine(@"       \ \_ / /    | |   | (\ (      | |   | |   | || (   ) || |           | (      | (         | |     ");
-            Console.WriteLine(@"        \    /  ___) (___| ) \ \__   | |   | (___) || )   ( || (____/\     | )      | (____/\   | |     ");
-            Console.WriteLine(@"         \__/   \_______/|/   \__/   )_(   (_______)|/     \|(_______/     |__|    |_________| |___|    " + "\n");
-            Console.WriteLine("This pocket universe moves fast, " +
-                "You will have to move fast as well to keep your new" +
-                " friend alive and happy.\n");
+            string welcomeMessage = "WELCOME TO MAS CODE'S";
+            welcomeMessage.ToCharArray();
+            Console.Write(welcomeMessage[0]);
 
-            Console.WriteLine("\nPress any key to continue...");
+            System.Timers.Timer welcome2 = new(0150);
+            welcome2.Start();
+            welcome2.Elapsed += welcom2_Elapsed;
             Console.ReadKey();
+            void welcom2_Elapsed(object? sender, System.Timers.ElapsedEventArgs e)
+            {
+                Console.Write(welcomeMessage[1]);
+                welcome2.Stop();
+                welcome2.Dispose();
+
+                System.Timers.Timer welcome3 = new(0150);
+                welcome3.Start();
+                welcome3.Elapsed += welcom3_Elapsed;
+                void welcom3_Elapsed(object? sender, System.Timers.ElapsedEventArgs e)
+                {
+                    Console.Write(welcomeMessage[2]);
+                    welcome3.Stop();
+                    welcome3.Dispose();
+
+                    System.Timers.Timer welcome4 = new(0150);
+                    welcome4.Start();
+                    welcome4.Elapsed += welcom4_Elapsed;
+                    void welcom4_Elapsed(object? sender, System.Timers.ElapsedEventArgs e)
+                    {
+                        Console.Write(welcomeMessage[3]);
+                        welcome4.Stop();
+                        welcome4.Dispose();
+
+                        System.Timers.Timer welcome5 = new(0150);
+                        welcome5.Start();
+                        welcome5.Elapsed += welcom5_Elapsed;
+                        void welcom5_Elapsed(object? sender, System.Timers.ElapsedEventArgs e)
+                        {
+                            Console.Write(welcomeMessage[4]);
+                            welcome5.Stop();
+                            welcome5.Dispose();
+
+                            System.Timers.Timer welcome6 = new(0150);
+                            welcome6.Start();
+                            welcome6.Elapsed += welcom6_Elapsed;
+                            void welcom6_Elapsed(object? sender, System.Timers.ElapsedEventArgs e)
+                            {
+                                Console.Write(welcomeMessage[5]);
+                                welcome6.Stop();
+                                welcome6.Dispose();
+
+                                System.Timers.Timer welcome7 = new(0150);
+                                welcome7.Start();
+                                welcome7.Elapsed += welcom7_Elapsed;
+                                void welcom7_Elapsed(object? sender, System.Timers.ElapsedEventArgs e)
+                                {
+                                    Console.Write(welcomeMessage[6]);
+                                    welcome7.Stop();
+                                    welcome7.Dispose();
+
+                                    System.Timers.Timer welcome8 = new(0150);
+                                    welcome8.Start();
+                                    welcome8.Elapsed += welcom8_Elapsed;
+                                    void welcom8_Elapsed(object? sender, System.Timers.ElapsedEventArgs e)
+                                    {
+                                        Console.Write(welcomeMessage[7]);
+                                        welcome8.Stop();
+                                        welcome8.Dispose();
+
+                                        System.Timers.Timer welcome9 = new(0150);
+                                        welcome9.Start();
+                                        welcome9.Elapsed += welcom9_Elapsed;
+                                        void welcom9_Elapsed(object? sender, System.Timers.ElapsedEventArgs e)
+                                        {
+                                            Console.Write(welcomeMessage[8]);
+                                            welcome9.Stop();
+                                            welcome9.Dispose();
+
+                                            System.Timers.Timer welcome10 = new(0150);
+                                            welcome10.Start();
+                                            welcome10.Elapsed += welcom10_Elapsed;
+                                            void welcom10_Elapsed(object? sender, System.Timers.ElapsedEventArgs e)
+                                            {
+                                                Console.Write(welcomeMessage[9]);
+                                                welcome10.Stop();
+                                                welcome10.Dispose();
+
+                                                System.Timers.Timer welcome11 = new(0150);
+                                                welcome11.Start();
+                                                welcome11.Elapsed += welcom11_Elapsed;
+                                                void welcom11_Elapsed(object? sender, System.Timers.ElapsedEventArgs e)
+                                                {
+                                                    Console.Write(welcomeMessage[10]);
+                                                    welcome11.Stop();
+                                                    welcome11.Dispose();
+
+                                                    System.Timers.Timer welcome12 = new(0150);
+                                                    welcome12.Start();
+                                                    welcome12.Elapsed += welcom12_Elapsed;
+                                                    void welcom12_Elapsed(object? sender, System.Timers.ElapsedEventArgs e)
+                                                    {
+                                                        Console.Write(welcomeMessage[11]);
+                                                        welcome12.Stop();
+                                                        welcome12.Dispose();
+
+                                                        System.Timers.Timer welcome13 = new(0150);
+                                                        welcome13.Start();
+                                                        welcome13.Elapsed += welcom13_Elapsed;
+                                                        void welcom13_Elapsed(object? sender, System.Timers.ElapsedEventArgs e)
+                                                        {
+                                                            Console.Write(welcomeMessage[12]);
+                                                            welcome13.Stop();
+                                                            welcome13.Dispose();
+
+                                                            System.Timers.Timer welcome14 = new(0150);
+                                                            welcome14.Start();
+                                                            welcome14.Elapsed += welcom13_Elapsed;
+                                                            void welcom13_Elapsed(object? sender, System.Timers.ElapsedEventArgs e)
+                                                            {
+                                                                Console.Write(welcomeMessage[13]);
+                                                                welcome14.Stop();
+                                                                welcome14.Dispose();
+
+                                                                System.Timers.Timer welcome15 = new(0150);
+                                                                welcome15.Start();
+                                                                welcome15.Elapsed += welcom15_Elapsed;
+                                                                void welcom15_Elapsed(object? sender, System.Timers.ElapsedEventArgs e)
+                                                                {
+                                                                    Console.Write(welcomeMessage[14]);
+                                                                    welcome15.Stop();
+                                                                    welcome15.Dispose();
+
+                                                                    System.Timers.Timer welcome16 = new(0150);
+                                                                    welcome16.Start();
+                                                                    welcome16.Elapsed += welcom16_Elapsed;
+                                                                    void welcom16_Elapsed(object? sender, System.Timers.ElapsedEventArgs e)
+                                                                    {
+                                                                        Console.Write(welcomeMessage[15]);
+                                                                        welcome16.Stop();
+                                                                        welcome16.Dispose();
+
+                                                                        System.Timers.Timer welcome17 = new(0150);
+                                                                        welcome17.Start();
+                                                                        welcome17.Elapsed += welcom17_Elapsed;
+                                                                        void welcom17_Elapsed(object? sender, System.Timers.ElapsedEventArgs e)
+                                                                        {
+                                                                            Console.Write(welcomeMessage[16]);
+                                                                            welcome17.Stop();
+                                                                            welcome17.Dispose();
+
+                                                                            System.Timers.Timer welcome18 = new(0150);
+                                                                            welcome18.Start();
+                                                                            welcome18.Elapsed += welcom18_Elapsed;
+                                                                            void welcom18_Elapsed(object? sender, System.Timers.ElapsedEventArgs e)
+                                                                            {
+                                                                                Console.Write(welcomeMessage[17]);
+                                                                                welcome18.Stop();
+                                                                                welcome18.Dispose();
+
+                                                                                System.Timers.Timer welcome19 = new(0150);
+                                                                                welcome19.Start();
+                                                                                welcome19.Elapsed += welcom19_Elapsed;
+                                                                                void welcom19_Elapsed(object? sender, System.Timers.ElapsedEventArgs e)
+                                                                                {
+                                                                                    Console.Write(welcomeMessage[18]);
+                                                                                    welcome19.Stop();
+                                                                                    welcome19.Dispose();
+
+                                                                                    System.Timers.Timer welcome20 = new(0150);
+                                                                                    welcome20.Start();
+                                                                                    welcome20.Elapsed += welcom20_Elapsed;
+                                                                                    void welcom20_Elapsed(object? sender, System.Timers.ElapsedEventArgs e)
+                                                                                    {
+                                                                                        Console.Write(welcomeMessage[19]);
+                                                                                        welcome20.Stop();
+                                                                                        welcome20.Dispose();
+
+                                                                                        System.Timers.Timer welcome21 = new(0150);
+                                                                                        welcome21.Start();
+                                                                                        welcome21.Elapsed += welcom20_Elapsed;
+                                                                                        void welcom20_Elapsed(object? sender, System.Timers.ElapsedEventArgs e)
+                                                                                        {
+                                                                                            Console.Write(welcomeMessage[20] + "\n");
+                                                                                            Console.ForegroundColor = ConsoleColor.Red;
+
+                                                                                            welcome21.Stop();
+                                                                                            welcome21.Dispose();
+
+                                                                                            //welcome message ends
+
+                                                                                            //start of title
+                                                                                            System.Timers.Timer title1 = new(1000);
+                                                                                            title1.Start();
+                                                                                            title1.Elapsed += Title1_Elapsed;
+                                                                                            void Title1_Elapsed(object? sender, System.Timers.ElapsedEventArgs e)
+                                                                                            {
+                                                                                                Console.SetCursorPosition(0, 2);
+                                                                                                Console.WriteLine("---------------------------------------------------------------------------------------------------");
+                                                                                                Console.WriteLine(@"_________  ");
+                                                                                                Console.WriteLine(@"\__   ___| ");
+                                                                                                Console.WriteLine(@"   ) (     ");
+                                                                                                Console.WriteLine(@"   | |     ");
+                                                                                                Console.WriteLine(@"   | |     ");
+                                                                                                Console.WriteLine(@"   | |     ");
+                                                                                                Console.WriteLine(@"   | |     ");
+                                                                                                Console.WriteLine(@"  |___|    " + "\n");
+                                                                                                Console.WriteLine("---------------------------------------------------------------------------------------------------\n");
+
+                                                                                                title1.Stop();
+                                                                                                title1.Dispose();
+
+                                                                                                System.Timers.Timer title2 = new(0150);
+                                                                                                title2.Start();
+                                                                                                title2.Elapsed += Title2_Elapsed;
+                                                                                                void Title2_Elapsed(object? sender, System.Timers.ElapsedEventArgs e)
+                                                                                                {
+                                                                                                    Console.SetCursorPosition(0, 2);
+                                                                                                    Console.WriteLine("---------------------------------------------------------------------------------------------------");
+                                                                                                    Console.WriteLine(@" _______ _________  ");
+                                                                                                    Console.WriteLine(@"(  ____ \\__   ___| ");
+                                                                                                    Console.WriteLine(@"| (    \/   ) (     ");
+                                                                                                    Console.WriteLine(@"| (__       | |     ");
+                                                                                                    Console.WriteLine(@"|  __)      | |     ");
+                                                                                                    Console.WriteLine(@"| (         | |     ");
+                                                                                                    Console.WriteLine(@"| (____/\   | |     ");
+                                                                                                    Console.WriteLine(@"|_______|  |___|    " + "\n");
+                                                                                                    Console.WriteLine("---------------------------------------------------------------------------------------------------\n");
+
+                                                                                                    title2.Stop();
+                                                                                                    title2.Dispose();
+
+                                                                                                    System.Timers.Timer title3 = new(0150);
+                                                                                                    title3.Start();
+                                                                                                    title3.Elapsed += Title3_Elapsed;
+                                                                                                    void Title3_Elapsed(object? sender, System.Timers.ElapsedEventArgs e)
+                                                                                                    {
+                                                                                                        Console.SetCursorPosition(0, 2);
+                                                                                                        Console.WriteLine("---------------------------------------------------------------------------------------------------");
+                                                                                                        Console.WriteLine(@" _______  _______ _________  ");
+                                                                                                        Console.WriteLine(@"(  ____ )(  ____ \\__   ___| ");
+                                                                                                        Console.WriteLine(@"| (    )|| (    \/   ) (     ");
+                                                                                                        Console.WriteLine(@"| (____)|| (__       | |     ");
+                                                                                                        Console.WriteLine(@"|  _____)|  __)      | |     ");
+                                                                                                        Console.WriteLine(@"| (      | (         | |     ");
+                                                                                                        Console.WriteLine(@"| )      | (____/\   | |     ");
+                                                                                                        Console.WriteLine(@"|__|     |_______|  |___|    " + "\n");
+                                                                                                        Console.WriteLine("---------------------------------------------------------------------------------------------------\n");
+
+                                                                                                        title3.Stop();
+                                                                                                        title3.Dispose();
+
+                                                                                                        System.Timers.Timer title4 = new(0150);
+                                                                                                        title4.Start();
+                                                                                                        title4.Elapsed += Title4_Elapsed;
+                                                                                                        void Title4_Elapsed(object? sender, System.Timers.ElapsedEventArgs e)
+                                                                                                        {
+                                                                                                            Console.SetCursorPosition(0, 2);
+                                                                                                            Console.WriteLine("---------------------------------------------------------------------------------------------------");
+                                                                                                            Console.WriteLine(@" _             _______  _______ _________  ");
+                                                                                                            Console.WriteLine(@"( \           (  ____ )(  ____ \\__   ___| ");
+                                                                                                            Console.WriteLine(@"| (           | (    )|| (    \/   ) (     ");
+                                                                                                            Console.WriteLine(@"| |           | (____)|| (__       | |     ");
+                                                                                                            Console.WriteLine(@"| |           |  _____)|  __)      | |     ");
+                                                                                                            Console.WriteLine(@"| |           | (      | (         | |     ");
+                                                                                                            Console.WriteLine(@"| (____/\     | )      | (____/\   | |     ");
+                                                                                                            Console.WriteLine(@"(_______/     |__|     |_______|  |___|    " + "\n");
+                                                                                                            Console.WriteLine("---------------------------------------------------------------------------------------------------\n");
+
+                                                                                                            title4.Stop();
+                                                                                                            title4.Dispose();
+
+                                                                                                            System.Timers.Timer title5 = new(0150);
+                                                                                                            title5.Start();
+                                                                                                            title5.Elapsed += Title5_Elapsed;
+                                                                                                            void Title5_Elapsed(object? sender, System.Timers.ElapsedEventArgs e)
+                                                                                                            {
+                                                                                                                Console.SetCursorPosition(0, 2);
+                                                                                                                Console.WriteLine("---------------------------------------------------------------------------------------------------");
+                                                                                                                Console.WriteLine(@" _______  _             _______  _______ _________  ");
+                                                                                                                Console.WriteLine(@"(  ___  )( \           (  ____ )(  ____ \\__   ___| ");
+                                                                                                                Console.WriteLine(@"| (   ) || (           | (    )|| (    \/   ) (     ");
+                                                                                                                Console.WriteLine(@"| (___) || |           | (____)|| (__       | |     ");
+                                                                                                                Console.WriteLine(@"|  ___  || |           |  _____)|  __)      | |     ");
+                                                                                                                Console.WriteLine(@"| (   ) || |           | (      | (         | |     ");
+                                                                                                                Console.WriteLine(@"| )   ( || (____/\     | )      | (____/\   | |     ");
+                                                                                                                Console.WriteLine(@"|/     \|(_______/     |__|     |_______|  |___|    " + "\n");
+                                                                                                                Console.WriteLine("---------------------------------------------------------------------------------------------------\n");
+
+                                                                                                                title5.Stop();
+                                                                                                                title5.Dispose();
+
+                                                                                                                System.Timers.Timer title6 = new(0150);
+                                                                                                                title6.Start();
+                                                                                                                title6.Elapsed += Title6_Elapsed;
+                                                                                                                void Title6_Elapsed(object? sender, System.Timers.ElapsedEventArgs e)
+                                                                                                                {
+                                                                                                                    Console.SetCursorPosition(0, 2);
+                                                                                                                    Console.WriteLine("---------------------------------------------------------------------------------------------------");
+                                                                                                                    Console.WriteLine(@"          _______  _             _______  _______ _________  ");
+                                                                                                                    Console.WriteLine(@"|\     /|(  ___  )( \           (  ____ )(  ____ \\__   ___| ");
+                                                                                                                    Console.WriteLine(@"| )   ( || (   ) || (           | (    )|| (    \/   ) (     ");
+                                                                                                                    Console.WriteLine(@"| |   | || (___) || |           | (____)|| (__       | |     ");
+                                                                                                                    Console.WriteLine(@"| |   | ||  ___  || |           |  _____)|  __)      | |     ");
+                                                                                                                    Console.WriteLine(@"| |   | || (   ) || |           | (      | (         | |     ");
+                                                                                                                    Console.WriteLine(@"| (___) || )   ( || (____/\     | )      | (____/\   | |     ");
+                                                                                                                    Console.WriteLine(@"(_______)|/     \|(_______/     |__|     |_______|  |___|    " + "\n");
+                                                                                                                    Console.WriteLine("---------------------------------------------------------------------------------------------------\n");
+
+                                                                                                                    title6.Stop();
+                                                                                                                    title6.Dispose();
+
+                                                                                                                    System.Timers.Timer title7 = new(0150);
+                                                                                                                    title7.Start();
+                                                                                                                    title7.Elapsed += Title7_Elapsed;
+                                                                                                                    void Title7_Elapsed(object? sender, System.Timers.ElapsedEventArgs e)
+                                                                                                                    {
+                                                                                                                        Console.SetCursorPosition(0, 2);
+                                                                                                                        Console.WriteLine("---------------------------------------------------------------------------------------------------");
+                                                                                                                        Console.WriteLine(@"_________          _______  _             _______  _______ _________  ");
+                                                                                                                        Console.WriteLine(@"\__   __/|\     /|(  ___  )( \           (  ____ )(  ____ \\__   ___| ");
+                                                                                                                        Console.WriteLine(@"   ) (   | )   ( || (   ) || (           | (    )|| (    \/   ) (     ");
+                                                                                                                        Console.WriteLine(@"   | |   | |   | || (___) || |           | (____)|| (__       | |     ");
+                                                                                                                        Console.WriteLine(@"   | |   | |   | ||  ___  || |           |  _____)|  __)      | |     ");
+                                                                                                                        Console.WriteLine(@"   | |   | |   | || (   ) || |           | (      | (         | |     ");
+                                                                                                                        Console.WriteLine(@"   | |   | (___) || )   ( || (____/\     | )      | (____/\   | |     ");
+                                                                                                                        Console.WriteLine(@"   )_(   (_______)|/     \|(_______/     |__|     |_______|  |___|    " + "\n");
+                                                                                                                        Console.WriteLine("---------------------------------------------------------------------------------------------------\n");
+
+                                                                                                                        title7.Stop();
+                                                                                                                        title7.Dispose();
+
+                                                                                                                        System.Timers.Timer title8 = new(0150);
+                                                                                                                        title8.Start();
+                                                                                                                        title8.Elapsed += Title8_Elapsed;
+                                                                                                                        void Title8_Elapsed(object? sender, System.Timers.ElapsedEventArgs e)
+                                                                                                                        {
+                                                                                                                            Console.SetCursorPosition(0, 2);
+                                                                                                                            Console.WriteLine("---------------------------------------------------------------------------------------------------");
+                                                                                                                            Console.WriteLine(@" _______ _________          _______  _             _______  _______ _________  ");
+                                                                                                                            Console.WriteLine(@"(  ____ )\__   __/|\     /|(  ___  )( \           (  ____ )(  ____ \\__   ___| ");
+                                                                                                                            Console.WriteLine(@"| (    )|   ) (   | )   ( || (   ) || (           | (    )|| (    \/   ) (     ");
+                                                                                                                            Console.WriteLine(@"| (____)|   | |   | |   | || (___) || |           | (____)|| (__       | |     ");
+                                                                                                                            Console.WriteLine(@"|     __)   | |   | |   | ||  ___  || |           |  _____)|  __)      | |     ");
+                                                                                                                            Console.WriteLine(@"| (\ (      | |   | |   | || (   ) || |           | (      | (         | |     ");
+                                                                                                                            Console.WriteLine(@"| ) \ \__   | |   | (___) || )   ( || (____/\     | )      | (____/\   | |     ");
+                                                                                                                            Console.WriteLine(@"|/   \__/   )_(   (_______)|/     \|(_______/     |__|     |_______|  |___|    " + "\n");
+                                                                                                                            Console.WriteLine("---------------------------------------------------------------------------------------------------\n");
+                                                                                                                            title8.Stop();
+                                                                                                                            title8.Dispose();
+
+                                                                                                                            System.Timers.Timer title9 = new(0150);
+                                                                                                                            title9.Start();
+                                                                                                                            title9.Elapsed += Title9_Elapsed;
+                                                                                                                            void Title9_Elapsed(object? sender, System.Timers.ElapsedEventArgs e)
+                                                                                                                            {
+                                                                                                                                Console.SetCursorPosition(0, 2);
+                                                                                                                                Console.WriteLine("---------------------------------------------------------------------------------------------------");
+                                                                                                                                Console.WriteLine(@"_________ _______ _________          _______  _             _______  _______ _________  ");
+                                                                                                                                Console.WriteLine(@"\__   __/(  ____ )\__   __/|\     /|(  ___  )( \           (  ____ )(  ____ \\__   ___| ");
+                                                                                                                                Console.WriteLine(@"   ) (   | (    )|   ) (   | )   ( || (   ) || (           | (    )|| (    \/   ) (     ");
+                                                                                                                                Console.WriteLine(@"   | |   | (____)|   | |   | |   | || (___) || |           | (____)|| (__       | |     ");
+                                                                                                                                Console.WriteLine(@"   | |   |     __)   | |   | |   | ||  ___  || |           |  _____)|  __)      | |     ");
+                                                                                                                                Console.WriteLine(@"   | |   | (\ (      | |   | |   | || (   ) || |           | (      | (         | |     ");
+                                                                                                                                Console.WriteLine(@"___) (___| ) \ \__   | |   | (___) || )   ( || (____/\     | )      | (____/\   | |     ");
+                                                                                                                                Console.WriteLine(@"\_______/|/   \__/   )_(   (_______)|/     \|(_______/     |__|    |_________| |___|    " + "\n");
+                                                                                                                                Console.WriteLine("---------------------------------------------------------------------------------------------------\n");
+                                                                                                                                title9.Stop();
+                                                                                                                                title9.Dispose();
+
+                                                                                                                                System.Timers.Timer title10 = new(0150);
+                                                                                                                                title10.Start();
+                                                                                                                                title10.Elapsed += Title10_Elapsed;
+                                                                                                                                void Title10_Elapsed(object? sender, System.Timers.ElapsedEventArgs e)
+                                                                                                                                {
+                                                                                                                                    Console.SetCursorPosition(0, 2);
+                                                                                                                                    Console.WriteLine("---------------------------------------------------------------------------------------------------");
+                                                                                                                                    Console.WriteLine(@"          _________ _______ _________          _______  _             _______  _______ _________  ");
+                                                                                                                                    Console.WriteLine(@" |\     /|\__   __/(  ____ )\__   __/|\     /|(  ___  )( \           (  ____ )(  ____ \\__   ___| ");
+                                                                                                                                    Console.WriteLine(@" | )   ( |   ) (   | (    )|   ) (   | )   ( || (   ) || (           | (    )|| (    \/   ) (     ");
+                                                                                                                                    Console.WriteLine(@" | |   | |   | |   | (____)|   | |   | |   | || (___) || |           | (____)|| (__       | |     ");
+                                                                                                                                    Console.WriteLine(@" ( (   ) )   | |   |     __)   | |   | |   | ||  ___  || |           |  _____)|  __)      | |     ");
+                                                                                                                                    Console.WriteLine(@" \ \_ / /    | |   | (\ (      | |   | |   | || (   ) || |           | (      | (         | |     ");
+                                                                                                                                    Console.WriteLine(@"  \    /  ___) (___| ) \ \__   | |   | (___) || )   ( || (____/\     | )      | (____/\   | |     ");
+                                                                                                                                    Console.WriteLine(@"   \__/   \_______/|/   \__/   )_(   (_______)|/     \|(_______/     |__|    |_________| |___|    " + "\n");
+                                                                                                                                    Console.WriteLine("---------------------------------------------------------------------------------------------------\n");
+                                                                                                                                    Console.ForegroundColor = ConsoleColor.White;
+                                                                                                                                    title10.Stop();
+                                                                                                                                    title10.Dispose();
+
+                                                                                                                                    System.Timers.Timer title11 = new(3000);
+                                                                                                                                    title11.Start();
+                                                                                                                                    title11.Elapsed += Title11_Elapsed;
+                                                                                                                                    void Title11_Elapsed(object? sender, System.Timers.ElapsedEventArgs e)
+                                                                                                                                    {
+                                                                                                                                        title11.Stop();
+                                                                                                                                        title11.Dispose();
+                                                                                                                                        Console.WriteLine("This pocket universe moves fast, " +
+                                                                                                                                        "You will have to move fast as well to keep your new" +
+                                                                                                                                        " friends alive and happy.\n\n");
+                                                                                                                                        Console.WriteLine("\nPress any key to continue...");
+
+                                                                                                                                    }
+
+                                                                                                                                }
+
+                                                                                                                            }
+
+                                                                                                                        }
+
+                                                                                                                    }
+
+                                                                                                                }
+
+                                                                                                            }
+
+                                                                                                        }
+
+                                                                                                    }
+
+                                                                                                }
+                                                                                            }
+
+
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+
         }
         public static string OrganicOrRoboticMenu()
         {
