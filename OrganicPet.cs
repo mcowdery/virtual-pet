@@ -74,6 +74,7 @@ namespace template_csharp_virtual_pet
 
                 if (Health <= 0)
                 {
+                    Health = 0;
                     tick.Stop();
                     tick.Dispose();
                     SetStatus("DEAD");

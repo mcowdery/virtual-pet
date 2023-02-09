@@ -34,10 +34,6 @@ namespace template_csharp_virtual_pet
         public static string OrganicOrRoboticMenu()
         {
             Console.Clear();
-            Console.WriteLine("\n");
-            Shelter.DisplayShelter();
-            Console.WriteLine("\n\n");
-            Console.SetCursorPosition(0, Shelter.cursorPos + 3); 
             Console.WriteLine("Do you want a robotic or organic pet?\n");
             Console.WriteLine("1. Organic");
             Console.WriteLine("2. Robotic");
@@ -45,7 +41,6 @@ namespace template_csharp_virtual_pet
             bool menuUp = true;
             while (menuUp)
             {
-                Console.SetCursorPosition(0, Shelter.cursorPos);
                 string userChoice = Console.ReadLine();
                 switch (userChoice)
                 {
@@ -58,37 +53,106 @@ namespace template_csharp_virtual_pet
                         menuUp = false;
                         break;
                     default:
-                        //Clears the input and then goes back to beginning of line.
-                        if (Shelter.GetShelterSize() <= 1) { Console.SetCursorPosition(0, Shelter.cursorPos); } //Active display 
-                        else
-                        {
-                            Console.CursorTop = 0;
-                            Console.CursorLeft = 0;
-                        }
+                        //Console.CursorTop = 0;
+                        //Console.CursorLeft = 0;
                         Console.Write("".PadRight(Console.BufferWidth) + "\r");
                         break;
                 }
             }
             return selection;
         }
-        public static string SpeciesMenu()
+        public static string OrganicOrRoboticMenu2()
         {
             Console.Clear();
-            Console.WriteLine("\n");
             Shelter.DisplayShelter();
-            Console.WriteLine("\n\n");
-            Console.SetCursorPosition(0, Shelter.cursorPos + 3);
-            Console.WriteLine("What Species would you like to start with?\n");
-            Console.WriteLine("1. Lion");
-            Console.WriteLine("2. Tiger");
-            Console.WriteLine("3. Panther");
-            if (Shelter.GetShelterSize() <= 1) { Console.SetCursorPosition(0, Shelter.cursorPos); } //Active display 
+
+            Console.SetCursorPosition(0, Shelter.cursorPos+3);
+            Console.WriteLine("Do you want a robotic or organic pet?\n");
+            Console.WriteLine("1. Organic");
+            Console.WriteLine("2. Robotic");
+
 
             string selection = "";
             bool menuUp = true;
             while (menuUp)
             {
                 Console.SetCursorPosition(0, Shelter.cursorPos);
+                string userChoice = Console.ReadLine();
+
+                switch (userChoice)
+                {
+                    case "1":
+                        selection = "Organic";
+                        menuUp = false;
+                        break;
+                    case "2":
+                        selection = "Robotic";
+                        menuUp = false;
+                        break;
+                    default:
+                        //Clears the input and then goes back to beginning of line.
+                        if (Shelter.GetShelterSize() < 1) { Console.SetCursorPosition(0, Shelter.cursorPos); } //Active display 
+
+                        Console.SetCursorPosition(0, 2);
+                        Console.Write("".PadRight(Console.BufferWidth) + "\r");
+                        break;
+                }
+            }
+            return selection;
+        }
+    public static string SpeciesMenu()
+        {
+            Console.Clear();
+            Console.WriteLine("What Species would you like to start with?\n");
+            Console.WriteLine("1. Lion");
+            Console.WriteLine("2. Tiger");
+            Console.WriteLine("3. Panther");
+
+            string selection = "";
+            bool menuUp = true;
+            while (menuUp)
+            {
+                Console.SetCursorPosition(0, 6);
+                string userChoice = Console.ReadLine();
+                switch (userChoice)
+                {
+                    case "1":
+                        selection = "Lion";
+                        menuUp = false;
+                        break;
+                    case "2":
+                        selection = "Tiger";
+                        menuUp = false;
+                        break;
+                    case "3":
+                        selection = "Panther";
+                        menuUp = false;
+                        break;
+                    default:
+                        Console.SetCursorPosition(0, 6);
+                        Console.Write(">> ".PadRight(Console.BufferWidth) + "\r");
+                        break;
+                }
+            }
+            return selection;
+        }
+        public static string SpeciesMenu2()
+        {
+            Console.Clear();
+            Shelter.DisplayShelter();
+
+            Console.SetCursorPosition(0, Shelter.cursorPos + 3);
+            Console.WriteLine("What Species would you like to start with?\n");
+            Console.WriteLine("1. Lion");
+            Console.WriteLine("2. Tiger");
+            Console.WriteLine("3. Panther");
+            Console.SetCursorPosition(0, Shelter.cursorPos);
+
+            string selection = "";
+            bool menuUp = true;
+            while (menuUp)
+            {
+
                 string userChoice = Console.ReadLine();
                 switch (userChoice)
                 {
@@ -107,7 +171,8 @@ namespace template_csharp_virtual_pet
                     default:
                         //Clears the input and then goes back to beginning of line.
                         if (Shelter.GetShelterSize() <= 1) { Console.SetCursorPosition(0, Shelter.cursorPos); } //Active display 
-                        else {
+                        else
+                        {
                             Console.CursorTop = 0;
                             Console.CursorLeft = 0;
                         }
@@ -120,19 +185,59 @@ namespace template_csharp_virtual_pet
         public static string RobotTypeMenu()
         {
             Console.Clear();
-            Console.WriteLine("\n");
-            Shelter.DisplayShelter();
-            Console.WriteLine("\n\n");
-            Console.SetCursorPosition(0, Shelter.cursorPos + 3);
             Console.WriteLine("What Robot Type do you want?\n");
             Console.WriteLine("1. Robot Type A");
             Console.WriteLine("2. Robot Type B");
             Console.WriteLine("3. Robot Type C");
             string selection = "";
+
             bool menuUp = true;
             while (menuUp)
             {
-                Console.SetCursorPosition(0, Shelter.cursorPos);
+                string userChoice = Console.ReadLine();
+                switch (userChoice)
+                {
+                    case "1":
+                        selection = "Type A";
+                        menuUp = false;
+                        break;
+                    case "2":
+                        selection = "Type B";
+                        menuUp = false;
+                        break;
+                    case "3":
+                        selection = "Type C";
+                        menuUp = false;
+                        break;
+                    default:
+                        //Clears the input and then goes back to beginning of line.
+                        if (Shelter.GetShelterSize() <= 1) { Console.SetCursorPosition(0, Shelter.cursorPos); } //Active display 
+                        else
+                        {
+                            Console.CursorTop = 0;
+                            Console.CursorLeft = 0;
+                        }
+                        Console.Write("".PadRight(Console.BufferWidth) + "\r");
+                        break;
+                }
+            }
+            return selection;
+        }
+        public static string RobotTypeMenu2()
+        {
+            Console.Clear();
+            Shelter.DisplayShelter();
+
+            Console.SetCursorPosition(0, Shelter.cursorPos + 3);
+            Console.WriteLine("What Robot Type do you want?\n");
+            Console.WriteLine("1. Robot Type A");
+            Console.WriteLine("2. Robot Type B");
+            Console.WriteLine("3. Robot Type C");
+            Console.SetCursorPosition(0, Shelter.cursorPos);
+            string selection = "";
+            bool menuUp = true;
+            while (menuUp)
+            {
                 string userChoice = Console.ReadLine();
                 switch (userChoice)
                 {
@@ -167,12 +272,7 @@ namespace template_csharp_virtual_pet
             while (true)
             {
                 Console.Clear();
-                Console.WriteLine("\n");
-                Shelter.DisplayShelter();
-                Console.WriteLine("\n\n");
-                Console.SetCursorPosition(0, Shelter.cursorPos + 3);
                 Console.WriteLine("What would you like to name your pet?");
-                Console.SetCursorPosition(0, Shelter.cursorPos);
                 usersPet.Name = Console.ReadLine();
                 if (usersPet.Name.Length < 12) { break; }
                 else
@@ -189,9 +289,46 @@ namespace template_csharp_virtual_pet
             while (true)
             {
                 Console.Clear();
-                Console.WriteLine("\n");
+                Console.WriteLine("What would you like to name your pet?");
+                string name = Console.ReadLine();
+                if (name.Length < 12) { return name; }
+                else
+                {
+                    Console.Clear();
+                    Console.WriteLine("\nSorry. Name must be less than 11 characters long.");
+                    Console.Write("Press any key...");
+                    Console.ReadKey();
+                }
+            }
+        }
+        public static void NameMenu2(Pet usersPet)
+        {
+            while (true)
+            {
+                Console.Clear();
                 Shelter.DisplayShelter();
-                Console.WriteLine("\n\n");
+
+                Console.SetCursorPosition(0, Shelter.cursorPos + 3);
+                Console.WriteLine("What would you like to name your pet?");
+                Console.SetCursorPosition(0, Shelter.cursorPos);
+                usersPet.Name = Console.ReadLine();
+                if (usersPet.Name.Length < 12) { break; }
+                else
+                {
+                    Console.Clear();
+                    Console.WriteLine("\nSorry. Name must be less than 11 characters long.");
+                    Console.Write("Press any key...");
+                    Console.ReadKey();
+                }
+            }
+        }
+        public static string NameMenu2()
+        {
+            while (true)
+            {
+                Console.Clear();
+                Shelter.DisplayShelter();
+
                 Console.SetCursorPosition(0, Shelter.cursorPos + 3);
                 Console.WriteLine("What would you like to name your pet?");
                 Console.SetCursorPosition(0, Shelter.cursorPos);
@@ -206,18 +343,17 @@ namespace template_csharp_virtual_pet
                 }
             }
         }
-        public static void Main()
+        public static void MainMenu()
         {
             bool menuUp = true;
             while (menuUp)
             {
                 Console.Clear();
+
                 //Panther roar sound
                 //panther image
-                Console.WriteLine("\n");
                 Shelter.DisplayShelter();
-                Console.WriteLine("\n\n");
-
+                Console.SetCursorPosition(0, Shelter.cursorPos+3);
                 Console.WriteLine("1. Rename a pet");
                 Console.WriteLine("2. Interact with your pets");
                 Console.WriteLine("3. Adopt a pet");
@@ -225,7 +361,8 @@ namespace template_csharp_virtual_pet
                 Console.WriteLine("5. Earn some money");
                 Console.WriteLine("6. Exit");
                 Console.SetCursorPosition(0, Shelter.cursorPos);
-                var activeDisplay = ActiveDisplay.DisplayStart();
+
+                var activeDisplay = ActiveDisplay.DisplayStart(); //pulling the active display from ActiveDisplay class to here
 
                 string userChoice = Console.ReadLine();
                 switch (userChoice)
@@ -235,22 +372,19 @@ namespace template_csharp_virtual_pet
                         {
                             ActiveDisplay.DisplayStop((System.Timers.Timer)activeDisplay);//Pauses Active Display
                             Console.Clear();
-                            Console.WriteLine("\n");
                             Shelter.DisplayShelter();//Static display
-                            Console.WriteLine("\n\n");
                             Console.WriteLine("What pet do you want to rename? ");
                             Console.SetCursorPosition(0, Shelter.cursorPos);
                             int choice = Shelter.SelectPetMenu();
-                            Menus.NameMenu((Pet)Shelter.GetPet(choice));
+                            Menus.NameMenu2((Pet)Shelter.GetPet(choice));
                         }
                         else
                         {
                             ActiveDisplay.DisplayStop((System.Timers.Timer)activeDisplay);//Pauses Active Display
-                            Menus.NameMenu((Pet)Shelter.GetPet(1));
+                            Menus.NameMenu2((Pet)Shelter.GetPet(1));
                         }
                         break;
                     case "2":
-                        ActiveDisplay.DisplayStop((System.Timers.Timer)activeDisplay);//Pauses Active Display
                         InteractMenu();
                         break;
                     case "3":  //Adopt a pet
@@ -259,23 +393,25 @@ namespace template_csharp_virtual_pet
                             ActiveDisplay.DisplayStop((System.Timers.Timer)activeDisplay);//Pauses Active Display
                             Console.Clear();
                             //Organic or Robotic?
-                            string type = Menus.OrganicOrRoboticMenu();
+                            string type = Menus.OrganicOrRoboticMenu2();
 
                             //Go to Job Menu or Species menu depending on if robotic or organic.
                             string subType = "";
                             if (type == "Organic")
                             {
-                                subType = Menus.SpeciesMenu();
+                                subType = Menus.SpeciesMenu2();
                                 //Name Pet
-                                string name = Menus.NameMenu();
+                                ActiveDisplay.DisplayStop((System.Timers.Timer)activeDisplay);//Pauses Active Display
+                                string name = Menus.NameMenu2();
                                 //Add to shelter
                                 Shelter.AddOrganicPet(name, subType);
                             }
                             else if (type == "Robotic")
                             {
-                                subType = Menus.RobotTypeMenu();
+                                subType = Menus.RobotTypeMenu2();
                                 //Name Pet
-                                string name = Menus.NameMenu();
+                                ActiveDisplay.DisplayStop((System.Timers.Timer)activeDisplay);//Pauses Active Display
+                                string name = Menus.NameMenu2();
                                 //Add to shelter
                                 Shelter.AddRoboticPet(name, subType);
                             }
@@ -284,16 +420,13 @@ namespace template_csharp_virtual_pet
 
 
 
-                            Menus.Main();
+                            Menus.MainMenu();
                             break;
                         }
                         else
                         {
-                            ActiveDisplay.DisplayStop((System.Timers.Timer)activeDisplay);//Pauses Active Display
                             Console.Clear();
-                            Console.WriteLine("\n");
                             Shelter.DisplayShelter();//Static display
-                            Console.WriteLine("\n\n");
                             Console.WriteLine("Shelter capacity reached. Please remove a pet before adding anymore.");
                             Console.WriteLine("\nPress any key to go back to the main menu...");
                             Console.SetCursorPosition(0, Shelter.cursorPos);
@@ -303,11 +436,8 @@ namespace template_csharp_virtual_pet
                     case "4": //remove a pet
                         if (Shelter.GetShelterSize() > 1)
                         {
-                            ActiveDisplay.DisplayStop((System.Timers.Timer)activeDisplay);//Pauses Active Display
                             Console.Clear();
-                            Console.WriteLine("\n");
                             Shelter.DisplayShelter();//Active display
-                            Console.WriteLine("\n\n");
                             Console.WriteLine("Which Pet do you wish to remove?");
                             Console.SetCursorPosition(0, Shelter.cursorPos);
                             int selection = Shelter.SelectPetMenu();
@@ -315,11 +445,8 @@ namespace template_csharp_virtual_pet
                         }
                         else
                         {
-                            ActiveDisplay.DisplayStop((System.Timers.Timer)activeDisplay);//Pauses Active Display
                             Console.Clear();
-                            Console.WriteLine("\n");
-                            Shelter.DisplayShelter();//Active display
-                            Console.WriteLine("\n\n");
+                            Shelter.DisplayShelter();
                             Console.WriteLine("Cannot remove. You must have at least one pet in the shelter.");
                             Console.WriteLine("\nPress any key to go back to the main menu...");
                             Console.SetCursorPosition(0, Shelter.cursorPos);
@@ -327,7 +454,6 @@ namespace template_csharp_virtual_pet
                         }
                         break;
                     case "5":
-                        ActiveDisplay.DisplayStop((System.Timers.Timer)activeDisplay);//Pauses Active Display
                         Pet pet = (Pet)Shelter.GetPet(1);
                         pet.SetStatus("Working");
                         break;
@@ -338,11 +464,8 @@ namespace template_csharp_virtual_pet
                         Menus.DebugMenu();
                         break;
                     default:
-                        ActiveDisplay.DisplayStop((System.Timers.Timer)activeDisplay);//Pauses Active Display
                         Console.Clear();
-                        Console.WriteLine("\n");
                         Shelter.DisplayShelter();//Active display
-                        Console.WriteLine("\n\n");
                         Console.SetCursorPosition(0, Shelter.cursorPos);
                         //Console.WriteLine("Invalid Input");
                         Console.SetCursorPosition(0, Shelter.cursorPos);
@@ -355,9 +478,7 @@ namespace template_csharp_virtual_pet
         {
             Console.Clear();
 
-            Console.WriteLine("\n");
             Shelter.DisplayShelter();//Active display
-            Console.WriteLine("\n\n");
 
             Console.WriteLine("{0} has eaten!", usersPet.Name);
             Console.WriteLine("Boredom Level has decreased by 10!");
@@ -371,9 +492,7 @@ namespace template_csharp_virtual_pet
         public static void PlayMenu(Pet usersPet)
         {
             Console.Clear();
-            Console.WriteLine("\n");
             Shelter.DisplayShelter();//Active display
-            Console.WriteLine("\n\n");
             Console.WriteLine("You played with {0}!", usersPet.Name);
             Console.WriteLine("Hunger Level has decreased by 10!");
             int prevBoredomLevel = usersPet.Boredom;
@@ -386,9 +505,7 @@ namespace template_csharp_virtual_pet
         public static void EarnMoneyMenu()
         {
             Console.Clear();
-            Console.WriteLine("\n");
-            Shelter.DisplayShelter();//Active display
-            Console.WriteLine("\n\n");
+            Shelter.DisplayShelter();
             Console.WriteLine("This function is still a WIP. \n");
             //Console.WriteLine("{0} has eaten!", usersPet.Name);
             //Console.WriteLine("You earned $0!");
@@ -402,9 +519,9 @@ namespace template_csharp_virtual_pet
         public static void InteractMenu()
         {
             Console.Clear();
-            Console.WriteLine("\n");
             Shelter.DisplayShelter();//Active display
-            Console.WriteLine("\n\n");
+
+            Console.SetCursorPosition(0, Shelter.cursorPos + 3);
             Console.WriteLine("1. Interact with all pets");
             Console.WriteLine("2. Choose one pet");
             Console.SetCursorPosition(0, Shelter.cursorPos);

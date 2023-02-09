@@ -37,7 +37,7 @@ while (menuUp)
     { Console.WriteLine("ERROR: type not set correctly in Program.cs"); }
 
     //Start the main menu using the new pet just created
-    Menus.Main();
+    Menus.MainMenu();
 }
 
 

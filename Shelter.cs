@@ -14,7 +14,7 @@ namespace template_csharp_virtual_pet
     {
         private static List<Pet> petShelter = new List<Pet>();
         public static int wallet = 0;
-        public static int cursorPos = 14;
+        public static int cursorPos = 12;
 
         public static List<Pet> PetShelter { get; set; }
 
@@ -72,16 +72,16 @@ namespace template_csharp_virtual_pet
             int position = 2;
             switch (line)
             {
-                case 1: position = 4; break;
-                case 2: position = 5; break;
-                case 3: position = 6; break;
-                case 4: position = 7; break;
-                case 5: position = 8; break;
-                case 6: position = 9; break;
-                case 7: position = 10; break;
-                case 8: position = 11; break;
-                case 9: position = 12; break;
-                case 10: position = 13; break;
+                case 1: position = 2; break;
+                case 2: position = 3; break;
+                case 3: position = 4; break;
+                case 4: position = 5; break;
+                case 5: position = 6; break;
+                case 6: position = 7; break;
+                case 7: position = 8; break;
+                case 8: position = 9; break;
+                case 9: position = 10; break;
+                case 10: position = 11; break;
             }
 
             shelterNum++;
@@ -430,7 +430,12 @@ namespace template_csharp_virtual_pet
         public static void interact()
         {
             Console.Clear();
-            Console.WriteLine("How would you like to interact with all pets in the shelter?\n1. Feed\n2. Play\n3. See Doctor");
+            Shelter.DisplayShelter();//Active display
+
+            Console.SetCursorPosition(0, Shelter.cursorPos + 3);
+            Console.WriteLine("How would you like to interact with all pets in the shelter?\n\n1. Feed\n2. Play\n3. See Doctor");
+
+            Console.SetCursorPosition(0, Shelter.cursorPos);
             var interactAll = Console.ReadLine().ToLower();
             for (int i = 0; i < petShelter.Count; i++)
             {
@@ -469,6 +474,9 @@ namespace template_csharp_virtual_pet
         public static void InteractWithOne()
         {
             Console.Clear();
+            Shelter.DisplayShelter();//Active display
+
+            Console.SetCursorPosition(0, Shelter.cursorPos + 3);
             int choice = 1;
             if (GetShelterSize() > 1)
             {
@@ -477,14 +485,21 @@ namespace template_csharp_virtual_pet
             }
             choice--;
             Console.Clear();
+            Shelter.DisplayShelter();//Active display
+
+            Console.SetCursorPosition(0, Shelter.cursorPos + 3);
             Console.WriteLine(petShelter[choice].Name + " is in the shelter\n");
             Console.WriteLine("How would you like to interact with this pet?\n1. Feed\n2. Play\n3. See Doctor");
 
+            Console.SetCursorPosition(0, Shelter.cursorPos);
             var interact = Console.ReadLine();
             if (interact == "1")
             {
                 Console.Clear();
                 petShelter[choice].Feed();
+                Shelter.DisplayShelter();//Active display
+
+                Console.SetCursorPosition(0, Shelter.cursorPos + 3);
                 Console.WriteLine(" You fed " + petShelter[choice].Name + " Well done!");
                 Console.WriteLine("\nPress enter to return to the Main Menu");
                 Console.ReadLine();
@@ -493,6 +508,9 @@ namespace template_csharp_virtual_pet
             {
                 Console.Clear();
                 petShelter[choice].Play();
+                Shelter.DisplayShelter();//Active display
+
+                Console.SetCursorPosition(0, Shelter.cursorPos + 3);
                 Console.WriteLine("You played with " + petShelter[choice].Name);
                 Console.WriteLine("\nPress enter to return to the Main Menu");
                 Console.ReadLine();
@@ -501,11 +519,13 @@ namespace template_csharp_virtual_pet
             {
                 Console.Clear();
                 petShelter[choice].SeeDoctor();
+                Shelter.DisplayShelter();//Active display
+
+                Console.SetCursorPosition(0, Shelter.cursorPos + 3);
                 Console.WriteLine(petShelter[choice].Name + " is extra healthy after seeing the doc");
                 Console.WriteLine("\nPress enter to return to the Main Menu");
                 Console.ReadLine();
             }
-
         }
     }
 }
