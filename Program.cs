@@ -8,7 +8,9 @@ using template_csharp_virtual_pet;
 bool menuUp = true;
 while (menuUp)
 {
+    //Initial Set up
     Console.ForegroundColor = ConsoleColor.White;
+    Console.CursorVisible = false;
     Menus.IntroMenu();
 
     //Organic or Robotic?
@@ -37,7 +39,7 @@ while (menuUp)
     { Console.WriteLine("ERROR: type not set correctly in Program.cs"); }
 
     //Start the main menu using the new pet just created
-    Menus.Main();
+    Menus.MainMenu();
 }
 
 
