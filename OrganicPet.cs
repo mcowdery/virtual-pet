@@ -46,7 +46,10 @@ namespace template_csharp_virtual_pet
                 }
                 bool starved = false;
                 bool crazyBored = false;
-
+                if ( Hunger < 0)
+                {
+                    Hunger = 0; 
+                }
                 if (Hunger >= 60)
                 {
                     Hunger = 60;

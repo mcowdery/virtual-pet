@@ -71,19 +71,44 @@ namespace template_csharp_virtual_pet
         }
         public void Feed()
         {
-            //Feed animation
-            Hunger -= 10;
-            //purr sound
+            if ( Hunger >= 10)
+            {
+                Hunger -= 10;
+            }
+            if (Hunger < 10 && Hunger > 0)
+            {
+                Hunger = 0;
+            }
         }
         public void Play()
         {
-            Boredom -= 20;
-            Hunger += 10;
-            Health += 10;
+            if (Boredom >= 10)
+            {
+                Boredom -= 10;
+            }
+            if (Boredom < 10 && Boredom > 0)
+            {
+                Boredom = 0;
+            }
+            if (Hunger <= 58)
+            {
+                Hunger += 2;
+            }
+            if (Hunger < 60 && Hunger > 58)
+            {
+                Hunger = 60;
+            }
         }
         public void SeeDoctor()
         {
-            Health += 30;
+            if (Health <= 50)
+            {
+                Health += 10;
+            }
+            if (Health < 60 && Health > 50)
+            {
+                Health = 60;
+            }
         }
         public void DisplayStatus()
         {

@@ -813,8 +813,8 @@ namespace template_csharp_virtual_pet
                 Console.WriteLine("4. Remove a pet");
                 Console.WriteLine("5. Earn some money");
                 Console.WriteLine("6. Exit");            
-                Console.WriteLine("\n\n'a' to pet pet");
-                Console.WriteLine("'A' to pet ALL pets");
+                Console.WriteLine("\n\n'a' to play with pet");
+                Console.WriteLine("'A' to play with ALL pets");
                 Console.WriteLine("'s' to spank pet");
                 Console.WriteLine("'S' to spank ALL pets");
                 Console.WriteLine("'d' to heal pet with doctor");
