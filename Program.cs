@@ -11,6 +11,7 @@ while (menuUp)
     //Initial Set up
     Console.ForegroundColor = ConsoleColor.White;
     Console.CursorVisible = false;
+    //Console.BackgroundColor = ConsoleColor.DarkGray;
     Menus.IntroMenu();
 
     //Organic or Robotic?

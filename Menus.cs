@@ -301,9 +301,9 @@ namespace template_csharp_virtual_pet
         {
             Console.Clear();
             var activeDisplay = ActiveDisplay.DisplayStart(); //pulling the active display from ActiveDisplay class to here
-            bool menuUp = true;
-            while (menuUp)
+            while (true)
             {
+                //Console.Clear();
                 ActiveDisplay.DisplayStop((System.Timers.Timer)activeDisplay);//Pauses Active Display
                 Shelter.DisplayShelter();
                 Console.SetCursorPosition(0, Shelter.cursorPos+3);
@@ -321,9 +321,8 @@ namespace template_csharp_virtual_pet
 
 
 
-
                 ActiveDisplay.DisplayStart((System.Timers.Timer)activeDisplay);//Starts Active Display back up
-                ConsoleKeyInfo userChoice = Console.ReadKey(true);
+                var userChoice = Console.ReadKey(true);
                 ActiveDisplay.DisplayStop((System.Timers.Timer)activeDisplay);//Pauses Display during input
 
 
@@ -386,10 +385,12 @@ namespace template_csharp_virtual_pet
                         {
                             Console.Clear();
                             Shelter.DisplayShelter();//Static display
+                            Console.SetCursorPosition(0, Shelter.cursorPos+3);
                             Console.WriteLine("Shelter capacity reached. Please remove a pet before adding anymore.");
                             Console.WriteLine("\nPress any key to go back to the main menu...");
-                            Console.SetCursorPosition(0, Shelter.cursorPos);
+                            //Console.SetCursorPosition(0, Shelter.cursorPos);
                             Console.ReadKey();
+                            Console.Clear();
                         }
                         break;
                     case '4': //remove a pet
@@ -397,6 +398,8 @@ namespace template_csharp_virtual_pet
                         {
                             Console.Clear();
                             Shelter.DisplayShelter();//Active display
+
+                            Console.SetCursorPosition(0, Shelter.cursorPos + 3);
                             Console.WriteLine("Which Pet do you wish to remove?");
                             Console.SetCursorPosition(0, Shelter.cursorPos);
                             int selection = Shelter.SelectPetMenu();
@@ -428,6 +431,7 @@ namespace template_csharp_virtual_pet
                         pet.Feed();
                         break;
                 }
+                //var ch = Console.ReadKey(true).Key;
                 switch (userChoice.Key)
                 {
                     case ConsoleKey.RightArrow:

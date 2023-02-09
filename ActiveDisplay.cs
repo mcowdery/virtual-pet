@@ -5,7 +5,7 @@ namespace template_csharp_virtual_pet
     {
         public static object DisplayStart()
         {
-            System.Timers.Timer activeDisplay = new(100);
+            System.Timers.Timer activeDisplay = new(500);
             activeDisplay.Start();
             activeDisplay.Elapsed += ActiveDisplay_Elapsed;
             void ActiveDisplay_Elapsed(object? sender, System.Timers.ElapsedEventArgs e)

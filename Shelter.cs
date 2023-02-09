@@ -25,46 +25,54 @@ namespace template_csharp_virtual_pet
         public static int GetShelterSize() { return petShelter.Count; }
         public static int GetCursorPos() { return cursorPos; }
         public static void AddToWallet(int money) { wallet += money; }
-        public static void ChangeActivePetRight() { if (activePetPos < 5 && activePetPos < GetShelterSize())
+        public static void ChangeActivePetRight() 
+        { 
+            if (activePetPos < 5 && activePetPos < GetShelterSize())
             {
-                //ActiveDisplay.DisplayStop((System.Timers.Timer)activeDisplay);//Pauses Display
-                Console.SetCursorPosition(6, 11);
+                //ActiveDisplay.DisplayStop((System.Timers.Timer)ActiveDisplay.DisplayStart());//Pauses Display
+
+                Console.SetCursorPosition(0, 0);
                 Console.Write("".PadRight(Console.BufferWidth) + "\r");
-                activePetPos++; 
+                Console.SetCursorPosition(0, 11);
+                Console.Write("".PadRight(Console.BufferWidth) + "\r");
+                activePetPos++;
+                //ActiveDisplay.DisplayStart((System.Timers.Timer)ActiveDisplay.DisplayStart());//Restart Display
             } 
         }
         public static void ChangeActivePetLeft()
-        { if (activePetPos > 1) 
+        { 
+            if (activePetPos > 1) 
             {
-                Console.SetCursorPosition(6, 11);
+                //ActiveDisplay.DisplayStop((System.Timers.Timer)ActiveDisplay.DisplayStart());//Pauses Display
+
+                Console.SetCursorPosition(0, 11);
                 Console.Write("".PadRight(Console.BufferWidth) + "\r");
-                activePetPos--; }
+                activePetPos--;
+                //ActiveDisplay.DisplayStart((System.Timers.Timer)ActiveDisplay.DisplayStart());//Restart Display
+            }
 
         }
         public static int SelectPetMenu()
         {
             //Console.WriteLine("\n\n");
-            if (Shelter.GetShelterSize() > 1)
+            int selection = 0;
+            while (true)
             {
-                int selection = 0;
-                while (true)
+                //Console.Clear();
+                Console.SetCursorPosition(0, cursorPos + 3);
+                int count = 1;
+                foreach (var pet in petShelter)
                 {
-                    Console.Clear();
-                    Console.SetCursorPosition(0, cursorPos + 3);
-                    int count = 1;
-                    foreach (var pet in petShelter)
+                    Console.WriteLine(count + ". " + pet.Name);
+                    count++;
+                }
+                Console.SetCursorPosition(0, cursorPos);
+                try 
+                {
+                    ConsoleKeyInfo UserInput = Console.ReadKey(true);
+                    if (char.IsDigit(UserInput.KeyChar))
                     {
-                        Console.WriteLine(count + ". " + pet.Name);
-                        count++;
-                    }
-                    Console.SetCursorPosition(0, cursorPos);
-                    try 
-                    {
-                        ConsoleKeyInfo UserInput = Console.ReadKey();
-                        if (char.IsDigit(UserInput.KeyChar))
-                        {
-                            selection = int.Parse(UserInput.KeyChar.ToString()); // use Parse if it's a Digit
-                        }
+                        selection = int.Parse(UserInput.KeyChar.ToString()); // use Parse if it's a Digit
 
                         if (selection >= 0 && selection <= count - 1)
                         { return selection; }
@@ -76,17 +84,13 @@ namespace template_csharp_virtual_pet
                         }
                         Console.SetCursorPosition(0, cursorPos);
                     }
-                    catch
-                    {
-                        Console.SetCursorPosition(0, cursorPos);
-                        Console.Write("".PadRight(Console.BufferWidth) + "\r");
-                        Console.SetCursorPosition(0, cursorPos + 3);
-                    }
                 }
-            }
-            else
-            {
-                return 0;
+                catch
+                {
+                    Console.SetCursorPosition(0, cursorPos);
+                    Console.Write("".PadRight(Console.BufferWidth) + "\r");
+                    Console.SetCursorPosition(0, cursorPos + 3);
+                }
             }
         }
         public static void DisplaySetCursorPosition(int shelterNum, int line)
@@ -124,7 +128,6 @@ namespace template_csharp_virtual_pet
         public static void DisplayOrganic(int shelterNum)
         {
             shelterNum--;//Decrement to match list position
-
             string paddedName = petShelter[shelterNum].PaddedName();
             string paddedSpecies = petShelter[shelterNum].PaddedSpecies();
 
@@ -244,7 +247,10 @@ namespace template_csharp_virtual_pet
         public static void DisplayShelter()
         {
             Console.SetCursorPosition(0, 0);
+            Console.Write("".PadRight(Console.BufferWidth) + "\r");
             DisplayWallet();
+            Console.SetCursorPosition(0, 1);
+            Console.Write("".PadRight(Console.BufferWidth) + "\r");
             Console.SetCursorPosition(0, 2);
             switch (petShelter.Count)
             {
@@ -344,7 +350,8 @@ namespace template_csharp_virtual_pet
                 case 5: Console.SetCursorPosition(97, 11); break;
             }
             Console.Write("___ACTIVE___\n");
-            Console.WriteLine(activePetPos);
+            Console.WriteLine("".PadRight(Console.BufferWidth));
+            Console.WriteLine("".PadRight(Console.BufferWidth));
         }
         public static void DisplayWallet()
         { Console.WriteLine("Wallet: $" + wallet); }
