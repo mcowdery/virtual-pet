@@ -537,7 +537,7 @@ namespace template_csharp_virtual_pet
 
             Console.SetCursorPosition(0, Shelter.cursorPos);
             var interactAll = Console.ReadLine().ToLower();
-            int choice = 1;
+            int choice;
             {
                 if (interactAll == "1")
                 {
