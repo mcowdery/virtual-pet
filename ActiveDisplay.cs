@@ -13,7 +13,6 @@ namespace template_csharp_virtual_pet
                 Console.SetCursorPosition(0, 0);
                 Shelter.DisplayShelter();
                 Console.SetCursorPosition(0, Shelter.cursorPos);
-                Console.Write("\n>> ");
             }
             return activeDisplay;
         }

@@ -41,22 +41,16 @@ namespace template_csharp_virtual_pet
             bool menuUp = true;
             while (menuUp)
             {
-                Console.SetCursorPosition(0, 5);
-                Console.Write("\n>> ");
-                string userChoice = Console.ReadLine();
-                switch (userChoice)
+                ConsoleKeyInfo userChoice = Console.ReadKey(true);
+                switch (userChoice.KeyChar)
                 {
-                    case "1":
+                    case '1':
                         selection = "Organic";
                         menuUp = false;
                         break;
-                    case "2":
+                    case '2':
                         selection = "Robotic";
                         menuUp = false;
-                        break;
-                    default:
-                        Console.SetCursorPosition(0, 6);
-                        Console.Write("".PadRight(Console.BufferWidth) + "\r");
                         break;
                 }
             }
@@ -72,31 +66,21 @@ namespace template_csharp_virtual_pet
             Console.WriteLine("1. Organic");
             Console.WriteLine("2. Robotic");
 
-
             string selection = "";
             bool menuUp = true;
             while (menuUp)
             {
-                Console.SetCursorPosition(0, Shelter.cursorPos);
-                Console.Write("\n>>");
-                string userChoice = Console.ReadLine();
+                ConsoleKeyInfo userChoice = Console.ReadKey(true);
 
-                switch (userChoice)
+                switch (userChoice.KeyChar)
                 {
-                    case "1":
+                    case '1':
                         selection = "Organic";
                         menuUp = false;
                         break;
-                    case "2":
+                    case '2':
                         selection = "Robotic";
                         menuUp = false;
-                        break;
-                    default:
-                        //Clears the input and then goes back to beginning of line.
-                        if (Shelter.GetShelterSize() < 1) { Console.SetCursorPosition(0, Shelter.cursorPos); } //Active display 
-
-                        Console.SetCursorPosition(0, 2);
-                        Console.Write("".PadRight(Console.BufferWidth) + "\r");
                         break;
                 }
             }
@@ -114,26 +98,20 @@ namespace template_csharp_virtual_pet
             bool menuUp = true;
             while (menuUp)
             {
-                Console.SetCursorPosition(0, 5);
-                Console.Write("\n>> ");
-                string userChoice = Console.ReadLine();
-                switch (userChoice)
+                ConsoleKeyInfo userChoice = Console.ReadKey(true);
+                switch (userChoice.KeyChar)
                 {
-                    case "1":
+                    case '1':
                         selection = "Lion";
                         menuUp = false;
                         break;
-                    case "2":
+                    case '2':
                         selection = "Tiger";
                         menuUp = false;
                         break;
-                    case "3":
+                    case '3':
                         selection = "Panther";
                         menuUp = false;
-                        break;
-                    default:
-                        Console.SetCursorPosition(0, 6);
-                        Console.Write("".PadRight(Console.BufferWidth) + "\r");
                         break;
                 }
             }
@@ -155,31 +133,20 @@ namespace template_csharp_virtual_pet
             bool menuUp = true;
             while (menuUp)
             {
-                Console.Write("\n>>");
-                string userChoice = Console.ReadLine();
-                switch (userChoice)
+                ConsoleKeyInfo userChoice = Console.ReadKey(true);
+                switch (userChoice.KeyChar)
                 {
-                    case "1":
+                    case '1':
                         selection = "Lion";
                         menuUp = false;
                         break;
-                    case "2":
+                    case '2':
                         selection = "Tiger";
                         menuUp = false;
                         break;
-                    case "3":
+                    case '3':
                         selection = "Panther";
                         menuUp = false;
-                        break;
-                    default:
-                        //Clears the input and then goes back to beginning of line.
-                        if (Shelter.GetShelterSize() <= 1) { Console.SetCursorPosition(0, Shelter.cursorPos); } //Active display 
-                        else
-                        {
-                            Console.CursorTop = 0;
-                            Console.CursorLeft = 0;
-                        }
-                        Console.Write("".PadRight(Console.BufferWidth) + "\r");
                         break;
                 }
             }
@@ -197,27 +164,20 @@ namespace template_csharp_virtual_pet
             bool menuUp = true;
             while (menuUp)
             {
-                Console.SetCursorPosition(0, 5);
-                Console.Write("\n>> ");
-                string userChoice = Console.ReadLine();
-                switch (userChoice)
+                ConsoleKeyInfo userChoice = Console.ReadKey(true);
+                switch (userChoice.KeyChar)
                 {
-                    case "1":
+                    case '1':
                         selection = "Type A";
                         menuUp = false;
                         break;
-                    case "2":
+                    case '2':
                         selection = "Type B";
                         menuUp = false;
                         break;
-                    case "3":
+                    case '3':
                         selection = "Type C";
                         menuUp = false;
-                        break;
-                    default:
-                        //Clears the input and then goes back to beginning of line.
-                        Console.SetCursorPosition(0, 6);
-                        Console.Write("".PadRight(Console.BufferWidth) + "\r");
                         break;
                 }
             }
@@ -238,31 +198,20 @@ namespace template_csharp_virtual_pet
             bool menuUp = true;
             while (menuUp)
             {
-                Console.Write("\n>>");
-                string userChoice = Console.ReadLine();
-                switch (userChoice)
+                ConsoleKeyInfo userChoice = Console.ReadKey(true);
+                switch (userChoice.KeyChar)
                 {
-                    case "1":
+                    case '1':
                         selection = "Type A";
                         menuUp = false;
                         break;
-                    case "2":
+                    case '2':
                         selection = "Type B";
                         menuUp = false;
                         break;
-                    case "3":
+                    case '3':
                         selection = "Type C";
                         menuUp = false;
-                        break;
-                    default:
-                        //Clears the input and then goes back to beginning of line.
-                        if (Shelter.GetShelterSize() <= 1) { Console.SetCursorPosition(0, Shelter.cursorPos); } //Active display 
-                        else
-                        {
-                            Console.CursorTop = 0;
-                            Console.CursorLeft = 0;
-                        }
-                        Console.Write("".PadRight(Console.BufferWidth) + "\r");
                         break;
                 }
             }
@@ -274,7 +223,6 @@ namespace template_csharp_virtual_pet
             {
                 Console.Clear();
                 Console.WriteLine("What would you like to name your pet?");
-                Console.SetCursorPosition(0, 5);
                 Console.Write("\n>> ");
                 string name = Console.ReadLine();
                 if (name.Length < 12) { return name; }
@@ -352,17 +300,15 @@ namespace template_csharp_virtual_pet
 
 
 
-                Console.SetCursorPosition(0, Shelter.cursorPos);
-                Console.Write("\n>> ");
 
                 ActiveDisplay.DisplayStart((System.Timers.Timer)activeDisplay);//Starts Active Display back up
-                string userChoice = Console.ReadLine();
+                ConsoleKeyInfo userChoice = Console.ReadKey(true);
                 ActiveDisplay.DisplayStop((System.Timers.Timer)activeDisplay);//Pauses Display during input
 
 
-                switch (userChoice)
+                switch (userChoice.KeyChar)
                 {
-                    case "1": //Rename a pet
+                    case '1': //Rename a pet
                         if (Shelter.GetShelterSize() > 1)
                         {
                             ActiveDisplay.DisplayStop((System.Timers.Timer)activeDisplay);//Pauses Active Display
@@ -379,10 +325,10 @@ namespace template_csharp_virtual_pet
                             Menus.NameMenu2((Pet)Shelter.GetPet(1));
                         }
                         break;
-                    case "2":
+                    case '2':
                         InteractMenu();
                         break;
-                    case "3":  //Adopt a pet
+                    case '3':  //Adopt a pet
                         if (Shelter.GetShelterSize() <= 4)
                         {
                             ActiveDisplay.DisplayStop((System.Timers.Timer)activeDisplay);//Pauses Active Display
@@ -428,7 +374,7 @@ namespace template_csharp_virtual_pet
                             Console.ReadKey();
                         }
                         break;
-                    case "4": //remove a pet
+                    case '4': //remove a pet
                         if (Shelter.GetShelterSize() > 1)
                         {
                             Console.Clear();
@@ -448,14 +394,14 @@ namespace template_csharp_virtual_pet
                             Console.ReadKey();
                         }
                         break;
-                    case "5":
+                    case '5':
                         Pet pet = (Pet)Shelter.GetPet(1);
                         pet.SetStatus("Working");
                         break;
-                    case "6":
+                    case '6':
                         Environment.Exit(0);
                         break;
-                    case "7":
+                    case '7':
                         Menus.DebugMenu();
                         break;
                     default:
