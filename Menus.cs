@@ -809,7 +809,12 @@ namespace template_csharp_virtual_pet
                 Console.WriteLine("4. Remove a pet");
                 Console.WriteLine("5. Earn some money");
                 Console.WriteLine("6. Exit");
-                Console.WriteLine("\n\n'd' to discipline");
+                Console.WriteLine("\n\n'a' to pet pet");
+                Console.WriteLine("'A' to pet ALL pets");
+                Console.WriteLine("'s' to spank pet");
+                Console.WriteLine("'S' to spank ALL pets");
+                Console.WriteLine("'d' to heal pet with doctor");
+                Console.WriteLine("'D' to heal all pets with doctor");
                 Console.WriteLine("'f' to feed a pet ($10)");
                 Console.WriteLine("'F' to feed all ($500) *Not implemented yet");
                 Console.WriteLine("Use arrow keys to change which pet you are interacting with (must have more than one pet)");

@@ -97,13 +97,45 @@ namespace template_csharp_virtual_pet
                     switch (rnd.Next(1, 4))
                     {
                         case 1:
-                            SetStatus("Playing"); break;
+                            SetStatus("Playing"); break; //
                         case 2:
-                            SetStatus("Garbage"); break;
+                            SetStatus("Garbage"); break;  //bad money starts ticking negative
                         case 3:
                             SetStatus("Jumping"); break;
                         case 4:
                             SetStatus("Rolling"); break;
+                        case 5:
+                            SetStatus("Sleeping"); break;
+                        case 6:
+                            SetStatus("Resting"); break;
+                        case 7:
+                            SetStatus("Yarn"); break; //exercise
+                        case 8:
+                            SetStatus("RanAway"); break; //bad
+                        case 9:
+                            SetStatus("Fighting"); break;
+                        case 10:
+                            SetStatus("Scratching"); break;
+                        case 11:
+                            SetStatus("Breaking"); break;
+                        case 12:
+                            SetStatus("Peeing"); break;
+                        case 13:
+                            SetStatus("Pooping"); break;
+                        case 14:
+                            SetStatus("Hunting"); break;
+                        case 15:
+                            SetStatus("Purring"); break; //good
+                        case 16:
+                            SetStatus("Protecting"); break;
+                        case 17:
+                            SetStatus("Itching"); break;
+                        case 18:
+                            SetStatus("Cleaning"); break;
+                        case 19:
+                            SetStatus("Sprinting"); break;
+                        case 20:
+                            SetStatus("Mingling"); break;
                     }
                 }
             }
