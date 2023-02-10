@@ -9,11 +9,11 @@ But be careful, incomes can be negative!
 
 A pet's income depends on their condition:
 
-Excellent: +$20/Tick
-Great: +$10/Tick
-Good: +$5/Tick
-Bad: -$5/Tick
-Starving: -$10/Tick
+* Excellent: +$20/Tick
+* Great: +$10/Tick
+* Good: +$5/Tick
+* Bad: -$5/Tick
+* Starving: -$10/Tick
 
 You can change these conditions by properly taking care of your pet. But first, let's go over the two types of pets.
 
