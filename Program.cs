@@ -6,14 +6,8 @@ using System.Threading.Tasks;
 using template_csharp_virtual_pet;
 using System.Media;
 
-if (OperatingSystem.IsWindows())
-{
-    SoundPlayer BgMusic = new SoundPlayer("backgroundMusic.wav");
-    BgMusic.Load();
-    BgMusic.PlayLooping();
-}
-
-
+SoundPlayer BgMusic = new SoundPlayer("backgroundMusic.wav");
+Shelter.PlayMusic(BgMusic);
 
 bool menuUp = true;
 while (menuUp)
@@ -45,14 +39,20 @@ while (menuUp)
 
     //Add pet to shelter
     if (type == "Organic")
-    { Shelter.AddOrganicPet(name, subType); }
+    { 
+        Shelter.AddOrganicPet(name, subType);
+        Shelter.SpendFromWallet(20000);
+    }
     else if (type == "Robotic")
-    { Shelter.AddRoboticPet(name, subType); }
+    { 
+        Shelter.AddRoboticPet(name, subType);
+        Shelter.SpendFromWallet(100000);
+    }
     else
     { Console.WriteLine("ERROR: type not set correctly in Program.cs"); }
 
     //Start the main menu using the new pet just created
-    Menus.MainMenu();
+    Menus.MainMenu(BgMusic);
 }
 
 

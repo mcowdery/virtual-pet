@@ -9,6 +9,8 @@ using System.Text;
 using System.Threading.Channels;
 using System.Threading.Tasks;
 using System.Xml.Linq;
+using System.Media;
+using System.Reflection;
 
 namespace template_csharp_virtual_pet
 {
@@ -483,9 +485,9 @@ namespace template_csharp_virtual_pet
             Console.WriteLine("This pocket universe moves fast, "
     + "You will have to move fast as well to keep your new"
     + " friends alive and happy.\n\n");
-            Console.WriteLine("Do you want a robotic or organic pet?\n");
-            Console.WriteLine("1. Organic");
-            Console.WriteLine("2. Robotic");
+            Console.WriteLine("Do you want a robotic or organic pet? You will have to borrow this money, but that's okay since you can always make it back!\n");
+            Console.WriteLine("1. Organic ($20,000)");
+            Console.WriteLine("2. Robotic ($100,000)");
             string selection = "";
             bool menuUp = true;
             while (menuUp)
@@ -797,7 +799,7 @@ namespace template_csharp_virtual_pet
                 }
             }
         }
-        public static void MainMenu()
+        public static void MainMenu(SoundPlayer BgMusic)
         {
             Console.Clear();
             var activeDisplay = ActiveDisplay.DisplayStart(); //pulling the active display from ActiveDisplay class to here
@@ -817,10 +819,10 @@ namespace template_csharp_virtual_pet
                 Console.WriteLine("'A' to play with ALL pets");
                 Console.WriteLine("'s' to spank pet");
                 Console.WriteLine("'S' to spank ALL pets");
-                Console.WriteLine("'d' to heal pet with doctor");
-                Console.WriteLine("'D' to heal all pets with doctor");
+                Console.WriteLine("'d' to heal pet with doctor($20)");
+                Console.WriteLine("'D' to heal all pets with doctor or mechanic ($1000)");
                 Console.WriteLine("'f' to feed a pet ($10)");
-                Console.WriteLine("'F' to feed all ($500) *Not implemented yet");
+                Console.WriteLine("'F' to feed all ($500)");
                 Console.WriteLine(" - Use arrow keys to change which pet you are interacting with must have more than one pet");
 
 
@@ -843,12 +845,12 @@ namespace template_csharp_virtual_pet
                             Console.WriteLine("What pet do you want to rename? ");
                             Console.SetCursorPosition(0, Shelter.cursorPos);
                             int choice = Shelter.SelectPetMenu();
-                            Menus.NameMenu((Pet)Shelter.GetPet(choice));
+                            Menus.NameMenu2((Pet)Shelter.GetPet(choice));
                         }
                         else
                         {
                             ActiveDisplay.DisplayStop((System.Timers.Timer)activeDisplay);//Pauses Active Display
-                            Menus.NameMenu((Pet)Shelter.GetPet(1));
+                            Menus.NameMenu2((Pet)Shelter.GetPet(1));
                         }
                         Console.Clear();
                         break;
@@ -873,6 +875,7 @@ namespace template_csharp_virtual_pet
                                 string name = Menus.NameMenu2();
                                 //Add to shelter
                                 Shelter.AddOrganicPet(name, subType);
+                                Shelter.SpendFromWallet(20000);
                             }
                             else if (type == "Robotic")
                             {
@@ -882,9 +885,10 @@ namespace template_csharp_virtual_pet
                                 string name = Menus.NameMenu2();
                                 //Add to shelter
                                 Shelter.AddRoboticPet(name, subType);
+                                Shelter.SpendFromWallet(100000);
                             }
                             else { subType = ""; }
-                            Menus.MainMenu();
+                            Menus.MainMenu(BgMusic);
                             break;
                         }
                         else
@@ -930,7 +934,7 @@ namespace template_csharp_virtual_pet
                         Environment.Exit(0);
                         break;
                     case '7':
-                        Menus.DebugMenu();
+                        Menus.DebugMenu(BgMusic);
                         break;
                     case 'a':
                         pet = (Pet)Shelter.GetPet(Shelter.activePetPos);
@@ -944,29 +948,40 @@ namespace template_csharp_virtual_pet
                         }
                         break;
                     case 's':
+                        pet = (Pet)Shelter.GetPet(Shelter.activePetPos);
+                        pet.Spank();
                         break;
                     case 'S':
+                        for (int i = 0; i < Shelter.GetShelterSize(); i++)
+                        {
+                            pet = (Pet)Shelter.GetPet(i + 1);
+                            pet.Spank();
+                        }
                         break;
                     case 'd':
                         pet = (Pet)Shelter.GetPet(Shelter.activePetPos);
                         pet.SeeDoctor();
+                        Shelter.SpendFromWallet(20);
                         break;
                     case 'D':
                         for (int i = 0; i < Shelter.GetShelterSize(); i++)
                         {
                             pet = (Pet)Shelter.GetPet(i + 1);
                             pet.SeeDoctor();
+                            Shelter.SpendFromWallet(1000);
                         }
                         break;
                     case 'f':
                         pet = (Pet)Shelter.GetPet(Shelter.activePetPos);
                         pet.Feed();
+                        Shelter.SpendFromWallet(10);
                         break;
                     case 'F':
                         for (int i = 0; i < Shelter.GetShelterSize(); i++)
                         {
                             pet = (Pet)Shelter.GetPet(i + 1);
                             pet.Feed();
+                            Shelter.SpendFromWallet(500);
                         }
                         break;
 
@@ -1053,7 +1068,7 @@ namespace template_csharp_virtual_pet
             }
         }
 
-        public static void DebugMenu()
+        public static void DebugMenu(SoundPlayer BgMusic)
         {
             Console.Clear();
             Shelter.DisplayShelter();//Static display
@@ -1062,8 +1077,9 @@ namespace template_csharp_virtual_pet
             Console.WriteLine("1. Kill a pet");
             Console.WriteLine("2. Max out shelter");
             Console.WriteLine("3. Add item for warmth");
-            Console.WriteLine("4. Credit page : Hear from the creators of Virtual Pet: Pocket Universe of madness");
-            Console.WriteLine("5. Return to main menu");
+            Console.WriteLine("4. Play/Stop Music");
+            Console.WriteLine("5. Credit page : Hear from the creators of Virtual Pet: Pocket Universe of madness");
+            Console.WriteLine("6. Return to main menu");
             Console.WriteLine("\n");
 
             Console.SetCursorPosition(0, Shelter.cursorPos);
@@ -1088,13 +1104,66 @@ namespace template_csharp_virtual_pet
                     Shelter.petClothing();
                     break;
                 case '4':
-                    Credits.CreditPage();
+                    if (Shelter.isPlaying == true)
+                    { Shelter.StopMusic(BgMusic); Shelter.isPlaying = false; }
+                    else { Shelter.PlayMusic(BgMusic); Shelter.isPlaying = true; }
+                    break;
+                case '5':
+                    CreditPage(BgMusic);
                     break;
                 default:
                     break;
             }
             Console.Clear();
         }
+        public static void CreditPage(SoundPlayer BgMenu)
+        {
+            Shelter.PlayMusic(BgMenu);
+            Console.Clear();
+            Console.WriteLine("Thank you for using MAS Code's virtual pet, \n\n"
+                + "We hope you had as much fun exploring as we had creating this program.\n\n");
+            int line1, line2, line3;
+            line1 = line2 = line3 = 5;
+            int time = 0;
+            bool startMat = false;
+            bool startAddison = false;
+            System.Timers.Timer tick = new(1000);//instatiates new timer called tick
+            tick.Start();
+            tick.Elapsed += Tick_Elapsed; // says once timer is elapsed go to tick_Elapsed function
 
+            void Tick_Elapsed(object? sender, System.Timers.ElapsedEventArgs e)
+            {
+                if (time >= 0)
+                {
+                    Console.SetCursorPosition(53, (line1 - 1));
+                    Console.Write("\r".PadRight(Console.BufferWidth));
+                    Console.SetCursorPosition(53, line1);
+                    Console.Write("Mathew Cowdery");
+                    line1++;
+                }
+
+                if (time>=4)
+                {
+                    Console.SetCursorPosition(53, (line2-1));
+                    Console.Write("\r".PadRight(Console.BufferWidth));
+                    Console.SetCursorPosition(53, line2);
+                    Console.Write(" Addison Reddy");
+                    line2++;
+                }
+
+                if(time>=8)
+                {
+                    Console.SetCursorPosition(53, (line3 - 1));
+                    Console.Write("\r".PadRight(Console.BufferWidth));
+                    Console.SetCursorPosition(53, line3);
+                    Console.Write("   Sok Eam");
+                    line3++;
+                }
+                if (time<=16) { time++; }
+            }
+            Console.ReadKey();
+            tick.Stop();
+            Console.Clear();
+        }
     }
 }

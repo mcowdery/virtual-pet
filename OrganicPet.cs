@@ -17,13 +17,15 @@ namespace template_csharp_virtual_pet
         {
             Random rnd = new Random();
             int time = 0;
+
             System.Timers.Timer tick = new(500);//instatiates new timer called tick
             tick.Start();
             tick.Elapsed += Tick_Elapsed; // says once timer is elapsed go to tick_Elapsed function
 
             void Tick_Elapsed(object? sender, System.Timers.ElapsedEventArgs e)
             {
-
+                time++;
+                Shelter.AddToWallet(Income);
                 if (GetStatus() == "Resting")
                 {
                     Boredom += 1;
@@ -32,20 +34,17 @@ namespace template_csharp_virtual_pet
                         Hunger += 1;
                         if (Health < 60) { Health += 1; } //resting increases health a little, but not as much as starving decreases it.
                     }
-                    time++;
                 }
-                if (GetStatus() == "Working" || GetStatus() == "Playing")
+                if (Shelter.StressfulActions.Contains(GetStatus()))
                 {
                     if (Hunger < 60) { Hunger += 1; }
                     if (time % 4 == 0 && Boredom < 60)  //only increase every other tick.
                     {
                         Boredom += 1;
                     }
-                    time++;
-                    Shelter.AddToWallet(Income);
+
                 }
-                bool starved = false;
-                bool crazyBored = false;
+
                 if ( Hunger < 0)
                 {
                     Hunger = 0; 
@@ -53,27 +52,19 @@ namespace template_csharp_virtual_pet
                 if (Hunger >= 60)
                 {
                     Hunger = 60;
-                    starved = true;
-                }
+                    SetCondition("Starving");
+                }   
                 else if (Hunger < 60)
                 {
-                    starved = false;
                     SetCondition("Good");
                 }
                 if (Boredom >= 60)
                 {
                     Boredom = 60;
-                    crazyBored = true;
                 }
-                else if (Boredom < 60)
+                if (GetCondition()=="Starving")
                 {
-                    crazyBored = false;
-                }
-
-                if (starved && crazyBored)
-                {
-                    Health -= 5;
-                    SetCondition("Starving");
+                    Health -= 2;
                 }
 
                 if (Health <= 0)
@@ -92,12 +83,27 @@ namespace template_csharp_virtual_pet
                     Console.ReadKey();
                     Console.Clear();
                 }
-                //Changes Pet Status
 
-
-                if (time % rnd.Next(10, 25) == 0)
+                //Get ConditionPoints
+                if (GetCondition() != "Starving")
                 {
-                    switch (rnd.Next(1, 20))
+                    if (GetConditionPoints() >= 0 && GetConditionPoints() <= 5) { SetCondition("Bad"); }
+                    if (GetConditionPoints() >= 6 && GetConditionPoints() <= 10) { SetCondition("Good"); }
+                    if (GetConditionPoints() >= 11 && GetConditionPoints() <= 15) { SetCondition("Great"); }
+                    if (GetConditionPoints() >= 16 && GetConditionPoints() <= 20) { SetCondition("Excel"); }
+                }
+
+                //Set Income based on Condition of pet
+                if (GetCondition() == "Starving") { SetIncome(-10); }
+                if (GetCondition() == "Bad") { SetIncome(-5); }
+                if (GetCondition() == "Good") { SetIncome(5); }
+                if (GetCondition() == "Great") { SetIncome(10); }
+                if (GetCondition() == "Excellent") { SetIncome(20); }
+
+                //Changes Pet Status
+                if (time % rnd.Next(5, 15) == 0)
+                {
+                    switch (rnd.Next(1, 27))
                     {
                         case 1:
                             SetStatus("Playing"); break; //
@@ -153,10 +159,6 @@ namespace template_csharp_virtual_pet
                             SetStatus("Rolling"); break;
                         case 27:
                             SetStatus("Prancing"); break;
-                        case 28:
-                            SetStatus("Scheming"); break;
-                        case 29:
-                            SetStatus("Laughing Meniacally"); break;
                     }
                 }
             }

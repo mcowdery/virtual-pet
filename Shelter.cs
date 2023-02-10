@@ -4,6 +4,7 @@ using System.Data;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Media;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,6 +17,14 @@ namespace template_csharp_virtual_pet
         public static int wallet = 0;
         public static int cursorPos = 12;
         public static int activePetPos = 1;
+        public static bool isPlaying=true;
+        public static List<string> BadActions = new List<string> { "RanAway", "Garbage", "Fighting", "Scratching", "Breaking", "Peeing", "Pooping", "Hunting", "Purring",
+            "Breaking", "Hacking", "Staring", "Erroring", "Scheming", "Laughing", "Plotting", "Stealing", "Threatening", "Defrauding", "Escaping", "Terrorism", "Espionage", "Starving"};
+        public static List<string> StressfulActions = new List<string> { "RanAway", "Garbage", "Fighting", "Scratching", "Breaking", "Peeing", "Pooping", "Hunting", "Purring",
+            "Breaking", "Hacking", "Staring", "Erroring", "Scheming", "Laughing", "Plotting", "Stealing", "Threatening", "Defrauding", "Escaping", "Terrorism", "Espionage", 
+            "Playing", "Jumping", "Rolling", "Yarn", "Hunting", "Protecting", "Itching", "Cleaning", "Sprinting", "Mingling", "Chasing", "Spelunking", "Acting", "Wooing",
+            "Rolling", "Prancing"};
+        public static List<string> RestfulActions = new List<string> { "Sleeping", "Resting", "Charging", "Purring", "Bored" };
 
         public static List<Pet> PetShelter { get; set; }
 
@@ -25,6 +34,7 @@ namespace template_csharp_virtual_pet
         public static int GetShelterSize() { return petShelter.Count; }
         public static int GetCursorPos() { return cursorPos; }
         public static void AddToWallet(int money) { wallet += money; }
+        public static void SpendFromWallet(int money) { wallet -= money; }
         public static void ChangeActivePetRight() 
         { 
             if (activePetPos < 5 && activePetPos < GetShelterSize())
@@ -38,6 +48,22 @@ namespace template_csharp_virtual_pet
                 activePetPos++;
                 //ActiveDisplay.DisplayStart((System.Timers.Timer)ActiveDisplay.DisplayStart());//Restart Display
             } 
+        }
+        public static void PlayMusic(SoundPlayer BgMusic)
+        {
+            if (OperatingSystem.IsWindows())
+            {
+                BgMusic.Load();
+                BgMusic.PlayLooping();
+                BgMusic.Play();
+            }
+        }
+        public static void StopMusic(SoundPlayer BgMusic)
+        {
+            if (OperatingSystem.IsWindows())
+            {
+                BgMusic.Stop();
+            }
         }
         public static void ChangeActivePetLeft()
         { 
@@ -138,14 +164,25 @@ namespace template_csharp_virtual_pet
             DisplaySetCursorPosition(shelterNum, 3);
             Console.WriteLine(String.Format($"|  Species{paddedSpecies,5}  |  "));
             DisplaySetCursorPosition(shelterNum, 4);
-            Console.WriteLine(String.Format($"|  Health   {petShelter[shelterNum].Health,6}/60  |  "));
+            Console.Write(String.Format($"|  Health   "));
+            if (petShelter[shelterNum].GetCondition() == "Starving") 
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine($"{petShelter[shelterNum].Health,6}");
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.WriteLine("/60  | ");
+            }
+            else 
+            { 
+                Console.WriteLine($"{petShelter[shelterNum].Health,6}/60  |  ");
+            }
             DisplaySetCursorPosition(shelterNum, 5);
             Console.WriteLine(String.Format($"|  Hunger   {petShelter[shelterNum].Hunger,6}/60  |  "));
             DisplaySetCursorPosition(shelterNum, 6);
             Console.WriteLine(String.Format($"|  Boredom   {petShelter[shelterNum].Boredom,5}/60  |  "));
             DisplaySetCursorPosition(shelterNum, 7);
             Console.Write(String.Format($"|  Condition   "));
-            if (petShelter[shelterNum].Condition == "Starving" || petShelter[shelterNum].Condition == "Bored")
+            if (BadActions.Contains(petShelter[shelterNum].Condition))
             {
                 Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.Write($"{petShelter[shelterNum].Condition.Remove(5),6}");
@@ -642,8 +679,6 @@ namespace template_csharp_virtual_pet
                     Console.WriteLine("You gave " + petShelter[choice].Name + " a hat");
                     Console.SetCursorPosition(0, Shelter.cursorPos + 3);
                     Console.WriteLine("\nPress enter to return to the Main Menu");
-
-
                 }
 
                 Console.ReadKey();

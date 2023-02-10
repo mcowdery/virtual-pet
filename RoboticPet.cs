@@ -17,21 +17,30 @@ namespace template_csharp_virtual_pet
         }
         public override void Tick()
         {
+            int time = 0;
             System.Timers.Timer tick = new(500);//instatiates new timer called tick
             tick.Start();
             tick.Elapsed += Tick_Elapsed; // says once timer is elapsed go to tick_Elapsed function
 
             void Tick_Elapsed(object? sender, System.Timers.ElapsedEventArgs e)
             {
-                int time = 0;
+
                 time++;
+                Shelter.AddToWallet(Income);
                 Random rnd = new Random();
                 if (Status == "Charging" && Hunger <= 100 )
                 { Hunger += 20; }
                 else
-                { Hunger -= 10;}
+                {
+                    if (time % 2 == 0)  //only increase every other tick.
+                    {
+                        Hunger -= 1;
+                    }
+                }
                 if (Hunger < 0) { Hunger = 0; }
                 if (Hunger > 100) { Hunger = 100; }
+                if (Hunger == 100) { SetStatus("Beeping"); }
+                if (Hunger < 20) { SetStatus("Charging"); }
                 if (Health <= 0)
                 {
                     tick.Stop();
@@ -45,7 +54,22 @@ namespace template_csharp_virtual_pet
                     Console.ReadKey();
                     Console.Clear();
                 }
-                if (time % rnd.Next(10, 25) == 0)
+                if (GetCondition() != "Starv")
+                {
+                    if (GetConditionPoints() >= 0 && GetConditionPoints() <= 5) { SetCondition("Bad"); }
+                    if (GetConditionPoints() >= 6 && GetConditionPoints() <= 10) { SetCondition("Good"); }
+                    if (GetConditionPoints() >= 11 && GetConditionPoints() <= 15) { SetCondition("Great"); }
+                    if (GetConditionPoints() >= 16 && GetConditionPoints() <= 20) { SetCondition("Excel"); }
+                }
+
+                //Set Income based on Condition of pet
+                if (GetCondition() == "Starv") { SetIncome(-10); }
+                if (GetCondition() == "Bad") { SetIncome(-5); }
+                if (GetCondition() == "Good") { SetIncome(5); }
+                if (GetCondition() == "Great") { SetIncome(10); }
+                if (GetCondition() == "Excellent") { SetIncome(20); }
+
+                if (time % rnd.Next(5, 15) == 0)
                 {
                     switch (rnd.Next(1, 30))
                     {
