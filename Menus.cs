@@ -1088,6 +1088,7 @@ namespace template_csharp_virtual_pet
                     Shelter.petClothing();
                     break;
                 case '4':
+                    Credits.CreditPage();
                     break;
                 default:
                     break;
