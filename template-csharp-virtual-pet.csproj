@@ -15,6 +15,7 @@
     <EmbeddedResource Remove="virtual-pet-tests\**" />
     <None Remove="template-csharp-virtual-pet-tests\**" />
     <None Remove="virtual-pet-tests\**" />
+    <None Remove="System.Windows.Extensions" />
   </ItemGroup>
 
   <ItemGroup>
@@ -24,5 +25,8 @@
     <None Update="backgroundMusic.wav">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="System.Windows.Extensions" Version="7.0.0" />
   </ItemGroup>
 </Project>

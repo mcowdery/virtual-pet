@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 using template_csharp_virtual_pet;
 using System.Media;
 
-/*if (OperatingSystem.IsWindows())
+if (OperatingSystem.IsWindows())
 {
     SoundPlayer BgMusic = new SoundPlayer("backgroundMusic.wav");
     BgMusic.Load();
     BgMusic.PlayLooping();
-}*/
+}
 
 
 
