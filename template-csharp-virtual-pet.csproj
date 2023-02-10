@@ -17,4 +17,12 @@
     <None Remove="virtual-pet-tests\**" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="stranger-things-124008 %281%29 %281%29.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="backgroundMusic.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
 </Project>

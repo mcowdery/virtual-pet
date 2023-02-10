@@ -4,6 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using template_csharp_virtual_pet;
+using System.Media;
+
+/*if (OperatingSystem.IsWindows())
+{
+    SoundPlayer BgMusic = new SoundPlayer("backgroundMusic.wav");
+    BgMusic.Load();
+    BgMusic.PlayLooping();
+}*/
+
+
 
 bool menuUp = true;
 while (menuUp)
