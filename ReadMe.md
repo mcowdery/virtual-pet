@@ -1,55 +1,62 @@
 ﻿# Virtual Pets Re-Imagined
 ## Overview
-Do you remember Cyberpet? Tamagotchi? Digimon? Petz? Virtual pets like these were born in 1996. With your help, they will be reborn. Virtual Toys, Inc. wants you to build the next iteration of virtual pets to market to adults who enjoy updated versions of the toys and games they played in their youth.  This game will be like the virtual pets of 1996...but so much more. It’s Virtual Pets Re-Imagined with your own personal touch!
+Welcome to VirtualPet! A project by Mathew Cowdery, Adison Reddy, and Sok Eam.
 
-## General Requirements
+## Starting the program
 
-Your Virtual Pet program must be a console application. The application must have a main menu where a user can create a pet. The pet must have a name and species. The pet will also feature properties such as hunger, boredom, and health. A user should be able to view these properties from the main menu. A user should also be able to interact with the pet. The pet will be affected by a method that will represent time (Tick) that will negatively affect the pet and therefore incentivize the use of other methods to care for the pet.
-
-Your application must then be adapted to include a Shelter that will house multiple pets. You can move the create a pet function to the Shelter or leave it as a part of the main program. From the Shelter menu options you should be able to interact with 1 pet, or all pets. You should be able to check on the status of 1 pet as well as all pets simultaneously.
-
-Your application should also make use of the Virtual-Pet-Tests project and test some of your models and methods. Remember: Red, green, refactor. If that confused you. Make sure to review TDD or ask us in class! We're here to help.
-
-
+At the start of the program, you will be brought to the intro menu. After that you will begin making your own pet, which requires a type (Organic or Robotic), 
 ---- 
 
-## Grading
-The VirtualPet.Tests project includes a PetTests class with completed tests. These are the tests that will prove that the code you write in the Pet class is correct. Therefore, it is the logical starting point! The first test Pet_Constructor_Should_Instantiate_Pet_Object() has been written for you, and it passes because you already have a Pet class and can create a Pet object. The remaining tests have been written, but are commented out. Uncomment the code of the first test and add source code to the Pet class to pass the test. Continue with the tests, one by one, and add code until all the tests pass. 
+## How to Play
+The goal of the program is to reach $100,000. But you'll have to go into debt first to get there. Each pet has a certain amount of income that ticks away.
+But be careful, incomes can be negative!
 
-If you want to focus on TDD, you can write your code by writing tests first. (This is optional, but the tests that are already written for you are not. They must pass.) If you do so, each public method you write would have a unit test that covers its behavior. The test classes would also be well maintained and follow the principles of clean code.   
+A pet's income depends on their condition:
 
-In order to receive a PASSING grade, all of the following principles must be met:
+Excellent: +$20/Tick
+Great: +$10/Tick
+Good: +$5/Tick
+Bad: -$5/Tick
+Starving: -$10/Tick
 
-- Tests include appropriate Arrange, Act, and Assert sections.
-- All tests pass.
-- All features from iterations 1, 2, and 3 are implemented.
+You can change these conditions by properly taking care of your pet. But first, let's go over the two types of pets.
 
-## Iteration 1
+Their are two basic types of pets you can buy, organic and robotic, and you can own up to a total of five. However, they cost different amounts. An organic pet (Lion, Panther, or Tiger)
+costs $20,000, while a robotic pet costs $100,000. You'll have to find out yourself why one is more expensive than the other. The goal of the game is to explore different
+options!
 
-- Start with a pet class. Then use the Pet class and the Program class to do the following tasks:
-  - NOTE: Start with the Pet class and use TDD in the Test project provided to set up the properties and methods of your pet class. Make all tests pass before continuing. 
-  - An interactive user interface (in short, make a menu)
-  - Ability for players to enter the game, play as long as they’d like, and leave the game when they want
-  - Ability for players to create a pet by putting in a name and species for said pet
-  - Ability for players to see the current status of a pet, such as hunger, boredom, and health (hint: class properties)
-  - Ability for players to interact with pet, such as feed, play, and take to doctor (hint: class methods)
-  - As players interact with pet, the pet’s status changes
-  - As "time" ticks by, the pet's status changes negatively
+Once you are on the main screen, you are presented with a lot of options, but you're not given much time so it's good to know before hand what each does:
 
-## Iteration 2
+ * '1': Rename your pet.
+ * '2': Interact with your pet. This menu is not a necessary part of the program, but we've left it in as a legacy function for fun. It takes you to a submenu where you can do various other tasks. Many of these tasks are redundant, but we've left them in for fun.
+ * '3': Adopt a pet
+ * '4': Remove a pet
+ * '5': Exit
 
-- Create a shelter class to house your pets
-- Ability for players to admit (or add) pets into the shelter or adopt (or remove) them out of the shelter
-- Ability for players to see a list of all pets in the shelter
-- Ability for players to see the current status of all pets at once, such as hunger, boredom, and health
-- Ability for players to choose to interact with one pet or multiple pets, such as feed, play, and take to doctor
+ * Left and Right Arrow Keys: This won't do anything with only one pet in the shelter, but once you add more, this changes which pet is "Active", which you can you use
+to feed a specific pet by pressing the appropriate key.
+ * 'a': Plays with the current "Active" pet.
+ * 'A': Plays with all pets, regardless of which one is "Active".
+ * 's': Spanks/Disciplines your pet. 
+ * 'S': Spanks/Disciplines all your pets.
+ * 'd': Heals your pet with a doctor or a mechanic.
+ * 'f': Feeds your pet.
+ * 'F': Feeds all your pets.
 
-## Iteration 3
+The main goal of the game is that you need to be able to manage several different pets at one time to make money as fast as possible. In order to properly care for them you need to do a few different things.
 
-- Player’s choice of adding, interacting, or adopting either organic or robotic pets
-- As players interact with pets, the pet’s status changes differently for organic and robotic pets (overriding methods)
-- As "time" ticks by, the pets' status changes negatively. The passing of time is measured by how often the player interacts with the program.
-- Eventually rename this INSTRUCTIONS.md and create your own README.md file with instructions on how to play the game
+First you need to spank/discipline your pet when a "Yellow" status appears by moving the "Active" cursor to the pet and pressing 's'. When you do this, it will change your pets condition
+in a positive way if you are pressing it while it is yellow. If you press it during a 'green' status condition, this will negatively effect your pet. You can discipline your pet multiple times
+on the same status. The condition may not change on a single time however, so it may require several disciplines before their Condition changes from good to great and so forth.
 
-# Extra
-Did you know that you could change the color of text in console applications and add sounds? That's pretty cool, and a decent way to add some flair to your project if you get finished early. (From Gavin: AND ONLY IF YOU GET FINISHED EARLY! Also, there are sounds, which I think are pretty cool. Might be a fun thing to try out!)
+Secondly, you'll need to keep an eye on hunger levels, and boredom. You can change these values just like above but instead using the 'f' for feed and 'a' for play respectively.
+Be warned, if you happen to let hunger level reach max, it will set the Condition of the Pet to "Starving" which overrides all other conditions which will start eating away at the pet's
+health.
+
+Finally, their is a hidden menu on the main menu for debugging purposes if you press the '7' key. From here, you can do things like kill a pet or max out your pet shelter. 
+
+Issues and Lessons learned:
+* We think we didn't quite hit a lot of our goals as we increased the scope of oiur project a little too much which caused the final project to have some unresolved issues. If we had cut out more things we could have made the final product a little nicer and less buggy.
+* The display bugs out on occasion, but we decided it was in a good enough state and took too much time to completely fix it, as we neared the finish line. The most likely reason for this probably has to do with using multiple timers we believe, but we aren't entirely sure. We might try to work on it again at a later time.
+* Communicating with the instructors/clients more with any changes we might have to the requirements, or sticking closer to the original requirements. We changed the Tick class to have a timer function which was not allowed. Although we recognized this was different thant the
+

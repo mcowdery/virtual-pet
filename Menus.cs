@@ -813,8 +813,7 @@ namespace template_csharp_virtual_pet
                 Console.WriteLine("2. Interact with your pets");
                 Console.WriteLine("3. Adopt a pet");
                 Console.WriteLine("4. Remove a pet");
-                Console.WriteLine("5. Earn some money");
-                Console.WriteLine("6. Exit");            
+                Console.WriteLine("5. Exit");            
                 Console.WriteLine("\n\n'a' to play with pet");
                 Console.WriteLine("'A' to play with ALL pets");
                 Console.WriteLine("'s' to spank pet");
@@ -927,17 +926,13 @@ namespace template_csharp_virtual_pet
                         Console.Clear();
                         break;
                     case '5':
-                        Pet pet = (Pet)Shelter.GetPet(1);
-                        pet.SetStatus("Working");
-                        break;
-                    case '6':
                         Environment.Exit(0);
                         break;
                     case '7':
                         Menus.DebugMenu(BgMusic);
                         break;
                     case 'a':
-                        pet = (Pet)Shelter.GetPet(Shelter.activePetPos);
+                        Pet pet = (Pet)Shelter.GetPet(Shelter.activePetPos);
                         pet.Play();
                         break;
                     case 'A':
