@@ -2,11 +2,6 @@
 ## Overview
 Welcome to VirtualPet! A project by Mathew Cowdery, Adison Reddy, and Sok Eam.
 
-## Starting the program
-
-At the start of the program, you will be brought to the intro menu. After that you will begin making your own pet, which requires a type (Organic or Robotic), 
-
-
 
 ## How to Play
 The goal of the program is to reach $100,000. But you'll have to go into debt first to get there. Each pet has a certain amount of income that ticks away.
