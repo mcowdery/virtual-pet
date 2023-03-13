@@ -52,7 +52,6 @@ health.
 Finally, their is a hidden menu on the main menu for debugging purposes if you press the '7' key. From here, you can do things like kill a pet or max out your pet shelter. 
 
 Issues and Lessons learned:
-* We think we didn't quite hit a lot of our goals as we increased the scope of oiur project a little too much which caused the final project to have some unresolved issues. If we had cut out more things we could have made the final product a little nicer and less buggy.
-* The display bugs out on occasion, but we decided it was in a good enough state and took too much time to completely fix it, as we neared the finish line. The most likely reason for this probably has to do with using multiple timers we believe, but we aren't entirely sure. We might try to work on it again at a later time.
-* Communicating with the instructors/clients more with any changes we might have to the requirements, or sticking closer to the original requirements. We changed the Tick class to have a timer function which was not allowed. Although we recognized this was different thant the
+* Despite completing the requirements well ahead of time, we think we didn't quite hit a lot of our personal stretch goals as we increased the scope of our project a little too much which caused the final product to have some unresolved issues and bugs. If we had cut out more things we could have made the final product a little nicer and less buggy.
+* The display bugs out on occasion, but we decided it was in a good enough state and took too much time to completely fix it, as we were too close to the finish line. The most likely reason for this probably has to do with using multiple timers. We might try to work on it again at a later time.
 
